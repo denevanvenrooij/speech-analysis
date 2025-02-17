@@ -2,15 +2,6 @@ import parselmouth
 from parselmouth.praat import call
 import numpy as np
 
-## for extracting pitch: if the pitch is high, use max_formant = 5500, if the pitch is low use max_formant = 5000
-# pitch = sound.to_pitch()
-# mean_pitch = call(pitch, "Get mean", 0, 0, "Hertz")
-# if mean_pitch < 120:
-#     max_formant = 5000
-# elif mean_pitch >= 120:
-#     max_formant = 5500
-
-
 def PP_duration(audio_file, intensity_threshold=50): ## what should the threshold be?
     sound = parselmouth.Sound(audio_file)
     
@@ -115,4 +106,10 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
     f0_sd_murton = np.std(f0_sd)
     
     return f0_sd_murton ## named PP_F0_SD_M
+
+
+def PP_jitter(audio_file):
+    sound = parselmouth.Sound(audio_file)
+    
+    
 
