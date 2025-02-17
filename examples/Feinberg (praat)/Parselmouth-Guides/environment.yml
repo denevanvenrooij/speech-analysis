@@ -1,0 +1,13 @@
+name: praat-environment
+
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.5
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - pip
+  - pip:
+    - praat-parselmouth
