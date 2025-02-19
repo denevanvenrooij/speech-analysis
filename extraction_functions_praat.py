@@ -105,25 +105,23 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
     return f0_sd_murton ## named PP_F0_SD_M
 
 
-def PP_duration(audio_file, intensity_threshold=50): ## what should the threshold be?
+def PP_jitter(audio_file, f0_min=60, f0_max=300, type='local'):
     sound = parselmouth.Sound(audio_file)
     
-    intensity = sound.to_intensity()
+    pointProcess = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    localJitter = call(pointProcess, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
+    localabsoluteJitter = call(pointProcess, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
+    rapJitter = call(pointProcess, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3)
+    ppq5Jitter = call(pointProcess, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
+    ddpJitter = call(pointProcess, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
     
-    time_values = intensity.xs()
-    intensity_values = intensity.values.T[0]
-    
-    voiced_regions = time_values[intensity_values > intensity_threshold]
-    
-    if voiced_regions.size > 0:
-        start_time = voiced_regions[0]
-        end_time = voiced_regions[-1]
-        duration = end_time - start_time
-    else:
-        duration = 0
-        print("Check the audio and the threshold, the phonation time is now set to 0")
-        
-    return duration ## named PP_DUR
-    
-    
-
+    if type == 'local':
+        return localJitter
+    elif type == 'local_abs':
+        return localabsoluteJitter
+    elif type == 'rap':
+        return rapJitter
+    elif type == 'ppq5':
+        return ppq5Jitter
+    elif type == 'ddp':
+        return ddpJitter        
