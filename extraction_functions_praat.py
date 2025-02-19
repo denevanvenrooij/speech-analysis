@@ -108,22 +108,22 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
 def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
     sound = parselmouth.Sound(audio_file)
     
-    pointProcess = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
-    localJitter = call(pointProcess, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
-    localabsoluteJitter = call(pointProcess, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
-    rapJitter = call(pointProcess, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3)
-    ppq5Jitter = call(pointProcess, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
-    ddpJitter = call(pointProcess, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
+    point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    local_jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
+    local_absolute_jitter = call(point_process, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
+    rap_jitter = call(point_process, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3)
+    ppq5_jitter = call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
+    ddp_jitter = call(point_process, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
     
     if type == 'local':
-        return localJitter 
+        return local_jitter 
     elif type == 'abs':
-        return localabsoluteJitter
+        return local_absolute_jitter
     elif type == 'rap':
-        return rapJitter
+        return rap_jitter
     elif type == 'ppq5':
-        return ppq5Jitter
+        return ppq5_jitter
     elif type == 'ddp':
-        return ddpJitter   
+        return ddp_jitter   
     elif type == 'all':
-        return localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter ## named PP_JIT 
+        return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT 
