@@ -2,25 +2,22 @@ import parselmouth
 from parselmouth.praat import call
 import numpy as np
 
-def PP_duration(audio_file, intensity_threshold=50): ## what should the threshold be?
-    sound = parselmouth.Sound(audio_file)
+## I might do this with audacity/manually, since intensity does not capture the sounds vs silences
+# def PP_duration(audio_file, intensity_threshold=50): ## what should the threshold be?
+#     sound = parselmouth.Sound(audio_file)
     
-    intensity = sound.to_intensity()
-    
-    time_values = intensity.xs()
-    intensity_values = intensity.values.T[0]
-    
-    voiced_regions = time_values[intensity_values > intensity_threshold]
-    
-    if voiced_regions.size > 0:
-        start_time = voiced_regions[0]
-        end_time = voiced_regions[-1]
-        duration = end_time - start_time
-    else:
-        duration = 0
-        print("Check the audio and the threshold, the phonation time is now set to 0")
+#     intensity = sound.to_intensity()
+#     time_values = intensity.xs()
+#     intensity_values = intensity.values.T[0]
+
+#     voiced_indices = np.where(intensity_values > intensity_threshold)[0]
+#     if voiced_indices.size > 0:
+#         duration = time_values[voiced_indices[-1]]
+#     else:
+#         duration = None
+#         print("No signal, check the audio file!")
         
-    return duration ## named PP_DUR
+#     return duration
 
 
 def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
@@ -108,8 +105,25 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
     return f0_sd_murton ## named PP_F0_SD_M
 
 
-def PP_jitter(audio_file):
+def PP_duration(audio_file, intensity_threshold=50): ## what should the threshold be?
     sound = parselmouth.Sound(audio_file)
+    
+    intensity = sound.to_intensity()
+    
+    time_values = intensity.xs()
+    intensity_values = intensity.values.T[0]
+    
+    voiced_regions = time_values[intensity_values > intensity_threshold]
+    
+    if voiced_regions.size > 0:
+        start_time = voiced_regions[0]
+        end_time = voiced_regions[-1]
+        duration = end_time - start_time
+    else:
+        duration = 0
+        print("Check the audio and the threshold, the phonation time is now set to 0")
+        
+    return duration ## named PP_DUR
     
     
 
