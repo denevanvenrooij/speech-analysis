@@ -105,7 +105,7 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
     return f0_sd_murton ## named PP_F0_SD_M
 
 
-def PP_jitter(audio_file, f0_min=60, f0_max=300, type='local'):
+def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
     sound = parselmouth.Sound(audio_file)
     
     pointProcess = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
@@ -116,12 +116,14 @@ def PP_jitter(audio_file, f0_min=60, f0_max=300, type='local'):
     ddpJitter = call(pointProcess, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
     
     if type == 'local':
-        return localJitter
-    elif type == 'local_abs':
+        return localJitter 
+    elif type == 'abs':
         return localabsoluteJitter
     elif type == 'rap':
         return rapJitter
     elif type == 'ppq5':
         return ppq5Jitter
     elif type == 'ddp':
-        return ddpJitter        
+        return ddpJitter   
+    elif type == 'all':
+        return localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter ## named PP_JIT 
