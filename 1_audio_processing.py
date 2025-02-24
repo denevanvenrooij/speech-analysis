@@ -83,8 +83,8 @@ def save_vowels_separately(audio_path, silence_threshold=50):
     for i, (start, end) in enumerate(segments_sorted, start=1):
         segment_sound = sound.extract_part(from_time=start, to_time=end)
         label = vowel_dict.get(i, f"{i+1}")
-        output_path = audio_path.replace(".wav", "")
-        output_path = f"{output_path}_{label}.wav"
+        output_path = audio_path.replace("_pre.wav", "")
+        output_path = f"{output_path}{label}_pre.wav"
         segment_sound.save(output_path, "WAV")
         
     return segments_sorted
