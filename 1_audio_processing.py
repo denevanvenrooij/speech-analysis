@@ -1,10 +1,10 @@
-import os
-import pandas as pd
+from pathlib import Path
 import parselmouth
 from parselmouth.praat import call
 
-audio_files_dir = 'audio_files_original'
-processed_files_dir = 'audio_files_pre'
+audio_dir = Path('audio_files_pre/')
+processed_dir = Path('audio_files_pre/')
+segments_dir = Path('audio_files_segments/')
 
 vowel_dict = {
     1:'i',
@@ -14,36 +14,33 @@ vowel_dict = {
     5:'u',
 }
 
-
-def get_files(directory):
-    return [
-        os.path.join(root, file)
-        for root, _, files in os.walk(directory)
-        for file in files]
-    
-
 def pre_emphasize_audio():
-    original_files = get_files(audio_files_dir)
-    processed_files = get_files(processed_files_dir)
-    unprocessed_files = [path for path in original_files if path not in processed_files]
+    original_files = [file for file in audio_dir.rglob('*') if file.is_file()]
+    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
+    unprocessed_files = [file for file in original_files if file not in processed_files]
     
     for file in unprocessed_files:
-        if file.endswith(".wav"):
+        if file.suffix == ".wav":
             s = parselmouth.Sound(file)
             s.pre_emphasize()
             
-            original_path = os.path.basename(file)
+            original_path = file.name
             patient_number = original_path[:7]
             exercise = original_path[10:13]
             
-            processed_files_pt_dir = f'audio_files_pre/{exercise}/{patient_number}'
+            output_path = Path(f'audio_files_pre/{exercise}/{patient_number}')
+            if not output_path.exists():
+                print(f"Path {output_path} does not exist... Did you run 0_audio_init.py?")
             
-            save_path = os.path.join(processed_files_pt_dir, os.path.splitext(original_path)[0] + "_pre.wav")
-            s.save(save_path, 'WAV')
+            save_path = output_path / (file.stem + "_pre.wav")
+            s.save(str(save_path), 'WAV')
        
             
-def save_vowels_separately(audio_path, silence_threshold=50):
-    sound = parselmouth.Sound(audio_path)
+def save_vowels_separately(audio_file, patient_number, silence_threshold=50):
+    audio_path = Path(audio_file)
+    output_stem = audio_path.stem
+    
+    sound = parselmouth.Sound(audio_file)
 
     intensity = sound.to_intensity()
     time_stamps = intensity.xs()
@@ -83,19 +80,19 @@ def save_vowels_separately(audio_path, silence_threshold=50):
     for i, (start, end) in enumerate(segments_sorted, start=1):
         segment_sound = sound.extract_part(from_time=start, to_time=end)
         label = vowel_dict.get(i, f"{i+1}")
-        output_path = audio_path.replace("_pre.wav", "")
-        output_path = f"{output_path}{label}_pre.wav"
-        segment_sound.save(output_path, "WAV")
+        segment_path = segments_dir / 'VOW' / patient_number / f"{output_stem[:-1]}{label}_pre.wav"
+        segment_sound.save(str(segment_path), "WAV")
         
     return segments_sorted
                  
 if __name__=='__main__':
     pre_emphasize_audio()
     
-    processed_files = get_files(processed_files_dir)
+    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
     for file in processed_files:
-        original_path = os.path.basename(file)
-        patient_number = original_path[:7]
-        admission_day = original_path[8:9]
-        audio_path = f'{processed_files_dir}/VOW/{patient_number}/{patient_number}_{admission_day}_VOW_1_pre.wav'
-        save_vowels_separately(audio_path=audio_path)
+        if 'VOW_1_pre' in file.stem:
+            original_path = file.name
+            patient_number = original_path[:7]
+            admission_day = original_path[8:9]
+            audio_path = processed_dir / 'VOW' / patient_number / f'{patient_number}_{admission_day}_VOW_1_pre.wav'
+            save_vowels_separately(audio_file=str(audio_path), patient_number=patient_number, silence_threshold=50)
