@@ -3,6 +3,7 @@ from pathlib import Path
 audio_dir = Path('audio_files_original/')
 processed_dir = Path('audio_files_pre/')
 segments_dir = Path('audio_files_segments/')
+best_segments_dir = Path('audio_files_segments_best/')
 features_dir = Path('extracted_features/')
 
 exercises = {'MPT','SEN','VOW'}
@@ -18,6 +19,8 @@ def new_patient(patient_ids):
             features_path.mkdir(exist_ok=True, parents=True)
             segments_path = segments_dir / exercise / patient_id
             segments_path.mkdir(exist_ok=True, parents=True)
+            best_segments_path = best_segments_dir / exercise / patient_id
+            best_segments_path.mkdir(exist_ok=True, parents=True)
     print(f'Created folders for {patient_ids}')
             
 if __name__ == '__main__':
