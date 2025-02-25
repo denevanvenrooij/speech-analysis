@@ -39,6 +39,7 @@ def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based 
     return mean_f0 ## named PP_F0
 
 
+
 def PP_f0_median(audio_file, f0_min=60, f0_max=300):
     sound = parselmouth.Sound(audio_file)
     
@@ -58,6 +59,7 @@ def PP_f0_median(audio_file, f0_min=60, f0_max=300):
     return median_f0 ## named PP_F02
 
 
+
 def PP_f0_sd(audio_file, f0_min, f0_max):
     sound = parselmouth.Sound(audio_file)
     
@@ -75,6 +77,7 @@ def PP_f0_sd(audio_file, f0_min, f0_max):
     f0_sd = np.std(f0)
     
     return f0_sd ## named PP_F0_SD
+
 
 
 def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
@@ -99,6 +102,7 @@ def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are set
     return mean_f0_murton ## named PP_F0_M
 
 
+
 def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
     sound = parselmouth.Sound(audio_file)
     
@@ -119,6 +123,7 @@ def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are s
     median_f0_murton = np.median(f0)
     
     return median_f0_murton ## named PP_F02_M
+
 
 
 def PP_f0_sd_murton(audio_file, f0_min, f0_max):
@@ -146,6 +151,7 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
     return f0_sd_murton ## named PP_F0_SD_M
 
 
+
 def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
     sound = parselmouth.Sound(audio_file)
     
@@ -168,3 +174,17 @@ def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
         return ddp_jitter   
     elif type == 'all':
         return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT 
+    
+    
+    
+def PP_lh_ratio(audio_file):
+    sound = parselmouth.Sound(audio_file)
+    
+    spectrum = sound.to_spectrum()
+    
+    low_energy = spectrum.get_band_energy(0, 4000)
+    high_energy = spectrum.get_band_energy(4000, 10000)
+    
+    lh_ratio = 10*np.log10(low_energy / high_energy)
+    
+    return lh_ratio ## named PP_LHR
