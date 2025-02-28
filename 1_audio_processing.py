@@ -87,44 +87,44 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
     return segments_sorted
 
 
-def save_best_segment(audio_file, output_path, segment_length=1.0, step_size=0.1, f0_min=60, f0_max=300):
-    sound = parselmouth.Sound(audio_file)
-    duration = sound.duration
+# def save_best_segment(audio_file, output_path, segment_length=1.0, step_size=0.1, f0_min=60, f0_max=300):
+#     sound = parselmouth.Sound(audio_file)
+#     duration = sound.duration
     
-    min_jitter = float('inf')
-    best_segment = (0, segment_length)
+#     min_jitter = float('inf')
+#     best_segment = (0, segment_length)
 
-    start_time = 0
-    while start_time + segment_length <= duration:
-        end_time = start_time + segment_length
-        segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
+#     start_time = 0
+#     while start_time + segment_length <= duration:
+#         end_time = start_time + segment_length
+#         segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
         
-        point_process = call(segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
-        jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
+#         point_process = call(segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
+#         jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
         
-        if jitter < min_jitter:
-            min_jitter = jitter
-            best_segment = (start_time, end_time)
+#         if jitter < min_jitter:
+#             min_jitter = jitter
+#             best_segment = (start_time, end_time)
         
-        start_time += step_size
+#         start_time += step_size
 
-    best_start, best_end = best_segment
-    best_segment = sound.extract_part(from_time=best_start, to_time=best_end, preserve_times=True)
+#     best_start, best_end = best_segment
+#     best_segment = sound.extract_part(from_time=best_start, to_time=best_end, preserve_times=True)
     
-    best_segment.save(str(output_path), "WAV")
+#     best_segment.save(str(output_path), "WAV")
 
                  
 if __name__=='__main__':
     pre_emphasize_audio()
     
-    # processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
-    # for file in processed_files:
-    #     if 'VOW_1_pre' in file.stem:
-    #         original_path = file.name
-    #         patient_id = original_path[:7]
-    #         admission_day = original_path[8:9]
-    #         audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_1_pre.wav'
-    #         save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
+    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
+    for file in processed_files:
+        if 'VOW_1_pre' in file.stem:
+            original_path = file.name
+            patient_id = original_path[:7]
+            admission_day = original_path[8:9]
+            audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_1_pre.wav'
+            save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
     
     # segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
     # for file in segment_files:

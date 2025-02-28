@@ -2,23 +2,6 @@ import parselmouth
 from parselmouth.praat import call
 import numpy as np
 
-## I might do this with audacity/manually, since intensity does not capture the sounds vs silences
-# def PP_duration(audio_file, intensity_threshold=50): ## what should the threshold be?
-#     sound = parselmouth.Sound(audio_file)
-    
-#     intensity = sound.to_intensity()
-#     time_values = intensity.xs()
-#     intensity_values = intensity.values.T[0]
-
-#     voiced_indices = np.where(intensity_values > intensity_threshold)[0]
-#     if voiced_indices.size > 0:
-#         duration = time_values[voiced_indices[-1]]
-#     else:
-#         duration = None
-#         print("No signal, check the audio file!")
-        
-#     return duration
-
 
 def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
     sound = parselmouth.Sound(audio_file)
@@ -38,8 +21,6 @@ def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based 
     
     return mean_f0 ## named PP_F0
 
-
-
 def PP_f0_median(audio_file, f0_min=60, f0_max=300):
     sound = parselmouth.Sound(audio_file)
     
@@ -57,8 +38,6 @@ def PP_f0_median(audio_file, f0_min=60, f0_max=300):
     median_f0 = np.median(f0)
     
     return median_f0 ## named PP_F02
-
-
 
 def PP_f0_sd(audio_file, f0_min, f0_max):
     sound = parselmouth.Sound(audio_file)
@@ -80,7 +59,7 @@ def PP_f0_sd(audio_file, f0_min, f0_max):
 
 
 
-def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
+def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300):
     sound = parselmouth.Sound(audio_file)
     
     pitch = sound.to_pitch_cc( 
@@ -101,9 +80,7 @@ def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are set
     
     return mean_f0_murton ## named PP_F0_M
 
-
-
-def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
+def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300):
     sound = parselmouth.Sound(audio_file)
     
     pitch = sound.to_pitch_cc( 
@@ -117,14 +94,12 @@ def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300): ## the min/max are s
         print("No frames were detected during PP_F02_M extraction, check audio file")
         return None
         
-    lower_bound, upper_bound = np.percentile(f0, [5, 95]) ## only includes 5-95 percentiles as described by Murton 2023
+    lower_bound, upper_bound = np.percentile(f0, [5, 95])
     f0 = f0[(f0 >= lower_bound) & (f0 <= upper_bound)]
 
     median_f0_murton = np.median(f0)
     
     return median_f0_murton ## named PP_F02_M
-
-
 
 def PP_f0_sd_murton(audio_file, f0_min, f0_max):
     sound = parselmouth.Sound(audio_file)
@@ -145,7 +120,7 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
 
     median_f0 = np.median(f0)
     
-    f0_sd = f0[(f0 >= median_f0 - 50) & (f0 <= median_f0 + 50)] ## only values within 50 Hz from the median
+    f0_sd = f0[(f0 >= median_f0 - 50) & (f0 <= median_f0 + 50)] ## only values within 50 Hz from the median (Murton 2023)
     f0_sd_murton = np.std(f0_sd)
     
     return f0_sd_murton ## named PP_F0_SD_M
@@ -224,7 +199,38 @@ def PP_cpp_mean_murton(audio_file):
 
     return mean_cpp ## named PP_CPP_M
 
+def PP_cpp_median_murton(audio_file):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.get_total_duration()
+    sampling_rate = sound.sampling_frequency
 
+    cpp_values = []
+    window_length = 40.96e-3 ## 40.96 ms
+    step_size = 10.24e-3     ## 10.24 ms
+
+    for start_time in np.arange(0, duration - window_length, step_size):
+        frame = sound.extract_part(start_time, start_time + window_length)
+        spectrum = frame.to_spectrum()
+        log_spectrum = np.log(np.sum(spectrum.values**2, axis=0) + 1e-10)  ## apparently this avoid log(0)
+        
+        cepstrum = np.fft.irfft(log_spectrum)[:len(log_spectrum) * 2 - 2]
+        quefrencies = np.arange(len(cepstrum)) / sampling_rate
+        quefrency_min = 3.3e-3   ## 300 Hz
+        quefrency_max = 16.7e-3  ##  60 Hz
+
+        quefrency_indices = np.where((quefrencies >= quefrency_min) & (quefrencies <= quefrency_max))[0]
+        if not len(quefrency_indices): 
+            continue  ## skips empty frames
+
+        peak_index = quefrency_indices[np.argmax(cepstrum[quefrency_indices])]
+        cpp_peak = cepstrum[peak_index]
+
+        noise_floor = np.median(cepstrum[quefrency_indices]) ## when this is not good enough use LR
+
+        cpp_values.append(cpp_peak - noise_floor)
+        median_cpp = np.median(cpp_values)
+
+    return median_cpp ## named PP_CPP_M2
 
 def PP_cpp_sd_murton(audio_file):
     sound = parselmouth.Sound(audio_file)
@@ -262,3 +268,28 @@ def PP_cpp_sd_murton(audio_file):
         std_cpp = np.std(cpp_values)
 
     return std_cpp ## named PP_CPP_SD_M
+
+
+
+def PP_max_phonation(audio_file, silence_threshold=50):
+    sound = parselmouth.Sound(audio_file)
+    
+    intensity = sound.to_intensity()
+    time_stamps = intensity.xs()
+    intensity_values = intensity.values.T.flatten()
+    non_silent_mask = intensity_values > silence_threshold
+
+    if np.any(non_silent_mask):  
+        start_index = np.where(non_silent_mask)[0][0] ## first non-silent frame
+        end_index = np.where(non_silent_mask)[0][-1]  ##  last non-silent frame
+
+        start_time = time_stamps[start_index]
+        end_time = time_stamps[end_index]
+
+        duration = end_time - start_time
+    else:
+        duration = 0.0 ## returns this is there is no non-silence (so everything is sound)
+    
+    return duration ## named 'PP_MAX_PH'
+
+    
