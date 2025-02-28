@@ -176,7 +176,7 @@ def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
         return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT 
     
     
-    
+
 def PP_lh_ratio(audio_file):
     sound = parselmouth.Sound(audio_file)
     
@@ -188,3 +188,77 @@ def PP_lh_ratio(audio_file):
     lh_ratio = 10*np.log10(low_energy / high_energy)
     
     return lh_ratio ## named PP_LHR
+
+
+
+def PP_cpp_mean_murton(audio_file):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.get_total_duration()
+    sampling_rate = sound.sampling_frequency
+
+    cpp_values = []
+    window_length = 40.96e-3 ## 40.96 ms
+    step_size = 10.24e-3     ## 10.24 ms
+
+    for start_time in np.arange(0, duration - window_length, step_size):
+        frame = sound.extract_part(start_time, start_time + window_length)
+        spectrum = frame.to_spectrum()
+        log_spectrum = np.log(np.sum(spectrum.values**2, axis=0) + 1e-10)  ## apparently this avoid log(0)
+        
+        cepstrum = np.fft.irfft(log_spectrum)[:len(log_spectrum) * 2 - 2]
+        quefrencies = np.arange(len(cepstrum)) / sampling_rate
+        quefrency_min = 3.3e-3   ## 300 Hz
+        quefrency_max = 16.7e-3  ##  60 Hz
+
+        quefrency_indices = np.where((quefrencies >= quefrency_min) & (quefrencies <= quefrency_max))[0]
+        if not len(quefrency_indices): 
+            continue  ## skips empty frames
+
+        peak_index = quefrency_indices[np.argmax(cepstrum[quefrency_indices])]
+        cpp_peak = cepstrum[peak_index]
+
+        noise_floor = np.median(cepstrum[quefrency_indices]) ## when this is not good enough use LR
+
+        cpp_values.append(cpp_peak - noise_floor)
+        mean_cpp = np.mean(cpp_values)
+
+    return mean_cpp ## named PP_CPP_M
+
+
+
+def PP_cpp_sd_murton(audio_file):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.get_total_duration()
+    sampling_rate = sound.sampling_frequency
+
+    cpp_values = []
+    window_length = 40.96e-3 ## 40.96 ms
+    step_size = 10.24e-3     ## 10.24 ms
+
+    for start_time in np.arange(0, duration - window_length, step_size):
+        frame = sound.extract_part(start_time, start_time + window_length)
+        spectrum = frame.to_spectrum()
+        log_spectrum = np.log(np.sum(spectrum.values**2, axis=0) + 1e-10)  ## apparently this avoid log(0)
+        
+        cepstrum = np.fft.irfft(log_spectrum)[:len(log_spectrum) * 2 - 2]
+        quefrencies = np.arange(len(cepstrum)) / sampling_rate
+        quefrency_min = 3.3e-3   ## 300 Hz
+        quefrency_max = 16.7e-3  ##  60 Hz
+
+        quefrency_indices = np.where((quefrencies >= quefrency_min) & (quefrencies <= quefrency_max))[0]
+        if not len(quefrency_indices): 
+            continue  ## skips empty frames
+
+        peak_index = quefrency_indices[np.argmax(cepstrum[quefrency_indices])]
+        cpp_peak = cepstrum[peak_index]
+
+        noise_floor = np.median(cepstrum[quefrency_indices]) ## when this is not good enough use LR
+
+        cpp_values.append(cpp_peak - noise_floor)
+        
+        if not cpp_values:
+            return np.nan, np.nan 
+        
+        std_cpp = np.std(cpp_values)
+
+    return std_cpp ## named PP_CPP_SD_M
