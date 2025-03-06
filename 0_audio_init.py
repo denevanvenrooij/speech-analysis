@@ -1,10 +1,4 @@
-from pathlib import Path
-
-audio_dir = Path('audio_files_original/')
-processed_dir = Path('audio_files_pre/')
-segments_dir = Path('audio_files_segments/')
-best_segments_dir = Path('audio_files_segments_best/')
-features_dir = Path('extracted_features/')
+from paths import *
 
 exercises = {'MPT','SEN','VOW'}
 

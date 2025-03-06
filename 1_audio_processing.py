@@ -1,11 +1,6 @@
-from pathlib import Path
+from paths import *
 import parselmouth
 from parselmouth.praat import call
-
-audio_dir = Path('audio_files_original/')
-processed_dir = Path('audio_files_pre/')
-segments_dir = Path('audio_files_segments/')
-best_segments_dir = Path('audio_files_segments_best/')
 
 vowel_dict = {
     1:'i',
@@ -110,22 +105,23 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
 
 #     best_start, best_end = best_segment
 #     best_segment = sound.extract_part(from_time=best_start, to_time=best_end, preserve_times=True)
-    
 #     best_segment.save(str(output_path), "WAV")
 
                  
 if __name__=='__main__':
     pre_emphasize_audio()
     
-    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
-    for file in processed_files:
-        if 'VOW_1_pre' in file.stem:
-            original_path = file.name
-            patient_id = original_path[:7]
-            admission_day = original_path[8:9]
-            audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_1_pre.wav'
-            save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
-    
+    ## this below part saves each of the vowels separately
+    # processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
+    # for file in processed_files:
+    #     if 'VOW_1_pre' in file.stem:
+    #         original_path = file.name
+    #         patient_id = original_path[:7]
+    #         admission_day = original_path[8:9]
+    #         audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_1_pre.wav'
+    #         save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
+            
+    ## this part below saves the best vowel segment (with lowest local jitter)
     # segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
     # for file in segment_files:
     #     original_path = file.name

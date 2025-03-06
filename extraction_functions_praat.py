@@ -149,7 +149,38 @@ def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
         return ddp_jitter   
     elif type == 'all':
         return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT 
+ 
+def PP_jitter_murton(audio_file, segment_length=1.0, f0_min=60, f0_max=300, type='all'):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.duration
     
+    middle_time = duration / 2
+    half_segment = segment_length / 2
+    start_time = max(0, middle_time - half_segment)
+    end_time = min(duration, middle_time + half_segment)
+    
+    middle_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
+    
+    point_process = call(middle_segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    local_jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
+    local_absolute_jitter = call(point_process, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
+    rap_jitter = call(point_process, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3)
+    ppq5_jitter = call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
+    ddp_jitter = call(point_process, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
+    
+    if type == 'local':
+        return local_jitter 
+    elif type == 'abs':
+        return local_absolute_jitter
+    elif type == 'rap':
+        return rap_jitter
+    elif type == 'ppq5':
+        return ppq5_jitter
+    elif type == 'ddp':
+        return ddp_jitter   
+    elif type == 'all':
+        return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT_M
+   
     
 
 def PP_lh_ratio(audio_file):
@@ -163,6 +194,26 @@ def PP_lh_ratio(audio_file):
     lh_ratio = 10*np.log10(low_energy / high_energy)
     
     return lh_ratio ## named PP_LHR
+
+def PP_lh_ratio_murton(audio_file, segment_length):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.duration
+    
+    middle_time = duration / 2
+    half_segment = segment_length / 2
+    start_time = max(0, middle_time - half_segment)
+    end_time = min(duration, middle_time + half_segment)
+    
+    middle_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
+        
+    spectrum = middle_segment.to_spectrum()
+    
+    low_energy = spectrum.get_band_energy(0, 4000)
+    high_energy = spectrum.get_band_energy(4000, 10000)
+    
+    lh_ratio = 10*np.log10(low_energy / high_energy)
+    
+    return lh_ratio ## named PP_LHR_M
 
 
 
@@ -292,6 +343,7 @@ def PP_max_phonation(audio_file, silence_threshold=50):
     
     return duration ## named 'PP_MAX_PH'
 
+
     
 def PP_harmonics_to_noise(audio_file):
     sound = parselmouth.Sound(audio_file)
@@ -300,3 +352,19 @@ def PP_harmonics_to_noise(audio_file):
     hnr = call(harmonicity, "Get mean", 0, 0)
     
     return hnr ## named 'PP_HNR'
+
+def PP_harmonics_to_noise_murton(audio_file, segment_length):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.duration
+    
+    middle_time = duration / 2
+    half_segment = segment_length / 2
+    start_time = max(0, middle_time - half_segment)
+    end_time = min(duration, middle_time + half_segment)
+    
+    middle_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
+        
+    harmonicity = call(middle_segment, "To Harmonicity (cc)", 0.01, 75, 0.1, 1.0)
+    hnr = call(harmonicity, "Get mean", 0, 0)
+    
+    return hnr ## named 'PP_HNR_M'
