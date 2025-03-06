@@ -368,3 +368,64 @@ def PP_harmonics_to_noise_murton(audio_file, segment_length):
     hnr = call(harmonicity, "Get mean", 0, 0)
     
     return hnr ## named 'PP_HNR_M'
+
+
+def PP_shimmer(audio_file, f0_min, f0_max, type='all'):
+    sound = parselmouth.Sound(audio_file)
+
+    point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    local_shimmer =  call([sound, point_process], "Get shimmer (local)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    localdb_shimmer = call([sound, point_process], "Get shimmer (local_dB)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    apq3_shimmer = call([sound, point_process], "Get shimmer (apq3)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    aqpq5_shimmer = call([sound, point_process], "Get shimmer (apq5)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    apq11_shimmer =  call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    dda_shimmer = call([sound, point_process], "Get shimmer (dda)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    
+    if type == 'local':
+        return local_shimmer 
+    elif type == 'localdb':
+        return localdb_shimmer
+    elif type == 'apq3':
+        return apq3_shimmer
+    elif type == 'apq5':
+        return aqpq5_shimmer
+    elif type == 'apq11':
+        return apq11_shimmer  
+    elif type == 'dda':
+        return dda_shimmer 
+    elif type == 'all':
+        return local_shimmer, localdb_shimmer, apq3_shimmer, aqpq5_shimmer, apq11_shimmer, dda_shimmer ## named PP_SHI 
+    
+def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max, type='all'):
+    sound = parselmouth.Sound(audio_file)
+    duration = sound.duration
+    
+    middle_time = duration / 2
+    half_segment = segment_length / 2
+    start_time = max(0, middle_time - half_segment)
+    end_time = min(duration, middle_time + half_segment)
+    
+    middle_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)    
+
+    point_process = call(middle_segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    local_shimmer =  call([sound, point_process], "Get shimmer (local)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    localdb_shimmer = call([sound, point_process], "Get shimmer (local_dB)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    apq3_shimmer = call([sound, point_process], "Get shimmer (apq3)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    aqpq5_shimmer = call([sound, point_process], "Get shimmer (apq5)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    apq11_shimmer =  call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    dda_shimmer = call([sound, point_process], "Get shimmer (dda)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+    
+    if type == 'local':
+        return local_shimmer 
+    elif type == 'localdb':
+        return localdb_shimmer
+    elif type == 'apq3':
+        return apq3_shimmer
+    elif type == 'apq5':
+        return aqpq5_shimmer
+    elif type == 'apq11':
+        return apq11_shimmer  
+    elif type == 'dda':
+        return dda_shimmer 
+    elif type == 'all':
+        return local_shimmer, localdb_shimmer, apq3_shimmer, aqpq5_shimmer, apq11_shimmer, dda_shimmer ## named PP_SHI_M 
