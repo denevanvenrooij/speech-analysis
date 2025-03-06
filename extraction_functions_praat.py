@@ -293,3 +293,10 @@ def PP_max_phonation(audio_file, silence_threshold=50):
     return duration ## named 'PP_MAX_PH'
 
     
+def PP_harmonics_to_noise(audio_file):
+    sound = parselmouth.Sound(audio_file)
+    
+    harmonicity = call(sound, "To Harmonicity (cc)", 0.01, 75, 0.1, 1.0)
+    hnr = call(harmonicity, "Get mean", 0, 0)
+    
+    return hnr ## named 'PP_HNR'
