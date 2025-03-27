@@ -1,6 +1,10 @@
+import importlib
+import features
+importlib.reload(features)
 import parselmouth
 from parselmouth.praat import call
 import numpy as np
+from features import *
 
 
 def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
@@ -127,30 +131,33 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
 
 
 
-def PP_jitter(audio_file, f0_min=60, f0_max=300, type='all'):
+def PP_jitter(audio_file, f0_min=60, f0_max=300):
     sound = parselmouth.Sound(audio_file)
     
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
-    local_jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
-    local_absolute_jitter = call(point_process, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
-    rap_jitter = call(point_process, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3)
-    ppq5_jitter = call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
-    ddp_jitter = call(point_process, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
     
-    if type == 'local':
-        return local_jitter 
-    elif type == 'abs':
-        return local_absolute_jitter
-    elif type == 'rap':
-        return rap_jitter
-    elif type == 'ppq5':
-        return ppq5_jitter
-    elif type == 'ddp':
-        return ddp_jitter   
-    elif type == 'all':
-        return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT 
+    jitter_features = []
+
+    for feature in jitter_feature_selection:
+        if 'local' in feature:
+            local_jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
+            jitter_features.append(local_jitter)
+        elif 'abs' in feature:
+            local_absolute_jitter = call(point_process, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
+            jitter_features.append(local_absolute_jitter)
+        elif 'rap' in feature:
+            rap_jitter = call(point_process, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3) 
+            jitter_features.append(rap_jitter)
+        elif 'ppq5' in feature:
+            ppq5_jitter = call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
+            jitter_features.append(ppq5_jitter)
+        elif 'ddp' in feature:
+            ddp_jitter = call(point_process, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3) 
+            jitter_features.append(ddp_jitter)
+            
+    return jitter_features ## named 'PP_JIT'
  
-def PP_jitter_murton(audio_file, segment_length=1.0, f0_min=60, f0_max=300, type='all'):
+def PP_jitter_murton(audio_file, segment_length=1.0, f0_min=60, f0_max=300):
     sound = parselmouth.Sound(audio_file)
     duration = sound.duration
     
@@ -160,27 +167,28 @@ def PP_jitter_murton(audio_file, segment_length=1.0, f0_min=60, f0_max=300, type
     end_time = min(duration, middle_time + half_segment)
     
     middle_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
-    
     point_process = call(middle_segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
-    local_jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
-    local_absolute_jitter = call(point_process, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
-    rap_jitter = call(point_process, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3)
-    ppq5_jitter = call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
-    ddp_jitter = call(point_process, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3)  
+
+    jitter_features = []
+
+    for feature in jitter_feature_selection:
+        if 'local' in feature:
+            local_jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
+            jitter_features.append(local_jitter)
+        elif 'abs' in feature:
+            local_absolute_jitter = call(point_process, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3)
+            jitter_features.append(local_absolute_jitter)
+        elif 'rap' in feature:
+            rap_jitter = call(point_process, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3) 
+            jitter_features.append(rap_jitter)
+        elif 'ppq5' in feature:
+            ppq5_jitter = call(point_process, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3)
+            jitter_features.append(ppq5_jitter)
+        elif 'ddp' in feature:
+            ddp_jitter = call(point_process, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3) 
+            jitter_features.append(ddp_jitter)
     
-    if type == 'local':
-        return local_jitter 
-    elif type == 'abs':
-        return local_absolute_jitter
-    elif type == 'rap':
-        return rap_jitter
-    elif type == 'ppq5':
-        return ppq5_jitter
-    elif type == 'ddp':
-        return ddp_jitter   
-    elif type == 'all':
-        return local_jitter, local_absolute_jitter, rap_jitter, ppq5_jitter, ddp_jitter ## named PP_JIT_M
-   
+    return jitter_features ## named 'PP_JIT_M'
     
 
 def PP_lh_ratio(audio_file):
@@ -195,7 +203,7 @@ def PP_lh_ratio(audio_file):
     
     return lh_ratio ## named PP_LHR
 
-def PP_lh_ratio_murton(audio_file, segment_length):
+def PP_LH_ratio_murton(audio_file, segment_length):
     sound = parselmouth.Sound(audio_file)
     duration = sound.duration
     
@@ -217,7 +225,7 @@ def PP_lh_ratio_murton(audio_file, segment_length):
 
 
 
-def PP_cpp_mean_murton(audio_file):
+def PP_CPP_mean_murton(audio_file):
     sound = parselmouth.Sound(audio_file)
     duration = sound.get_total_duration()
     sampling_rate = sound.sampling_frequency
@@ -250,7 +258,7 @@ def PP_cpp_mean_murton(audio_file):
 
     return mean_cpp ## named PP_CPP_M
 
-def PP_cpp_median_murton(audio_file):
+def PP_CPP_median_murton(audio_file):
     sound = parselmouth.Sound(audio_file)
     duration = sound.get_total_duration()
     sampling_rate = sound.sampling_frequency
@@ -283,7 +291,7 @@ def PP_cpp_median_murton(audio_file):
 
     return median_cpp ## named PP_CPP_M2
 
-def PP_cpp_sd_murton(audio_file):
+def PP_CPP_sd_murton(audio_file):
     sound = parselmouth.Sound(audio_file)
     duration = sound.get_total_duration()
     sampling_rate = sound.sampling_frequency
@@ -322,7 +330,7 @@ def PP_cpp_sd_murton(audio_file):
 
 
 
-def PP_max_phonation(audio_file, silence_threshold=50):
+def PP_duration_with_pauses(audio_file, silence_threshold=50):
     sound = parselmouth.Sound(audio_file)
     
     intensity = sound.to_intensity()
@@ -341,7 +349,43 @@ def PP_max_phonation(audio_file, silence_threshold=50):
     else:
         duration = 0.0 ## returns this is there is no non-silence (so everything is sound)
     
-    return duration ## named 'PP_MAX_PH'
+    return duration ## named 'PP_DUR_WP' 
+
+def PP_duration_without_pauses(audio_file, silence_threshold=50, min_silence_duration=0.5):
+    sound = parselmouth.Sound(audio_file)
+    
+    intensity = sound.to_intensity()
+    time_stamps = intensity.xs()
+    intensity_values = intensity.values.T.flatten()
+    non_silent_mask = intensity_values > silence_threshold
+
+    speech_segments = []
+    speech = False
+    segment_start = None
+    last_silent_time = None
+
+    for i in range(len(non_silent_mask)):
+        if non_silent_mask[i]:
+            if not speech: ## merge silence when it does not exceed min_silence_duration
+                if last_silent_time and (time_stamps[i] - last_silent_time) < min_silence_duration:
+                    segment_start = speech_segments.pop()[0]
+                else:
+                    segment_start = time_stamps[i]
+
+                speech = True
+        else:
+            if speech:
+                segment_end = time_stamps[i - 1]
+                speech_segments.append((segment_start, segment_end))
+                speech = False
+                last_silent_time = time_stamps[i]
+
+    if speech and segment_start is not None: ## closes segment if sound reaches to the end of the recording
+        speech_segments.append((segment_start, time_stamps[-1]))
+
+    duration = sum(end - start for start, end in speech_segments)
+    
+    return duration ## named 'PP_DUR_WOP' 
 
 
     
@@ -370,33 +414,36 @@ def PP_harmonics_to_noise_murton(audio_file, segment_length):
     return hnr ## named 'PP_HNR_M'
 
 
-def PP_shimmer(audio_file, f0_min, f0_max, type='all'):
+def PP_shimmer(audio_file, f0_min, f0_max):
     sound = parselmouth.Sound(audio_file)
 
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
-    local_shimmer =  call([sound, point_process], "Get shimmer (local)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    localdb_shimmer = call([sound, point_process], "Get shimmer (local_dB)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    apq3_shimmer = call([sound, point_process], "Get shimmer (apq3)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    aqpq5_shimmer = call([sound, point_process], "Get shimmer (apq5)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    apq11_shimmer =  call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    dda_shimmer = call([sound, point_process], "Get shimmer (dda)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
     
-    if type == 'local':
-        return local_shimmer 
-    elif type == 'localdb':
-        return localdb_shimmer
-    elif type == 'apq3':
-        return apq3_shimmer
-    elif type == 'apq5':
-        return aqpq5_shimmer
-    elif type == 'apq11':
-        return apq11_shimmer  
-    elif type == 'dda':
-        return dda_shimmer 
-    elif type == 'all':
-        return local_shimmer, localdb_shimmer, apq3_shimmer, aqpq5_shimmer, apq11_shimmer, dda_shimmer ## named PP_SHI 
+    shimmer_features = []
+
+    for feature in shimmer_feature_selection:
+        if 'local' in feature:
+            local_shimmer = call([sound, point_process], "Get shimmer (local)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(local_shimmer)
+        elif 'localdb' in feature:
+            localdb_shimmer = call([sound, point_process], "Get shimmer (local_dB)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(localdb_shimmer)
+        elif 'apq3' in feature:
+            apq3_shimmer = call([sound, point_process], "Get shimmer (apq3)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(apq3_shimmer)
+        elif 'apq5' in feature:
+            apq5_shimmer = call([sound, point_process], "Get shimmer (apq5)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(apq5_shimmer)
+        elif 'apq11' in feature:
+            apq11_shimmer = call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(apq11_shimmer)
+        elif 'dda' in feature:
+            dda_shimmer = call([sound, point_process], "Get shimmer (dda)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(dda_shimmer)
     
-def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max, type='all'):
+    return shimmer_features ## named 'PP_SHI'
+    
+def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max):
     sound = parselmouth.Sound(audio_file)
     duration = sound.duration
     
@@ -406,26 +453,47 @@ def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max, type='all'):
     end_time = min(duration, middle_time + half_segment)
     
     middle_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)    
-
     point_process = call(middle_segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
-    local_shimmer =  call([sound, point_process], "Get shimmer (local)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    localdb_shimmer = call([sound, point_process], "Get shimmer (local_dB)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    apq3_shimmer = call([sound, point_process], "Get shimmer (apq3)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    aqpq5_shimmer = call([sound, point_process], "Get shimmer (apq5)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    apq11_shimmer =  call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
-    dda_shimmer = call([sound, point_process], "Get shimmer (dda)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
     
-    if type == 'local':
-        return local_shimmer 
-    elif type == 'localdb':
-        return localdb_shimmer
-    elif type == 'apq3':
-        return apq3_shimmer
-    elif type == 'apq5':
-        return aqpq5_shimmer
-    elif type == 'apq11':
-        return apq11_shimmer  
-    elif type == 'dda':
-        return dda_shimmer 
-    elif type == 'all':
-        return local_shimmer, localdb_shimmer, apq3_shimmer, aqpq5_shimmer, apq11_shimmer, dda_shimmer ## named PP_SHI_M 
+    shimmer_features = []
+
+    for feature in shimmer_feature_selection:
+        if 'local' in feature:
+            local_shimmer = call([sound, point_process], "Get shimmer (local)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(local_shimmer)
+        elif 'localdb' in feature:
+            localdb_shimmer = call([sound, point_process], "Get shimmer (local_dB)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(localdb_shimmer)
+        elif 'apq3' in feature:
+            apq3_shimmer = call([sound, point_process], "Get shimmer (apq3)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(apq3_shimmer)
+        elif 'apq5' in feature:
+            apq5_shimmer = call([sound, point_process], "Get shimmer (apq5)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(apq5_shimmer)
+        elif 'apq11' in feature:
+            apq11_shimmer = call([sound, point_process], "Get shimmer (apq11)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(apq11_shimmer)
+        elif 'dda' in feature:
+            dda_shimmer = call([sound, point_process], "Get shimmer (dda)", 0, 0, 0.0001, 0.02, 1.3, 1.6)
+            shimmer_features.append(dda_shimmer)
+    
+    return shimmer_features ## named 'PP_SHI_M'
+    
+
+
+def PP_MFCC(audio_file, num_coefficients=12):
+    sound = parselmouth.Sound(audio_file)
+    mfcc_obj = sound.to_mfcc(number_of_coefficients=num_coefficients)
+    mfcc_matrix = mfcc_obj.to_matrix().values
+    
+    feature_values = {}
+
+    for feature in mfc_feature_selection:
+        if feature in mfc_feature_functions:
+            feature_values[feature] = mfc_feature_functions[feature](mfcc_matrix, axis=1)
+
+    feature_list = [feature_values[feature] for feature in mfc_feature_selection if feature in feature_values]
+ 
+    print(feature_list)
+  
+    return np.concatenate(feature_list).tolist()
