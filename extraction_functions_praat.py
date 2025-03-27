@@ -4,6 +4,7 @@ importlib.reload(features)
 import parselmouth
 from parselmouth.praat import call
 import numpy as np
+from scipy.stats import skew, kurtosis
 from features import *
 
 
@@ -487,6 +488,15 @@ def PP_MFCC(audio_file, num_coefficients=12):
     mfcc_matrix = mfcc_obj.to_matrix().values
     
     feature_values = {}
+    mfc_feature_functions = {
+        'mean': np.mean,
+        'sd': np.std,
+        'skew': skew,
+        'kurt': kurtosis,
+        'median': np.median,
+        'min': np.min,
+        'max': np.max,
+    }
 
     for feature in mfc_feature_selection:
         if feature in mfc_feature_functions:

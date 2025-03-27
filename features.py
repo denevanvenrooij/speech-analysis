@@ -1,6 +1,3 @@
-import numpy as np
-from scipy.stats import skew, kurtosis
-
 AVAILABLE_FEATURES = [
     'PP_F0', 'PP_F02', 'PP_F0_SD', 
     'PP_F0_M', 'PP_F02_M', 'PP_F0_SD_M', 
@@ -27,20 +24,20 @@ selected_features_dict = {
 
 jitter_feature_selection = [
     'local',
-    # 'abs',
-    # 'rap',
-    # 'ppq5',
-    # 'ddp',
+    'abs',
+    'rap',
+    'ppq5',
+    'ddp',
 ] ## enable the ones you want
 jitter_feature_indices = {feature: idx for idx, feature in enumerate(jitter_feature_selection)}
 
 shimmer_feature_selection = [
     'local',
     'localdb',
-    # 'apq3',
-    # 'apq5',
-    # 'apq11',
-    # 'dda',
+    'apq3',
+    'apq5',
+    'apq11',
+    'dda',
 ] ## enable the ones you want
 shimmer_feature_indices = {feature: idx for idx, feature in enumerate(shimmer_feature_selection)}
 
@@ -54,14 +51,5 @@ mfc_feature_selection = [
     'max', 
 ] ## enable the ones you want
 mfc_feature_indices = {feature: idx for idx, feature in enumerate(mfc_feature_selection)}
-mfc_feature_functions = {
-    'mean': np.mean,
-    'sd': np.std,
-    'skew': skew,
-    'kurt': kurtosis,
-    'median': np.median,
-    'min': np.min,
-    'max': np.max,
-}
 
 
