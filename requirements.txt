@@ -2,5 +2,8 @@ matplotlib==3.10.0
 numpy==2.2.3
 pandas==2.2.3
 parselmouth==1.1.1
-##importlib
-##pathlib
+## importlib
+## pathlib
+
+## scipy as well?
+## v1.15.2

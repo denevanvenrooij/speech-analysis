@@ -507,3 +507,20 @@ def PP_MFCC(audio_file, num_coefficients=12):
     print(feature_list)
   
     return np.concatenate(feature_list).tolist()
+
+
+def glottal(audio_file):
+    sound = parselmouth.Sound("path_to_file.wav")
+
+    point_process = call(sound, "To PointProcess (periodic, cc)", 75, 500)
+
+    glottal_waveform = point_process.to_sound_phonation(
+        sampling_frequency=44100, 
+        open_phase=0.7,   # Controls the Open Quotient (OQ)
+        collision_phase=0.03,  # Helps define glottal closing dynamics
+        power1=3.0, 
+        power2=4.0
+    )
+
+    # Save or analyze the glottal waveform
+    glottal_waveform.save("glottal_waveform.wav", "WAV")
