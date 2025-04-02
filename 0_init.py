@@ -1,6 +1,6 @@
 from paths import *
 
-exercises = {'MPT','SEN','VOW'}
+exercises = {'MPT','SEN','SPN','VOW'}
 
 def new_patient(patient_ids):
     for patient_id in patient_ids:
@@ -9,12 +9,14 @@ def new_patient(patient_ids):
             audio_path.mkdir(exist_ok=True, parents=True)
             processed_path = processed_dir / exercise / patient_id
             processed_path.mkdir(exist_ok=True, parents=True)
-            features_path = features_dir / exercise / patient_id
-            features_path.mkdir(exist_ok=True, parents=True)
             segments_path = segments_dir / exercise / patient_id
             segments_path.mkdir(exist_ok=True, parents=True)
             best_segments_path = best_segments_dir / exercise / patient_id
             best_segments_path.mkdir(exist_ok=True, parents=True)
+            features_path = features_dir / exercise / patient_id
+            features_path.mkdir(exist_ok=True, parents=True)
+            plots_path = plots_dir / exercise / patient_id
+            plots_path.mkdir(exist_ok=True, parents=True)
     print(f'Created folders for {patient_ids}')
             
 if __name__ == '__main__':
