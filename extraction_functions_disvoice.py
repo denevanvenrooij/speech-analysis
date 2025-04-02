@@ -1,8 +1,3 @@
-import importlib
-import features
-importlib.reload(features)
-
-from features import *
 from disvoice.prosody import Prosody
 from disvoice.phonation import Phonation
 from disvoice.glottal import Glottal
