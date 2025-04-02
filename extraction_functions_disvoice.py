@@ -1,3 +1,7 @@
+import importlib
+import disvoice
+importlib.reload(disvoice)
+
 from disvoice.prosody import Prosody
 from disvoice.phonation import Phonation
 from disvoice.glottal import Glottal
