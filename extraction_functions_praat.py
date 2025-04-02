@@ -1,10 +1,12 @@
 import importlib
 import features
 importlib.reload(features)
-import parselmouth
-from parselmouth.praat import call
+
 import numpy as np
 from scipy.stats import skew, kurtosis
+
+import parselmouth
+from parselmouth.praat import call
 from features import *
 
 
