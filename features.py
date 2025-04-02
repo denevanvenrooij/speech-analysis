@@ -8,6 +8,8 @@ AVAILABLE_FEATURES = [
     'PP_JIT', 'PP_JIT_M',
     'PP_SHI', 'PP_SHI_M',
     'PP_MFC',
+    'PP_GF_MEA', 'PP_GF_MED', 'PP_GF_SD',
+    'PP_F_MEA', 'PP_F_MED', 'PP_F_SD',
 ] ## add more
 
 selected_features_dict_VOW = {
@@ -19,6 +21,8 @@ selected_features_dict_VOW = {
     'PP_HNR': True, 'PP_HNR_M': True,
     'PP_JIT': True, 'PP_JIT_M': True,
     'PP_SHI': True, 'PP_SHI_M': True,
+    'PP_GF_MEA': True, 'PP_GF_MED': True, 'PP_GF_SD': True,
+    'PP_F_MEA': True, 'PP_F_MED': True, 'PP_F_SD': True,
 } ## enable the ones you want
 
 selected_features_dict_SEN = {
@@ -31,6 +35,7 @@ selected_features_dict_SEN = {
     'PP_JIT': True, 'PP_JIT_M': True,
     'PP_SHI': True, 'PP_SHI_M': True,
     'PP_MFC': True,
+    'PP_F_MEA': True, 'PP_F_MED': True, 'PP_F_SD': True,
 } ## enable the ones you want
 
 selected_features_dict_SPN = {
@@ -43,6 +48,7 @@ selected_features_dict_SPN = {
     'PP_JIT': True, 'PP_JIT_M': True,
     'PP_SHI': True, 'PP_SHI_M': True,
     'PP_MFC': True,
+    'PP_F_MEA': True, 'PP_F_MED': True, 'PP_F_SD': True,
 } ## enable the ones you want
 
 selected_features_dict_MPT = {

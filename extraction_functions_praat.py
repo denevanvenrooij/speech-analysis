@@ -509,18 +509,120 @@ def PP_MFCC(audio_file, num_coefficients=12):
     return np.concatenate(feature_list).tolist()
 
 
-def glottal(audio_file):
-    sound = parselmouth.Sound("path_to_file.wav")
 
-    point_process = call(sound, "To PointProcess (periodic, cc)", 75, 500)
+def PP_glottal_formants_mean(audio_file, f0_min=60, f0_max=300, point_step=0.0025, max_frequency=5000, num_formants=5):
+    sound = parselmouth.Sound(audio_file)
+    point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    formants = call(sound, "To Formant (burg)", point_step, num_formants, max_frequency, 0.025, 50)
+    num_points = call(point_process, "Get number of points")
+    formant_values = [[] for _ in range(num_formants)]
+    
+    for point in range(0,num_points):
+        point += 1
+        
+        for j in range(1, num_formants + 1):
+            t = call(point_process, "Get time from index", point)
+            formant = call(formants, "Get value at time", j, t, 'Hertz', 'Linear')
+            if formant and formant > 0:  
+                formant_values[j-1].append(formant)
 
-    glottal_waveform = point_process.to_sound_phonation(
-        sampling_frequency=44100, 
-        open_phase=0.7,   # Controls the Open Quotient (OQ)
-        collision_phase=0.03,  # Helps define glottal closing dynamics
-        power1=3.0, 
-        power2=4.0
-    )
+    mean_glottal_formants = [np.mean(f_values) if f_values else 0 for f_values in formant_values]
 
-    # Save or analyze the glottal waveform
-    glottal_waveform.save("glottal_waveform.wav", "WAV")
+    return mean_glottal_formants ## named 'PP_GF_MEA'
+
+def PP_glottal_formants_median(audio_file, f0_min=60, f0_max=300, point_step=0.0025, max_frequency=5000, num_formants=5):
+    sound = parselmouth.Sound(audio_file)
+    point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    formants = call(sound, "To Formant (burg)", point_step, num_formants, max_frequency, 0.025, 50)
+    num_points = call(point_process, "Get number of points")
+    formant_values = [[] for _ in range(num_formants)]
+    
+    for point in range(0,num_points):
+        point += 1
+        
+        for j in range(1, num_formants + 1):
+            t = call(point_process, "Get time from index", point)
+            formant = call(formants, "Get value at time", j, t, 'Hertz', 'Linear')
+            if formant and formant > 0:  
+                formant_values[j-1].append(formant)
+
+    median_glottal_formants = [np.median(f_values) if f_values else 0 for f_values in formant_values]
+
+    return median_glottal_formants ## named 'PP_GF_MEA'
+
+def PP_glottal_formants_sd(audio_file, f0_min=60, f0_max=300, point_step=0.0025, max_frequency=5000, num_formants=5):
+    sound = parselmouth.Sound(audio_file)
+    point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
+    formants = call(sound, "To Formant (burg)", point_step, num_formants, max_frequency, 0.025, 50)
+    num_points = call(point_process, "Get number of points")
+    formant_values = [[] for _ in range(num_formants)]
+    
+    for point in range(0,num_points):
+        point += 1
+        
+        for j in range(1, num_formants + 1):
+            t = call(point_process, "Get time from index", point)
+            formant = call(formants, "Get value at time", j, t, 'Hertz', 'Linear')
+            if formant and formant > 0:  
+                formant_values[j-1].append(formant)
+
+    sd_glottal_formants = [np.std(f_values) if f_values else 0 for f_values in formant_values]
+
+    return sd_glottal_formants ## named 'PP_GF_SD'
+
+def PP_formants_mean(audio_file, time_step=0.01, max_frequency=5000, num_formants=5):
+    sound = parselmouth.Sound(audio_file)
+    formants = call(sound, "To Formant (burg)", time_step, num_formants, max_frequency, 0.025, 50)
+    
+    formant_values = [[] for _ in range(num_formants)]
+    num_points = int(sound.duration / time_step)
+    
+    for i in range(num_points):
+        time = i * time_step
+        
+        for j in range(1, num_formants + 1):
+            formant = call(formants, "Get value at time", j, time, 'Hertz', 'Linear')
+            if formant and formant > 0:  
+                formant_values[j-1].append(formant)
+
+    mean_formants = [np.mean(f_values) if f_values else 0 for f_values in formant_values]
+
+    return mean_formants ## named 'PP_F_MEA'
+
+def PP_formants_median(audio_file, time_step=0.01, max_frequency=5000, num_formants=5):
+    sound = parselmouth.Sound(audio_file)
+    formants = call(sound, "To Formant (burg)", time_step, num_formants, max_frequency, 0.025, 50)
+    
+    formant_values = [[] for _ in range(num_formants)]
+    num_points = int(sound.duration / time_step)
+    
+    for i in range(num_points):
+        time = i * time_step
+        
+        for j in range(1, num_formants + 1):
+            formant = call(formants, "Get value at time", j, time, 'Hertz', 'Linear')
+            if formant and formant > 0:  
+                formant_values[j-1].append(formant)
+
+    median_formants = [np.median(f_values) if f_values else 0 for f_values in formant_values]
+
+    return median_formants ## named 'PP_F_MED'
+
+def PP_formants_sd(audio_file, time_step=0.01, max_frequency=5000, num_formants=5):
+    sound = parselmouth.Sound(audio_file)
+    formants = call(sound, "To Formant (burg)", time_step, num_formants, max_frequency, 0.025, 50)
+    
+    formant_values = [[] for _ in range(num_formants)]
+    num_points = int(sound.duration / time_step)
+    
+    for i in range(num_points):
+        time = i * time_step
+        
+        for j in range(1, num_formants + 1):
+            formant = call(formants, "Get value at time", j, time, 'Hertz', 'Linear')
+            if formant and formant > 0:  
+                formant_values[j-1].append(formant)
+
+    sd_formants = [np.std(f_values) if f_values else 0 for f_values in formant_values]
+
+    return sd_formants ## named 'PP_F_SD'
