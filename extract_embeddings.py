@@ -41,7 +41,7 @@ if __name__=='__main__':
     
     directory_to_run = [
         processed_dir, 
-        segments_dir,
+        segments_dir, 
     ]
     
     for dir in directory_to_run:
