@@ -73,7 +73,10 @@ if __name__=='__main__':
     target_weight = 0.25
     target_slope_weight = 0.3
     
-    filter_threshold = 0.5
+    filter_threshold_score = 0.5
+    n_estimators = 100
+    n_features_to_select = 30
+    step = 5
     
     for exercise in exercises:
         feature_df_path = f'dataframes_features/all_features_{exercise}.csv'
@@ -94,7 +97,7 @@ if __name__=='__main__':
 
         correlation_df.to_csv(f'dataframes_features/correlation_features_{exercise}.csv')
         
-        filtered_df = correlation_df[correlation_df['score'] >= filter_threshold]
+        filtered_df = correlation_df[correlation_df['score'] >= filter_threshold_score]
         filtered_features = filtered_df.index
         
         X_uncorrelated = pd.DataFrame(X_scaled, columns=X_features.columns)
@@ -102,8 +105,8 @@ if __name__=='__main__':
         lasso = LassoCV(cv=5, random_state=42).fit(X_uncorrelated[filtered_features], y_targets.values.ravel())
         lasso_selected = X_uncorrelated.columns[(lasso.coef_ != 0)]
         
-        rfe_estimator = RandomForestClassifier(n_estimators=100, random_state=42)
-        rfe = RFE(estimator=rfe_estimator, n_features_to_select=30, step=50)
+        rfe_estimator = RandomForestClassifier(n_estimators=n_estimators, random_state=42)
+        rfe = RFE(estimator=rfe_estimator, n_features_to_select=n_features_to_select, step=step)
         rfe.fit(X_uncorrelated[lasso_selected], y_targets)
     
         selected_features = X_uncorrelated[lasso_selected].columns[rfe.support_]

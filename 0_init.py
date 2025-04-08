@@ -23,3 +23,6 @@ def new_patient(patient_ids):
             
 if __name__ == '__main__':
     new_patient(patient_ids={'1234567','1234568'})
+    
+    df_features_dir.mkdir(exist_ok=True, parents=True)
+    df_embeddings_dir.mkdir(exist_ok=True, parents=True)
