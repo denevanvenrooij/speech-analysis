@@ -7,13 +7,13 @@ import soundfile as sf
 from paths import *
 
 
-def extract_embedding(dir, batch_size=32):
+def extract_embedding_openl3(dir, batch_size=32, embedding_size=512):
     files = [file for file in dir.rglob('*') if file.is_file()]
     
     for audio_file in files:
         audio, sr = sf.read(audio_file)
 
-        emb_list, time_steps = openl3.get_audio_embedding(audio, sr, batch_size=batch_size)
+        emb_list, time_steps = openl3.get_audio_embedding(audio, sr, batch_size=batch_size, content_type='env', embedding_size=embedding_size)
 
         df = pd.DataFrame({'EMB': list(emb_list), 'TS': time_steps}).set_index('TS')
 
@@ -23,7 +23,7 @@ def extract_embedding(dir, batch_size=32):
         df = df.drop(columns=['EMB'])
         
         filename = audio_file.stem.replace('_pre', '')
-        filename_embedded = filename + '_emb.csv'
+        filename_embedded = filename + f'_emb{embedding_size}.csv'
         
         parts = filename.split("_")
         if len(parts) != 4:
@@ -45,4 +45,4 @@ if __name__=='__main__':
     ]
     
     for dir in directory_to_run:
-            extract_embedding(dir, batch_size=32)
+        extract_embedding_openl3(dir, batch_size=32, embedding_size=6144)
