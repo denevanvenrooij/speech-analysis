@@ -57,19 +57,6 @@ def feature_correlation(X_scaled, features, correlation_types):
     return normed_correlation_df
 
 
-def LASSO():
-
-    lasso = LassoCV(cv=5, random_state=42).fit(X_uncorrelated, y_targets.values.ravel())
-    lasso_selected = X_uncorrelated.columns[(lasso.coef_ != 0)]
-
-    rfe_estimator = RandomForestClassifier(n_estimators=100, random_state=42) ## recursive feature elimination
-    rfe = RFE(estimator=rfe_estimator, n_features_to_select=30, step=50)
-    rfe.fit(X_uncorrelated[lasso_selected], y_targets)
-    selected_features = X_uncorrelated[lasso_selected].columns[rfe.support_]
-
-    return selected_features
-
-
 if __name__=='__main__':
     
     exercises = ['MPT','SEN','SPN','VOW']
@@ -89,7 +76,7 @@ if __name__=='__main__':
     filter_threshold = 0.5
     
     for exercise in exercises:
-        feature_df_path = f'feature_dataframes/all_features_{exercise}.csv'
+        feature_df_path = f'dataframes_features/all_features_{exercise}.csv'
         feature_df = pd.read_csv(feature_df_path)
         
         X_features = feature_df[:,:-3] ## change into all but the last columns
@@ -105,7 +92,7 @@ if __name__=='__main__':
         correlation_df = correlation_df.sort_values(by='score', ascending=False)
         print(correlation_df.head(100))
 
-        correlation_df.to_csv(f'dataframes/correlation_features_{exercise}.csv')
+        correlation_df.to_csv(f'dataframes_features/correlation_features_{exercise}.csv')
         
         filtered_df = correlation_df[correlation_df['score'] >= filter_threshold]
         filtered_features = filtered_df.index
