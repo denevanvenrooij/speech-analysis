@@ -5,6 +5,7 @@ from sklearn.linear_model import LassoCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import RFE
 from sklearn.linear_model import LinearRegression
+from sklearn.feature_selection import mutual_info_regression
 
 
 def feature_correlation(X_scaled, features, correlation_types):
@@ -74,6 +75,8 @@ if __name__=='__main__':
     target_slope_weight = 0.3
     
     filter_threshold_score = 0.5
+    mutual_info_threshold = 0.01
+    
     n_estimators = 100
     n_features_to_select = 30
     step = 5
@@ -101,14 +104,18 @@ if __name__=='__main__':
         filtered_features = filtered_df.index
         
         X_uncorrelated = pd.DataFrame(X_scaled, columns=X_features.columns)
-        
-        lasso = LassoCV(cv=5, random_state=42).fit(X_uncorrelated[filtered_features], y_targets.values.ravel())
-        lasso_selected = X_uncorrelated.columns[(lasso.coef_ != 0)]
-        
+
+        mi_scores = mutual_info_regression(X_uncorrelated[filtered_features], y_targets.mean(axis=1))  
+        mi_series = pd.Series(mi_scores, index=filtered_features)
+        mi_selected = mi_series[mi_series > mutual_info_threshold].index
+
+        lasso = LassoCV(cv=5, random_state=42).fit(X_uncorrelated[mi_selected], y_targets.values.ravel())
+        lasso_selected = mi_selected[lasso.coef_ != 0]
+
         rfe_estimator = RandomForestClassifier(n_estimators=n_estimators, random_state=42)
         rfe = RFE(estimator=rfe_estimator, n_features_to_select=n_features_to_select, step=step)
         rfe.fit(X_uncorrelated[lasso_selected], y_targets)
-    
+
         selected_features = X_uncorrelated[lasso_selected].columns[rfe.support_]
         
         print(f"Selected features for {exercise} after LASSO and RFE: {selected_features}")
