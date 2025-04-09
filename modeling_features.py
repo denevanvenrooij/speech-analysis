@@ -1,26 +1,25 @@
 import pandas as pd
 import numpy as np
+from itertools import product
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LassoCV
+from sklearn.linear_model import LassoCV, LinearRegression
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_selection import RFE
-from sklearn.linear_model import LinearRegression
-from sklearn.feature_selection import mutual_info_regression
+from sklearn.feature_selection import RFE, mutual_info_regression
+from sklearn.model_selection import train_test_split
 
 
-def feature_correlation(X_scaled, features, correlation_types):
-    
+def feature_correlation(X_train, features, correlation_types):
     correlation_df = pd.DataFrame(index=features)
 
     if 'variance' in correlation_types:
-        variance_corr = X_scaled.groupby('id')[features].std().mean()
+        variance_corr = X_train.groupby('id')[features].std().mean()
         correlation_df['variance'] = variance_corr
 
-    if 'slope' in correlation_types: 
+    if 'slope' in correlation_types:
         slopes = []
         for f in features:
             patient_slopes = []
-            for pid, group in X_scaled.groupby('id'):
+            for pid, group in X_train.groupby('id'):
                 x = group['time_norm'].values.reshape(-1, 1)
                 y = group[f].values
                 if len(x) > 1:
@@ -28,17 +27,17 @@ def feature_correlation(X_scaled, features, correlation_types):
                     patient_slopes.append(lr.coef_[0])
             slopes.append(np.mean(np.abs(patient_slopes)))
         correlation_df['slope'] = pd.Series(slopes, index=features)
-        
+
     if 'target' in correlation_types:
-        per_patient_corrs = X_scaled.groupby('id').apply(lambda g: g[features].corrwith(g['target']))
+        per_patient_corrs = X_train.groupby('id').apply(lambda g: g[features].corrwith(g['target']))
         corr_mean = per_patient_corrs.mean().abs()
         correlation_df['target'] = corr_mean
-        
+
     if 'target_slope' in correlation_types:
         target_slope_corr = []
         for f in features:
             coefs = []
-            for pid, g in X_scaled.groupby('id'):
+            for pid, g in X_train.groupby('id'):
                 if len(g) > 1:
                     x = g['time_norm'].values.reshape(-1, 1)
                     y_feature = g[f].values
@@ -52,70 +51,93 @@ def feature_correlation(X_scaled, features, correlation_types):
                 corr = np.nan
             target_slope_corr.append(corr)
         correlation_df['target_slope'] = pd.Series(target_slope_corr, index=features)
-        
+
     normed_correlation_df = (correlation_df - correlation_df.min()) / (correlation_df.max() - correlation_df.min())
-    
+
     return normed_correlation_df
 
 
-if __name__=='__main__':
+def mutual_information_filtering(X_train, y_train, mi_threshold=0.01):
+    mi_scores = mutual_info_regression(X_train, y_train)
+    mi_series = pd.Series(mi_scores, index=X_train.columns)
     
-    exercises = ['MPT','SEN','SPN','VOW']
+    mi_selected_features = mi_series[mi_series > mi_threshold].index
     
-    correlation_types = [
-        'variance',
-        'slope',
-        'target',
-        'target_slope',
-    ]
-    
-    variance_weight = 0.15
-    slope_weight = 0.2
-    target_weight = 0.25
-    target_slope_weight = 0.3
-    
-    filter_threshold_score = 0.5
-    mutual_info_threshold = 0.01
-    
-    n_estimators = 100
-    n_features_to_select = 30
-    step = 5
-    
-    for exercise in exercises:
-        feature_df_path = f'dataframes_features/all_features_{exercise}.csv'
-        feature_df = pd.read_csv(feature_df_path)
-        
-        X_features = feature_df[:,:-3] ## change into all but the last columns
-        y_targets = feature_df[['target_1', 'target_2', 'target_3']] ## select the last three columns or targets
-        
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X_features)
-        features = X_scaled[1:500] ## insert here which columns are features
-        
-        correlation_df = feature_correlation(X_scaled, features, correlation_types)
-        
-        correlation_df['score'] = target_weight*correlation_df["target_slope"] + target_slope_weight*correlation_df["target"] + slope_weight*correlation_df["slope"] + variance_weight*correlation_df["variance"]
-        correlation_df = correlation_df.sort_values(by='score', ascending=False)
-        print(correlation_df.head(100))
+    return mi_selected_features
 
-        correlation_df.to_csv(f'dataframes_features/correlation_features_{exercise}.csv')
+
+def lasso_rfe(X_train, y_train, features, n_estimators=100, n_features_to_select=30, step=1):
+    lasso = LassoCV(cv=5, random_state=42).fit(X_train, y_train)
+    lasso_selected = features[lasso.coef_ != 0]
+
+    rfe_estimator = RandomForestClassifier(n_estimators=n_estimators, random_state=42)
+    rfe = RFE(estimator=rfe_estimator, n_features_to_select=n_features_to_select, step=step)
+    rfe.fit(X_train[lasso_selected], y_train)
+
+    selected_features = X_train[lasso_selected].columns[rfe.support_]
+    
+    return selected_features
+
+
+def modeling_features(exercise, target, weights, correlation_types, test_set_size, correlation_threshold, mi_threshold, n_estimators, n_features_to_select, step):
+    feature_df = pd.read_csv(f'dataframes_features/all_features_{exercise}.csv')
+    X_all = feature_df.iloc[:, :-1]
+
+    train_df, test_df = train_test_split(feature_df, test_size=test_set_size, random_state=42)
+
+    scaler = StandardScaler()
+    X_train_1 = pd.DataFrame(scaler.fit_transform(train_df.iloc[:, :-3]), columns=X_all.columns, index=train_df.index)
+
+    X_train_1['id'] = train_df['id'].values ## reattach the non-feature columns to X_train_1
+    X_train_1['day'] = train_df['day'].values
+    X_train_1[target] = train_df[target].values
+    
+    features = X_all.columns.tolist()
+    correlation_df = feature_correlation(X_train_1, features, correlation_types)
+
+    correlation_df['score'] = (
+        weights['variance']*correlation_df['variance'] + weights['slope']*correlation_df['slope'] +
+        weights['target']*correlation_df['target'] + weights['target_slope']*correlation_df['target_slope'])
+
+    correlation_df = correlation_df.sort_values(by='score', ascending=False) ## ordering and saving the correlation scores dataframe
+    correlation_df.to_csv(f'dataframes_features/correlation_features_{exercise}.csv')
+    print(correlation_df.head(25))
+
+    post_correlation_features = correlation_df[correlation_df['score'] >= correlation_threshold].index  ## only features above the threshold continue
+
+    X_train_2 = train_df[post_correlation_features]
+    y_train = train_df[target]
+
+    post_mi_features = mutual_information_filtering(X_train_2, y_train, mi_threshold)
+    X_train_3 = train_df[post_mi_features]
+    
+    selected_features = lasso_rfe(X_train_3, y_train, post_mi_features, n_estimators, n_features_to_select, step)
+    X_train_4 = train_df[selected_features]
+    
+
+if __name__ == '__main__':
+    
+    exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
+    targets = {'target_bnp', 'target_bw'}
+    correlation_types = ['variance', 'slope', 'target', 'target_slope']
+    weights = {
+        'variance': 0.15,
+        'slope': 0.2,
+        'target': 0.25,
+        'target_slope': 0.3
+    }
+
+    for exercise, target in list(product(exercises, targets)):
+        modeling_features(
+            exercise, target, weights, correlation_types,
+            test_set_size=0.15, 
+            correlation_threshold=0.5, 
+            mi_threshold=0.01, 
+            n_estimators=100, 
+            n_features_to_select=25, 
+            step=1,
+        )
         
-        filtered_df = correlation_df[correlation_df['score'] >= filter_threshold_score]
-        filtered_features = filtered_df.index
         
-        X_uncorrelated = pd.DataFrame(X_scaled, columns=X_features.columns)
 
-        mi_scores = mutual_info_regression(X_uncorrelated[filtered_features], y_targets.mean(axis=1))  
-        mi_series = pd.Series(mi_scores, index=filtered_features)
-        mi_selected = mi_series[mi_series > mutual_info_threshold].index
-
-        lasso = LassoCV(cv=5, random_state=42).fit(X_uncorrelated[mi_selected], y_targets.values.ravel())
-        lasso_selected = mi_selected[lasso.coef_ != 0]
-
-        rfe_estimator = RandomForestClassifier(n_estimators=n_estimators, random_state=42)
-        rfe = RFE(estimator=rfe_estimator, n_features_to_select=n_features_to_select, step=step)
-        rfe.fit(X_uncorrelated[lasso_selected], y_targets)
-
-        selected_features = X_uncorrelated[lasso_selected].columns[rfe.support_]
-        
-        print(f"Selected features for {exercise} after LASSO and RFE: {selected_features}")
+ 
