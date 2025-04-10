@@ -1,9 +1,13 @@
 import pandas as pd
 import numpy as np
 from itertools import product
+import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LassoCV, LinearRegression
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVR
+import lightgbm as lgb
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.feature_selection import RFE, mutual_info_regression
 from sklearn.model_selection import train_test_split
 
@@ -68,7 +72,7 @@ def mutual_information_filtering(X_train, y_train, mi_threshold=0.01):
 
 def lasso_rfe(X_train, y_train, features, n_estimators=100, n_features_to_select=30, step=1):
     lasso = LassoCV(cv=5, random_state=42).fit(X_train, y_train)
-    lasso_selected = features[lasso.coef_ != 0]
+    lasso_selected = features[lasso.coef_ != 0] ## what is inserted is an index object, make sure this does not cause problems
 
     rfe_estimator = RandomForestClassifier(n_estimators=n_estimators, random_state=42)
     rfe = RFE(estimator=rfe_estimator, n_features_to_select=n_features_to_select, step=step)
@@ -79,7 +83,7 @@ def lasso_rfe(X_train, y_train, features, n_estimators=100, n_features_to_select
     return selected_features
 
 
-def modeling_features(exercise, target, weights, correlation_types, test_set_size, correlation_threshold, mi_threshold, n_estimators, n_features_to_select, step):
+def feature_selection(exercise, target, weights, correlation_types, test_set_size, correlation_threshold, mi_threshold, n_estimators, n_features_to_select, step):
     feature_df = pd.read_csv(f'dataframes_features/all_features_{exercise}.csv')
     X_all = feature_df.iloc[:, :-1]
 
@@ -87,10 +91,10 @@ def modeling_features(exercise, target, weights, correlation_types, test_set_siz
 
     scaler = StandardScaler()
     X_train_1 = pd.DataFrame(scaler.fit_transform(train_df.iloc[:, :-3]), columns=X_all.columns, index=train_df.index)
-
     X_train_1['id'] = train_df['id'].values ## reattach the non-feature columns to X_train_1
     X_train_1['day'] = train_df['day'].values
     X_train_1[target] = train_df[target].values
+    y_train = train_df[target]
     
     features = X_all.columns.tolist()
     correlation_df = feature_correlation(X_train_1, features, correlation_types)
@@ -100,20 +104,63 @@ def modeling_features(exercise, target, weights, correlation_types, test_set_siz
         weights['target']*correlation_df['target'] + weights['target_slope']*correlation_df['target_slope'])
 
     correlation_df = correlation_df.sort_values(by='score', ascending=False) ## ordering and saving the correlation scores dataframe
-    correlation_df.to_csv(f'dataframes_features/correlation_features_{exercise}.csv')
-    print(correlation_df.head(25))
+    correlation_df.to_csv(f'dataframes_features/correlation_features_{exercise}_{target}.csv')
 
     post_correlation_features = correlation_df[correlation_df['score'] >= correlation_threshold].index  ## only features above the threshold continue
-
-    X_train_2 = train_df[post_correlation_features]
-    y_train = train_df[target]
+    X_train_2 = X_train_1[post_correlation_features]
 
     post_mi_features = mutual_information_filtering(X_train_2, y_train, mi_threshold)
-    X_train_3 = train_df[post_mi_features]
+    X_train_3 = X_train_1[post_mi_features]
     
     selected_features = lasso_rfe(X_train_3, y_train, post_mi_features, n_estimators, n_features_to_select, step)
-    X_train_4 = train_df[selected_features]
+    X_train = X_train_1[selected_features]
+    y_test = test_df[target]
+    X_test = test_df[selected_features]
+
+    return X_train, y_train, X_test, y_test, selected_features
+
+
+def model_training(X_train, y_train, X_test, y_test, selected_features, model_type='rf'):
+    model_name = f"{model_type}_{exercise}_{target}" ## the naming convention needs to be determined
     
+    if model_type == 'rf':
+        model = RandomForestClassifier(n_estimators=100, random_state=42)
+        model.fit(X_train[selected_features], y_train)
+        joblib.dump(model, f'models/{model_name}.pkl') 
+
+        y_pred = model.predict(X_test[selected_features])
+    
+    elif model_type == 'svm':
+        model = SVR(kernel='rbf', random_state=42)
+        model.fit(X_train, y_train)
+        joblib.dump(model, f'models/{model_name}.pkl')
+        
+        y_pred = model.predict(X_test)
+        
+    elif model_type == 'gbm':
+        train_data = lgb.Dataset(X_train, label=y_train)
+        test_data = lgb.Dataset(X_test, label=y_test, reference=train_data)
+
+        params = {
+            'objective': 'binary',  # Change this to 'multiclass' if you have more than two classes
+            'metric': 'binary_error',  # Change this to 'multi_logloss' for multiclass
+            'boosting_type': 'gbdt',
+            'num_leaves': 31,
+            'learning_rate': 0.05,
+            'feature_fraction': 0.9,
+        }
+
+        model = lgb.train(params, train_data, valid_sets=[test_data], num_boost_round=1000, early_stopping_rounds=100)
+        joblib.dump(model, f'models/{model_name}.pkl')
+
+        y_pred = model.predict(X_test, num_iteration=model.best_iteration)
+        y_pred = (y_pred > 0.5).astype(int)    
+        
+    accuracy = accuracy_score(y_test, y_pred)
+    class_report = classification_report(y_test, y_pred)
+            
+    return accuracy, class_report
+
 
 if __name__ == '__main__':
     
@@ -128,7 +175,7 @@ if __name__ == '__main__':
     }
 
     for exercise, target in list(product(exercises, targets)):
-        modeling_features(
+        X_train, y_train, X_test, y_test, selected_features = feature_selection(
             exercise, target, weights, correlation_types,
             test_set_size=0.15, 
             correlation_threshold=0.5, 
@@ -137,6 +184,8 @@ if __name__ == '__main__':
             n_features_to_select=25, 
             step=1,
         )
+        
+        accuracy, class_report = model_training(X_train, y_train, X_test, y_test, selected_features, model_type='rf')
         
         
 
