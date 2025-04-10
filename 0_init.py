@@ -17,8 +17,7 @@ def new_patient(patient_ids):
             features_path.mkdir(exist_ok=True, parents=True)
             embeddings_path = embeddings_dir / exercise / patient_id
             embeddings_path.mkdir(exist_ok=True, parents=True)
-            plots_path = plots_dir / exercise / patient_id
-            plots_path.mkdir(exist_ok=True, parents=True)
+            
     print(f'Created folders for {patient_ids}')
             
 if __name__ == '__main__':
@@ -29,3 +28,4 @@ if __name__ == '__main__':
     
     models_dir.mkdir(exist_ok=True, parents=True)
     predictions_dir.mkdir(exist_ok=True, parents=True)
+    plots_dir.mkdir(exist_ok=True, parents=True)
