@@ -484,9 +484,9 @@ def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max):
     
 
 
-def PP_MFCC(audio_file, num_coefficients=12):
+def PP_MFCC(audio_file):
     sound = parselmouth.Sound(audio_file)
-    mfcc_obj = sound.to_mfcc(number_of_coefficients=num_coefficients)
+    mfcc_obj = sound.to_mfcc(time_step=0.06)
     mfcc_matrix = mfcc_obj.to_matrix().values
     
     feature_values = {}
