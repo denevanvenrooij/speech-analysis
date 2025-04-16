@@ -1,3 +1,4 @@
+from init import exercises
 import pandas as pd
 import numpy as np
 from itertools import product
@@ -164,7 +165,6 @@ def model_training(X_train, y_train, X_test, y_test, selected_features, model_ty
 
 if __name__ == '__main__':
     
-    exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
     targets = {'target_bnp', 'target_bw'}
     correlation_types = ['variance', 'slope', 'target', 'target_slope']
     weights = {
