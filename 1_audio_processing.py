@@ -1,6 +1,7 @@
 from paths import *
 import parselmouth
 from parselmouth.praat import call
+import re
 
 vowel_dict = {
     1:'i',
@@ -26,7 +27,7 @@ def pre_emphasize_audio():
             
             output_path = Path(f'audio_files_pre/{exercise}/{patient_id}')
             if not output_path.exists():
-                print(f"Path {output_path} does not exist... Did you run 0_audio_init.py?")
+                print(f"Path {output_path} does not exist... Did you run init.py?")
             
             save_path = output_path / (file.stem + "_pre.wav")
             s.save(str(save_path), 'WAV')
@@ -112,14 +113,15 @@ if __name__=='__main__':
     pre_emphasize_audio()
     
     ## this below part saves each of the vowels separately
-    # processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
-    # for file in processed_files:
-    #     if 'VOW_1_pre' in file.stem:
-    #         original_path = file.name
-    #         patient_id = original_path[:7]
-    #         admission_day = original_path[8:9]
-    #         audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_1_pre.wav'
-    #         save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
+    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
+    for file in processed_files:
+        if re.search(r'VOW_\d+_pre', file.stem):
+            parts = file.stem.split('_')
+            patient_id = parts[0]
+            admission_day = parts[1]
+            setting = parts[3] 
+            audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
+            save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
             
     ## this part below saves the best vowel segment (with lowest local jitter)
     # segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]

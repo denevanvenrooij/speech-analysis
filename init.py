@@ -1,7 +1,7 @@
 from paths import *
 
 exercises = {'MPT','SEN','SPN','VOW'}
-patient_ids = {'1234567','1234568'}
+patient_ids = {'1234567','1234568','1234569','1234570','1234571'}
 
 def new_patient(patient_ids):
     for patient_id in patient_ids:

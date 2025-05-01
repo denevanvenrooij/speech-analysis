@@ -12,8 +12,8 @@ def extract_embedding_openl3(dir, batch_size=32, embedding_size=512):
     
     for audio_file in files:
         audio, sr = sf.read(audio_file)
-
-        emb_list, time_steps = openl3.get_audio_embedding(audio, sr, batch_size=batch_size, content_type='env', embedding_size=embedding_size)
+        emb_list, time_steps = openl3.get_audio_embedding(
+            audio, sr, batch_size=batch_size, content_type='env', embedding_size=embedding_size)
 
         df = pd.DataFrame({'EMB': list(emb_list), 'TS': time_steps}).set_index('TS')
 
@@ -45,4 +45,5 @@ if __name__=='__main__':
     ]
     
     for dir in directory_to_run:
+        extract_embedding_openl3(dir, batch_size=32, embedding_size=512)
         extract_embedding_openl3(dir, batch_size=32, embedding_size=6144)
