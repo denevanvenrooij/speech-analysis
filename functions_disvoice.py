@@ -8,24 +8,18 @@ from disvoice.glottal import Glottal
 
 def DV_prosody(audio_file):
     prosody = Prosody()
-    
     prosody_features = prosody.extract_features_file(audio_file, static = True, plots=False, fmt="dataframe")
-    print(prosody_features)
     
     return prosody_features
 
 def DV_phonation(audio_file):
     phonation = Phonation()
-    
     phonation_features = phonation.extract_features_file(audio_file, static = True, plots=False, fmt="dataframe")
-    print(phonation_features)
     
     return phonation_features
 
 def DV_glottal(audio_file):
     glottal = Glottal()
-    
     glottal_features = glottal.extract_features_file(audio_file, static = True, plots=False, fmt="dataframe")
-    print(glottal_features)
     
     return glottal_features

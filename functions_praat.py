@@ -505,8 +505,6 @@ def PP_MFCC(audio_file):
             feature_values[feature] = mfc_feature_functions[feature](mfcc_matrix, axis=1)
 
     feature_list = [feature_values[feature] for feature in mfc_feature_selection if feature in feature_values]
- 
-    print(feature_list)
   
     return np.concatenate(feature_list).tolist()
 
