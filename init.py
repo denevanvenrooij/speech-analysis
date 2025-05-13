@@ -12,8 +12,8 @@ def new_patient(patient_ids):
             processed_path.mkdir(exist_ok=True, parents=True)
             segments_path = segments_dir / exercise / patient_id
             segments_path.mkdir(exist_ok=True, parents=True)
-            best_segments_path = best_segments_dir / exercise / patient_id
-            best_segments_path.mkdir(exist_ok=True, parents=True)
+            # best_segments_path = best_segments_dir / exercise / patient_id
+            # best_segments_path.mkdir(exist_ok=True, parents=True)
             features_path = features_dir / exercise / patient_id
             features_path.mkdir(exist_ok=True, parents=True)
             embeddings_path = embeddings_dir / exercise / patient_id

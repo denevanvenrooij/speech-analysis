@@ -11,26 +11,21 @@ vowel_dict = {
     5:'u',
 }
 
-def pre_emphasize_audio():
-    original_files = [file for file in audio_dir.rglob('*') if file.is_file()]
-    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
-    unprocessed_files = [file for file in original_files if file not in processed_files]
-    
-    for file in unprocessed_files:
-        if file.suffix == ".wav":
-            s = parselmouth.Sound(str(file))
-            s.pre_emphasize()
-            
-            original_path = file.name
-            patient_id = original_path[:7]
-            exercise = original_path[10:13]
-            
-            output_path = Path(f'audio_files_pre/{exercise}/{patient_id}')
-            if not output_path.exists():
-                print(f"Path {output_path} does not exist... Did you run init.py?")
-            
-            save_path = output_path / (file.stem + "_pre.wav")
-            s.save(str(save_path), 'WAV')
+def pre_emphasize_audio(file):
+    if file.suffix == ".wav":
+        s = parselmouth.Sound(str(file))
+        s.pre_emphasize()
+        
+        original_path = file.name
+        patient_id = original_path[:7]
+        exercise = original_path[10:13]
+        
+        output_path = Path(f'audio_files_pre/{exercise}/{patient_id}')
+        if not output_path.exists():
+            print(f"Path {output_path} does not exist... Did you run init.py?")
+        
+        save_path = output_path / (file.stem + "_pre.wav")
+        s.save(str(save_path), 'WAV')
        
             
 def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
@@ -110,11 +105,21 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
 
                  
 if __name__=='__main__':
-    pre_emphasize_audio()
+    original_files = [file for file in audio_dir.rglob('*') if file.is_file()]
+    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
+    unprocessed_files = [file for file in original_files if file not in processed_files]
+    
+    for file in unprocessed_files:    
+        pre_emphasize_audio(file)
+        
+    segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
+
+    segment_prefixes = {file.name[:15] for file in segment_files}
+    unprocessed_segments = [file for file in processed_files if file.name[:15] not in segment_prefixes]
     
     ## this below part saves each of the vowels separately
-    processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
-    for file in processed_files:
+    
+    for file in unprocessed_segments:
         if re.search(r'VOW_\d+_pre', file.stem):
             parts = file.stem.split('_')
             patient_id = parts[0]
