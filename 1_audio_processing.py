@@ -85,19 +85,32 @@ if __name__=='__main__':
     
     for file in unprocessed_files:    
         pre_emphasize_audio(file)
-        
+
+    print("Checking segment audio segment lengths to make sure every file is >1000ms long...")
+    segment_files_to_check = [file for file in segments_dir.rglob('*.wav') if file.is_file()]
+
+    for file in segment_files_to_check:
+        sound = parselmouth.Sound(str(file))
+        duration_ms = sound.get_total_duration() * 1000
+
+        if duration_ms < 2010:
+            silence_duration = (2010 - duration_ms) / 1000.0
+            silence = parselmouth.Sound(silence_duration, sound.sampling_frequency)
+            padded_sound = sound.concatenate([sound, silence])
+            padded_sound.save(str(file), 'WAV')
+            print(f"→ Added silence to {file.name}")
+
     segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
 
     segment_prefixes = {file.name[:15] for file in segment_files}
     unprocessed_segments = [file for file in processed_files if file.name[:15] not in segment_prefixes]
     
-    ## this below part saves each of the vowels separately
-    for file in unprocessed_segments:
-        if re.search(r'VOW_\d+_pre', file.stem):
-            parts = file.stem.split('_')
-            patient_id = parts[0]
-            admission_day = parts[1]
-            setting = parts[3] 
-            audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
-            save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
-        
+    # ## this below part saves each of the vowels separately
+    # for file in unprocessed_segments:
+    #     if re.search(r'VOW_\d+_pre', file.stem):
+    #         parts = file.stem.split('_')
+    #         patient_id = parts[0]
+    #         admission_day = parts[1]
+    #         setting = parts[3] 
+    #         audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
+    #         save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
