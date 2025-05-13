@@ -77,32 +77,6 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
         
     return segments_sorted
 
-
-# def save_best_segment(audio_file, output_path, segment_length=1.0, step_size=0.1, f0_min=60, f0_max=300):
-#     sound = parselmouth.Sound(audio_file)
-#     duration = sound.duration
-    
-#     min_jitter = float('inf')
-#     best_segment = (0, segment_length)
-
-#     start_time = 0
-#     while start_time + segment_length <= duration:
-#         end_time = start_time + segment_length
-#         segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
-        
-#         point_process = call(segment, "To PointProcess (periodic, cc)", f0_min, f0_max)
-#         jitter = call(point_process, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3)
-        
-#         if jitter < min_jitter:
-#             min_jitter = jitter
-#             best_segment = (start_time, end_time)
-        
-#         start_time += step_size
-
-#     best_start, best_end = best_segment
-#     best_segment = sound.extract_part(from_time=best_start, to_time=best_end, preserve_times=True)
-#     best_segment.save(str(output_path), "WAV")
-
                  
 if __name__=='__main__':
     original_files = [file for file in audio_dir.rglob('*') if file.is_file()]
@@ -118,7 +92,6 @@ if __name__=='__main__':
     unprocessed_segments = [file for file in processed_files if file.name[:15] not in segment_prefixes]
     
     ## this below part saves each of the vowels separately
-    
     for file in unprocessed_segments:
         if re.search(r'VOW_\d+_pre', file.stem):
             parts = file.stem.split('_')
@@ -127,13 +100,4 @@ if __name__=='__main__':
             setting = parts[3] 
             audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
             save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
-            
-    ## this part below saves the best vowel segment (with lowest local jitter)
-    # segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
-    # for file in segment_files:
-    #     original_path = file.name
-    #     take_letter = original_path[15:16]
-    #     patient_id = original_path[:7]
-    #     admission_day = original_path[8:9]
-    #     best_segment_path = best_segments_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_1{take_letter}b_pre.wav'
-    #     save_best_segment(audio_file=str(file), output_path=best_segment_path, segment_length=1.0, step_size=0.1, f0_min=60, f0_max=300)
+        
