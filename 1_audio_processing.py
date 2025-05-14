@@ -1,6 +1,5 @@
 from paths import *
 import parselmouth
-from parselmouth.praat import call
 import re
 
 vowel_dict = {
@@ -105,12 +104,12 @@ if __name__=='__main__':
     segment_prefixes = {file.name[:15] for file in segment_files}
     unprocessed_segments = [file for file in processed_files if file.name[:15] not in segment_prefixes]
     
-    # ## this below part saves each of the vowels separately
-    # for file in unprocessed_segments:
-    #     if re.search(r'VOW_\d+_pre', file.stem):
-    #         parts = file.stem.split('_')
-    #         patient_id = parts[0]
-    #         admission_day = parts[1]
-    #         setting = parts[3] 
-    #         audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
-    #         save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
+    ## this below part saves each of the vowels separately
+    for file in unprocessed_segments:
+        if re.search(r'VOW_\d+_pre', file.stem):
+            parts = file.stem.split('_')
+            patient_id = parts[0]
+            admission_day = parts[1]
+            setting = parts[3] 
+            audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
+            save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)

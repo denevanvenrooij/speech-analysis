@@ -10,7 +10,6 @@ AVAILABLE_FEATURES = [
     'PP_MFC',
     'PP_GF_MEA', 'PP_GF_MED', 'PP_GF_SD',
     'PP_F_MEA', 'PP_F_MED', 'PP_F_SD',
-    
     'DV_PRO', 'DV_PRO', 'DV_GLO',
     
 ] ## add more
@@ -26,7 +25,6 @@ selected_features_dict_VOW = {
     'PP_SHI': True, 'PP_SHI_M': True,
     'PP_GF_MEA': True, 'PP_GF_MED': True, 'PP_GF_SD': True,
     'PP_F_MEA': True, 'PP_F_MED': True, 'PP_F_SD': True,
-    
     'DV_PRO': True, 'DV_PHO': True, 'DV_GLO': True,
 } ## enable the ones you want
 
@@ -41,7 +39,6 @@ selected_features_dict_SEN = {
     'PP_SHI': True, 'PP_SHI_M': True,
     'PP_MFC': True,
     'PP_F_MEA': True, 'PP_F_MED': True, 'PP_F_SD': True,
-    
     'DV_PRO': True, 'DV_PHO': True,
 } ## enable the ones you want
 
@@ -56,7 +53,6 @@ selected_features_dict_SPN = {
     'PP_SHI': True, 'PP_SHI_M': True,
     'PP_MFC': True,
     'PP_F_MEA': True, 'PP_F_MED': True, 'PP_F_SD': True,
-
     'DV_PHO': True,
 } ## enable the ones you want
 

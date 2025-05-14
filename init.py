@@ -1,30 +1,51 @@
+import sys
+import json
+from pathlib import Path
 from paths import *
 
-exercises = {'MPT','SEN','SPN','VOW'}
-patient_ids = {'1234567','1234568','1234569','1234570','1234571'}
+exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
+patient_file = Path(__file__).parent / 'patient_ids.json'
 
-def new_patient(patient_ids):
-    for patient_id in patient_ids:
-        for exercise in exercises:
-            audio_path = audio_dir / exercise / patient_id
-            audio_path.mkdir(exist_ok=True, parents=True)
-            processed_path = processed_dir / exercise / patient_id
-            processed_path.mkdir(exist_ok=True, parents=True)
-            segments_path = segments_dir / exercise / patient_id
-            segments_path.mkdir(exist_ok=True, parents=True)
-            features_path = features_dir / exercise / patient_id
-            features_path.mkdir(exist_ok=True, parents=True)
-            embeddings_path = embeddings_dir / exercise / patient_id
-            embeddings_path.mkdir(exist_ok=True, parents=True)
-            
-    print(f'Created folders for {patient_ids}')
-            
+if patient_file.exists():
+    with open(patient_file, 'r') as f:
+        patient_ids = set(json.load(f))
+else:
+    patient_ids = set()
+
+
+def new_patient(patient_id):
+    if patient_id in patient_ids:
+        print(f"Error: Patient ID '{patient_id}' already exists.")
+        return False
+
+    for exercise in exercises:
+        (audio_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
+        (processed_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
+        (segments_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
+        (features_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
+
+    patient_ids.add(patient_id)
+    print(f'Created folders for patient {patient_id}')
+    return True
+
+
 if __name__ == '__main__':
-    new_patient(patient_ids=patient_ids)
-    
+    if len(sys.argv) < 2:
+        print("Usage: ./init.py <patient_id1> <patient_id2> ...")
+        sys.exit(1)
+
+    new_ids = sys.argv[1:]
+    added_any = False
+
+    for patient_id in new_ids:
+        if new_patient(patient_id):
+            added_any = True
+
+    if added_any:
+        with open(patient_file, 'w') as f:
+            json.dump(sorted(patient_ids), f)
+
     df_features_dir.mkdir(exist_ok=True, parents=True)
-    df_embeddings_dir.mkdir(exist_ok=True, parents=True)  
-    
     models_dir.mkdir(exist_ok=True, parents=True)
     predictions_dir.mkdir(exist_ok=True, parents=True)
     plots_dir.mkdir(exist_ok=True, parents=True)
