@@ -1,4 +1,4 @@
-from init import exercises
+from paths import *
 import pandas as pd
 import numpy as np
 from itertools import product
@@ -84,8 +84,8 @@ def lasso_rfe(X_train, y_train, features, n_estimators=100, n_features_to_select
     return selected_features
 
 
-def feature_selection(exercise, target, weights, correlation_types, test_set_size, correlation_threshold, mi_threshold, n_estimators, n_features_to_select, step):
-    feature_df = pd.read_csv(f'dataframes_features/all_features_{exercise}.csv')
+def feature_selection(exercise, mic, target, weights, correlation_types, test_set_size, correlation_threshold, mi_threshold, n_estimators, n_features_to_select, step):
+    feature_df = pd.read_csv(f'dataframes_features/all_features_{exercise}_{mic}.csv')
     X_all = feature_df.iloc[:, :-1]
 
     train_df, test_df = train_test_split(feature_df, test_size=test_set_size, random_state=42)
@@ -166,7 +166,12 @@ def model_training(X_train, y_train, X_test, y_test, selected_features, model_ty
 if __name__ == '__main__':
     
     targets = {'target_bnp', 'target_bw'}
-    correlation_types = ['variance', 'slope', 'target', 'target_slope']
+    correlation_types = [
+        'variance', 
+        'slope', 
+        'target', 
+        'target_slope'
+    ]
     weights = {
         'variance': 0.15,
         'slope': 0.2,

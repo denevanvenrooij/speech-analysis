@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from paths import *
 
-exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
+
 patient_file = Path(__file__).parent / 'patient_ids.json'
 
 if patient_file.exists():
@@ -23,6 +23,8 @@ def new_patient(patient_id):
         (processed_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
         (segments_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
         (features_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
+        (df_features_dir / exercise / 'mic_1' / patient_id).mkdir(exist_ok=True, parents=True)
+        (df_features_dir / exercise / 'mic_2' / patient_id).mkdir(exist_ok=True, parents=True)
 
     patient_ids.add(patient_id)
     print(f'Created folders for patient {patient_id}')
@@ -31,7 +33,7 @@ def new_patient(patient_id):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print("Usage: ./init.py <patient_id1> <patient_id2> ...")
+        print("Usage: ./0_init.py <patient_id1> <patient_id2> ...")
         sys.exit(1)
 
     new_ids = sys.argv[1:]

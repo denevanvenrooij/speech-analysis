@@ -21,7 +21,7 @@ def pre_emphasize_audio(file):
         
         output_path = Path(f'audio_files_pre/{exercise}/{patient_id}')
         if not output_path.exists():
-            print(f"Path {output_path} does not exist... Did you run init.py?")
+            print(f"Path {output_path} does not exist... Did you run 0_init.py?")
         
         save_path = output_path / (file.stem + "_pre.wav")
         s.save(str(save_path), 'WAV')

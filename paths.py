@@ -8,3 +8,5 @@ plots_dir = Path('plots/')
 df_features_dir = Path('dataframes_features/')
 models_dir = Path('models/')
 predictions_dir = Path('predictions/')
+
+exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
