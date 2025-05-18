@@ -10,3 +10,7 @@ models_dir = Path('models/')
 predictions_dir = Path('predictions/')
 
 exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
+
+microphones = {'mic_1', 'mic_2'}
+
+vowels = ['i', 'e', 'a', 'o', 'u']

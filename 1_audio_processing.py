@@ -2,13 +2,7 @@ from paths import *
 import parselmouth
 import re
 
-vowel_dict = {
-    1:'i',
-    2:'e',
-    3:'a',
-    4:'o',
-    5:'u',
-}
+vowel_dict = {i+1: vowel for i, vowel in enumerate(vowels)}
 
 def pre_emphasize_audio(file):
     if file.suffix == ".wav":
@@ -84,20 +78,21 @@ if __name__=='__main__':
     
     for file in unprocessed_files:    
         pre_emphasize_audio(file)
+        print(f"Pre-emphasized {file}")
 
-    print("Checking segment audio segment lengths to make sure every file is >1000ms long...")
-    segment_files_to_check = [file for file in segments_dir.rglob('*.wav') if file.is_file()]
+    # print("Checking segment audio segment lengths to make sure every file is >1000ms long...")
+    # segment_files_to_check = [file for file in segments_dir.rglob('*.wav') if file.is_file()]
 
-    for file in segment_files_to_check:
-        sound = parselmouth.Sound(str(file))
-        duration_ms = sound.get_total_duration() * 1000
+    # for file in segment_files_to_check:
+    #     sound = parselmouth.Sound(str(file))
+    #     duration_ms = sound.get_total_duration() * 1000
 
-        if duration_ms < 2010:
-            silence_duration = (2010 - duration_ms) / 1000.0
-            silence = parselmouth.Sound(silence_duration, sound.sampling_frequency)
-            padded_sound = sound.concatenate([sound, silence])
-            padded_sound.save(str(file), 'WAV')
-            print(f"→ Added silence to {file.name}")
+    #     if duration_ms < 2010:
+    #         silence_duration = (2010 - duration_ms) / 1000.0
+    #         silence = parselmouth.Sound(silence_duration, sound.sampling_frequency)
+    #         padded_sound = sound.concatenate([sound, silence])
+    #         padded_sound.save(str(file), 'WAV')
+    #         print(f"→ Added silence to {file.name}")
 
     segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
 
@@ -106,6 +101,7 @@ if __name__=='__main__':
     
     ## this below part saves each of the vowels separately
     for file in unprocessed_segments:
+        print(f"Processing vowel segments of {file}")
         if re.search(r'VOW_\d+_pre', file.stem):
             parts = file.stem.split('_')
             patient_id = parts[0]

@@ -23,8 +23,10 @@ def new_patient(patient_id):
         (processed_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
         (segments_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
         (features_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
-        (df_features_dir / exercise / 'mic_1' / patient_id).mkdir(exist_ok=True, parents=True)
-        (df_features_dir / exercise / 'mic_2' / patient_id).mkdir(exist_ok=True, parents=True)
+        
+        for mic in microphones:
+            (df_features_dir / exercise / mic / patient_id).mkdir(exist_ok=True, parents=True)
+        
 
     patient_ids.add(patient_id)
     print(f'Created folders for patient {patient_id}')
