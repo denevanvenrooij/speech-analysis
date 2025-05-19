@@ -3,32 +3,9 @@ import pandas as pd
 import numpy as np
 
 non_VOW_exercises = ['MPT','SEN','SPN']
+non_MPT_exercises = ['SEN','SPN','VOW']
 
-def create_df_VOW(mic):    
-    for vowel in vowels:
-        pattern = f'*_VOW_{mic}{vowel}.csv'
-        files = list((features_dir / 'VOW').rglob(pattern))
-
-        patient_dfs = []
-
-        for file in files:
-            patient_id = file.name[:7]
-            df = pd.read_csv(file)
-            df['id'] = patient_id
-            patient_dfs.append(df)
-
-        if patient_dfs:
-            combined_df = pd.concat(patient_dfs, ignore_index=True)
-            
-            cols = combined_df.columns.tolist() ## putting the id column in front
-            cols.insert(0, cols.pop(cols.index('id'))) 
-            combined_df = combined_df[cols]
-            
-            combined_df.to_csv(df_features_dir / 'VOW' / f'all_VOW_{mic}{vowel}.csv', index=False)
-            print(f"Saved combined dataframe for mic_{mic} and vowel '{vowel}', with {len(combined_df)} rows")
-
-
-def create_df(mic):
+def create_interpatient_df(mic):
     for exercise in non_VOW_exercises:
         pattern = f'*_{exercise}_{mic}.csv'
         files = list((features_dir / exercise).rglob(pattern))
@@ -48,9 +25,105 @@ def create_df(mic):
             cols.insert(0, cols.pop(cols.index('id'))) 
             combined_df = combined_df[cols]   
             
-            combined_df.to_csv(df_features_dir / exercise / f'all_{exercise}_{mic}.csv', index=False)
-            print(f"Saved combined dataframe for mic_{mic} and exercise {exercise}, with {len(combined_df)} rows")             
+            combined_df.to_csv(df_features_dir / f'{exercise}_{mic}.csv', index=False)
+            print(f"Saved combined dataframe for mic_{mic} and exercise {exercise}, with {len(combined_df)} rows")        
+            
+
+def create_intrapatient_df(mic):
+    all_files = []
+
+    for exercise in non_MPT_exercises:
+        pattern = f'*_{exercise}_{mic}*.csv'
+        files = list((features_dir / exercise).rglob(pattern))
         
+        for file in files:
+            all_files.append((exercise, file))
+
+    patient_ids = sorted({file.name[:7] for _, file in all_files})
+
+    for patient_id in patient_ids:
+        if int(patient_id) < 1234567:
+            continue  ## start at 1234567
+
+        dfs = []
+        for exercise, file in all_files:
+            if file.name.startswith(patient_id):
+                mic_part = file.stem.split('_')[-1]
+                if mic_part.startswith(str(mic)) and len(mic_part) > len(str(mic)):
+                    vowel = mic_part[len(str(mic)):]
+                    exercise_label = f"{exercise}_{vowel}" ## add vowel to exercise for VOW
+                else:
+                    exercise_label = exercise
+
+                df = pd.read_csv(file)
+                df['exercise'] = exercise_label
+                dfs.append(df)
+
+        if not dfs:
+            continue
+
+        combined_df = pd.concat(dfs, ignore_index=True)
+        combined_df['id'] = patient_id
+
+        cols = combined_df.columns.tolist()
+        cols.insert(0, cols.pop(cols.index('id')))
+        cols.insert(1, cols.pop(cols.index('exercise')))
+        combined_df = combined_df[cols]
+        
+        cleaned_df = combined_df.loc[:, combined_df.isnull().sum() <= 1] ## this removes all columns with empty values for some rows
+        cleaned_df.to_csv(df_features_dir / f'{patient_id}_{mic}.csv', index=False)
+        print(f"Saved data for mic_{mic} patient {patient_id} with {len(combined_df)} rows")
+
+
+def create_interpatient_df_VOW_full(mic):    
+    pattern = f'*_VOW_{mic}*.csv'
+    files = list((features_dir / 'VOW').rglob(pattern))
+
+    patient_dfs = []
+
+    for file in files:
+        patient_id = file.name[:7]
+        vowel = file.stem[-1]
+        df = pd.read_csv(file)
+        df['id'] = patient_id
+        df['vowel'] = vowel
+        patient_dfs.append(df)
+
+    if patient_dfs:
+        combined_df = pd.concat(patient_dfs, ignore_index=True)
+    
+        cols = combined_df.columns.tolist() ## putting the id column in front
+        cols.insert(0, cols.pop(cols.index('id'))) 
+        cols.insert(1, cols.pop(cols.index('vowel')))
+        combined_df = combined_df[cols]
+        
+        combined_df.to_csv(df_features_dir / f'VOW_{mic}.csv', index=False)
+        print(f"Saved combined dataframe for mic_{mic} and all vowels, with {len(combined_df)} rows")
+
+
+def create_interpatient_df_VOW(mic):    
+    for vowel in vowels:
+        pattern = f'*_VOW_{mic}{vowel}.csv'
+        files = list((features_dir / 'VOW').rglob(pattern))
+
+        patient_dfs = []
+
+        for file in files:
+            patient_id = file.name[:7]
+            df = pd.read_csv(file)
+            df['id'] = patient_id
+            patient_dfs.append(df)
+
+        if patient_dfs:
+            combined_df = pd.concat(patient_dfs, ignore_index=True)
+        
+            cols = combined_df.columns.tolist() ## putting the id column in front
+            cols.insert(0, cols.pop(cols.index('id'))) 
+            combined_df = combined_df[cols]
+            
+            combined_df.to_csv(df_features_dir / f'VOW_{mic}{vowel}.csv', index=False)
+            print(f"Saved combined dataframe for mic_{mic} and vowel '{vowel}', with {len(combined_df)} rows")
+
 
 def compute_random_bnp(day, admission, discharge, seed, min=1000, max=8000):
     np.random.seed(seed)
@@ -100,12 +173,14 @@ def add_random_target_data(df_path):
 
 
 if __name__ == '__main__':    
-    df_list = [file for file in features_dir.rglob('*') if file.suffix == '.csv']
+    # df_list = [file for file in features_dir.rglob('*') if file.suffix == '.csv']
 
-    for df_path in df_list:
-        add_random_target_data(df_path)
+    # for df_path in df_list:
+    #     add_random_target_data(df_path)
 
     mic_numbers = [mic_num.split('_')[1] for mic_num in microphones]
     for mic in mic_numbers:
-        create_df_VOW(mic)
-        create_df(mic)
+        create_interpatient_df_VOW(mic)
+        create_interpatient_df(mic)
+        create_interpatient_df_VOW_full(mic)
+        create_intrapatient_df(mic)
