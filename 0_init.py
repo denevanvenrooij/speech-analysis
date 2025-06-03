@@ -23,10 +23,6 @@ def new_patient(patient_id):
         (processed_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
         (segments_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
         (features_dir / exercise / patient_id).mkdir(exist_ok=True, parents=True)
-        
-        for mic in microphones:
-            (df_features_dir / exercise / mic / patient_id).mkdir(exist_ok=True, parents=True)
-        
 
     patient_ids.add(patient_id)
     print(f'Created folders for patient {patient_id}')
@@ -49,7 +45,11 @@ if __name__ == '__main__':
         with open(patient_file, 'w') as f:
             json.dump(sorted(patient_ids), f)
 
-    df_features_dir.mkdir(exist_ok=True, parents=True)
+    df_features_dir_pe.mkdir(exist_ok=True, parents=True)
+    df_features_dir_pp.mkdir(exist_ok=True, parents=True)
+    feature_selection_dir_pe.mkdir(exist_ok=True, parents=True)
+    feature_selection_dir_pp.mkdir(exist_ok=True, parents=True)
+
     models_dir.mkdir(exist_ok=True, parents=True)
     predictions_dir.mkdir(exist_ok=True, parents=True)
     plots_dir.mkdir(exist_ok=True, parents=True)
