@@ -45,11 +45,12 @@ if __name__ == '__main__':
         with open(patient_file, 'w') as f:
             json.dump(sorted(patient_ids), f)
 
-    df_features_dir_pe.mkdir(exist_ok=True, parents=True)
-    df_features_dir_pp.mkdir(exist_ok=True, parents=True)
-    feature_selection_dir_pe.mkdir(exist_ok=True, parents=True)
-    feature_selection_dir_pp.mkdir(exist_ok=True, parents=True)
+    (df_features_dir / pe).mkdir(exist_ok=True, parents=True)
+    (df_features_dir / pp).mkdir(exist_ok=True, parents=True)
+    (feature_selection_dir / pe).mkdir(exist_ok=True, parents=True)
+    (feature_selection_dir / pp).mkdir(exist_ok=True, parents=True)
 
     models_dir.mkdir(exist_ok=True, parents=True)
     predictions_dir.mkdir(exist_ok=True, parents=True)
     plots_dir.mkdir(exist_ok=True, parents=True)
+    logs_dir.mkdir(exist_ok=True, parents=True)

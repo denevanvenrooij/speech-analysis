@@ -8,14 +8,17 @@ features_dir = Path('extracted_features/')
 plots_dir = Path('plots/')
 models_dir = Path('models/')
 predictions_dir = Path('predictions/')
+logs_dir = Path('logs/')
 
-df_features_dir_pe = Path('dataframes_features/per_exercise/')
-df_features_dir_pp = Path('dataframes_features/per_participant/')
-
-feature_selection_dir_pe = Path('dataframes_feature_selection/per_exercise/')
-feature_selection_dir_pp = Path('dataframes_feature_selection/per_participant/')
+df_features_dir = Path('dataframes_features/')
+feature_selection_dir = Path('dataframes_feature_selection/')
+pe = Path('per_exercise')
+pp = Path('per_participant')
 
 
 exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
+non_VOW_exercises = ['MPT','SEN','SPN']
+non_MPT_exercises = ['SEN','SPN','VOW']
 microphones = {'mic_1', 'mic_2'}
 vowels = ['i', 'e', 'a', 'o', 'u']
+target_columns = ['target_bw', 'target_bnp']
