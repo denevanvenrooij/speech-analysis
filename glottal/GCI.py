@@ -41,7 +41,7 @@ def se_vq_varf0(x,fs, f0=None):
 
     :param x:  speech signal (in samples)
     :param fs: sampling frequency (Hz)
-    :param f0: f0 contour (optional), otherwise its computed  using the RAPT algorithm
+    :param f0: f0 contour (optional), otherwise its computed using the RAPT algorithm
     :returns: GCI Glottal closure instants (in samples)
     
     References:
@@ -71,11 +71,11 @@ def se_vq_varf0(x,fs, f0=None):
         data_audiof=np.asarray(x*(2**15), dtype=np.float32)
         f0=pysptk.sptk.rapt(data_audiof, fs, int(size_stepS), min=F0min, max=F0max, voice_bias=voice_bias, otype='f0')
 
-
     F0nz=np.where(f0>0)[0]
     F0mean=np.median(f0[F0nz])
     VUV=np.zeros(len(f0))
-    VUV[F0nz]=1
+    VUV[F0nz]=1 
+    
     if F0mean<70:
         F0mean=80
 
@@ -85,7 +85,15 @@ def se_vq_varf0(x,fs, f0=None):
     VUV_inter[np.where(VUV_inter>0.5)[0]]=1
     VUV_inter[np.where(VUV_inter<=0.5)[0]]=0
     f0_int, f0_samp=create_continuous_smooth_f0(f0,VUV,x)
-    T0mean = fs/f0_samp
+    
+    ## inserted to avoid error from f0_int, f0_samp
+    if not np.all(np.isfinite(f0_samp)):
+        GCI = None
+        return GCI
+    T0mean = np.mean(1 / f0_int)
+    T0mean = np.array([T0mean])
+    # T0mean = fs/f0_samp
+    
     winLen = 25 # window length in ms
     winShift = 5 # window shift in ms
     LPC_ord = int((fs/1000)+2) # LPC order

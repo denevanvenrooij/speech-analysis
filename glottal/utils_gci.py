@@ -36,12 +36,25 @@ def create_continuous_smooth_f0(F0,VUV,x):
     F02=F0[:]
     f0nzp=np.where(F0>0)[0]
     f0nz=F0[f0nzp]
-    if len(f0nz)<med_len:
-        F0min=np.min(f0nz)
-        F0max=np.max(f0nz)
+    
+    ## added this in to avoid non-existent f0 GCI crash
+    if len(f0nz) == 0 or np.all(np.isnan(f0nz)):
+        F0min = np.nan
+        F0max = np.nan
     else:
-        F0min=np.min(medfilt(f0nz,med_len))
-        F0max=np.max(medfilt(f0nz,med_len))
+        if len(f0nz) < med_len:
+            F0min = np.nanmin(f0nz)
+            F0max = np.nanmax(f0nz)
+        else:
+            f0_medfilt = medfilt(f0nz, med_len)
+            F0min = np.nanmin(f0_medfilt)
+            F0max = np.nanmax(f0_medfilt)
+    # if len(f0nz)<med_len:
+    #     F0min=np.min(f0nz)
+    #     F0max=np.max(f0nz)
+    # else:
+    #     F0min=np.min(medfilt(f0nz,med_len))
+    #     F0max=np.max(medfilt(f0nz,med_len))
 
     posmin=np.where(F0<F0min)[0]
     posmax=np.where(F0>F0max)[0]
@@ -56,11 +69,16 @@ def create_continuous_smooth_f0(F0,VUV,x):
     stop=[]
     initV=np.where(VUV==1)[0]
 
+    ## added this in to avoid error when initV is 0 (if there are no voiced frames)
+    if len(initV) == 0:
+        return np.zeros(len(F0)), np.nan
+
     for j in range(initV[0],N-1):
         if VUV[j]==0 and VUV[j+1]==1:
             stop.append(j)
         elif VUV[j]==1 and VUV[j+1]==0:
             start.append(j)
+            
     n_seg=np.min([len(start),len(stop)])
     for j in range(n_seg):
         f0_int_cur=np.interp(np.arange(start[j], stop[j]), [start[j], stop[j]], [F0[start[j]],F0[stop[j]+1]])
@@ -141,7 +159,10 @@ def zeroPhaseHPFilt(x,fs,f_p,f_s):
 def get_MBS(x,fs,T0mean):
     # Obtain the mean-based signal
     MBS=np.zeros(len(x))
-    halfL=int(1.6*T0mean[0]/2)
+    
+    ## changed this so that it becomes a float
+    halfL = int(1.6*T0mean/2)
+    # halfL=int(1.6*T0mean[0]/2)
 
     StepExp=3
     Step=2**StepExp

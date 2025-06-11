@@ -148,7 +148,7 @@ class Glottal:
 
         """
         winlen = int(0.025*fs)
-        winshift = int(0.005*fs)
+        winshift = int(0.005*fs)  
         x = x-np.mean(x)
         x = x/float(np.max(np.abs(x)))
         GCIs = se_vq_varf0(x, fs)
@@ -156,8 +156,14 @@ class Glottal:
         glottal = np.zeros(len(x))
 
         if GCIs is None:
-            sys.warn("not enought voiced segments were found to compute GCI")
-            return glottal, g_iaif, GCIs
+            ## added this in for sys warning error
+            import warnings
+            warnings.warn("not enough voiced segments were found to compute GCI")
+            # sys.warn("not enought voiced segments were found to compute GCI")
+            glottal = np.zeros(len(x))
+            g_iaif = np.zeros(len(x))
+            return glottal, g_iaif, None
+            # return glottal, g_iaif, GCIs
 
         start = 0
         stop = int(start+winlen)
@@ -166,9 +172,17 @@ class Glottal:
         while stop <= len(x):
 
             x_frame = x[start:stop]
-            pGCIt = np.where((GCIs > start) & (GCIs < stop))[0]
-            GCIt = GCIs[pGCIt]-start
-
+            
+            ## added in to avoid GCIs None error
+            if GCIs is not None:
+                pGCIt = np.where((GCIs > start) & (GCIs < stop))[0]
+                GCIt = GCIs[pGCIt]-start
+            else:
+                warnings.warn("GCI is None, skipping glottal feature extraction.")
+                return {}
+            # pGCIt = np.where((GCIs > start) & (GCIs < stop))[0]
+            # GCIt = GCIs[pGCIt]-start
+            
             g_iaif_f = iaif(x_frame, fs, GCIt)
             glottal_f = cumulative_trapezoid(g_iaif_f, dx=1/fs)
             glottal_f = np.hstack((glottal[start], glottal_f))
@@ -185,7 +199,7 @@ class Glottal:
         glottal = glottal/max(abs(glottal))
 
         return glottal, g_iaif, GCIs
-
+    
     def extract_features_file(self, audio, static=True, plots=False, fmt="npy", kaldi_file=""):
         """Extract the glottal features from an audio file
 
@@ -221,10 +235,17 @@ class Glottal:
         overlap = size_stepS/size_frameS
         nF = int((len(data_audio)/size_frameS/overlap))-1
         data_audiof = np.asarray(data_audio*(2**15), dtype=np.float32)
-        f0 = pysptk.sptk.rapt(data_audiof, fs, int(
-            0.01*fs), min=20, max=500, voice_bias=-0.2, otype='f0')
+        
+        f0 = pysptk.sptk.rapt(
+            data_audiof, 
+            fs, int(0.01*fs), 
+            min=20, 
+            max=500, 
+            voice_bias=-0.2, 
+            otype='f0')
+    
         sizef0 = int(self.size_frame/0.01)
-        stepf0 = int(self.size_step/0.01)
+        stepf0 = int(self.size_step/0.01)       
         startf0 = 0
         stopf0 = sizef0
 
@@ -249,6 +270,12 @@ class Glottal:
             endi = int(l*size_stepS+size_frameS)
             gframe = glottal[init:endi]
             dgframe = glottal[init:endi]
+            
+            ## added in to avoid GCI None error
+            if GCI is None:
+                rmwin.append(l)
+                continue
+            
             pGCIt = np.where((GCI > init) & (GCI < endi))[0]
             gci_s = GCI[pGCIt]-init
             f0_frame = f0[startf0:stopf0]

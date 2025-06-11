@@ -19,6 +19,6 @@ pp = Path('per_participant')
 exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
 non_VOW_exercises = ['MPT','SEN','SPN']
 non_MPT_exercises = ['SEN','SPN','VOW']
-microphones = {'mic_1', 'mic_2'}
+microphones = {'mic_1', 'mic_2', 'mic_3'}
 vowels = ['i', 'e', 'a', 'o', 'u']
 target_columns = ['target_bw', 'target_bnp']

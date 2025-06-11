@@ -5,7 +5,7 @@ import numpy as np
 from itertools import product
 import joblib
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LassoCV, LinearRegression
+from sklearn.linear_model import Lasso, LinearRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVR
 import lightgbm as lgb
@@ -97,13 +97,11 @@ def mutual_information_filtering(X_train, y_train, mi_threshold):
 
 def lasso_rfe(X_train, y_train, n_features_to_select):
     selected_features = set()
-    alphas = np.logspace(-4, -1, 20)
 
     ## LASSO per target
     for target in target_columns:
         y_target = y_train[target].values
-        lasso = LassoCV(alphas=alphas, cv=5, max_iter=5000, random_state=42)
-        lasso.fit(X_train, y_target)
+        lasso = Lasso(alphas=0.05, random_state=42).fit(X_train, y_target)
         non_zero = lasso.coef_ != 0
         features = X_train.columns[non_zero]
         selected_features.update(features)
