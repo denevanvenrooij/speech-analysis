@@ -1,0 +1,876 @@
+
+Now running dataframes_features/per_exercise/SEN_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 13 features: ['DV_PRO_kurtosis1Evoiced', 'DV_PRO_kurtosislastEvoiced', 'DV_PRO_kurtosismseEunvoiced', 'DV_PRO_kurtosistiltEunvoiced', 'DV_PRO_skw1Evoiced', 'DV_PRO_skwlastEvoiced', 'DV_PRO_skwmseEunvoiced', 'DV_PRO_skwtiltEunvoiced', 'PP_JIT_M_ppq5', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 8 features: ['DV_PRO_lastF0max', 'DV_PRO_lastF0min', 'PP_F0_M', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 54 features: ['DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'DV_PRO_1F0ku', 'DV_PRO_1F0skw', 'DV_PRO_F0tiltku', 'DV_PRO_F0tiltmin', 'DV_PRO_PVU', 'DV_PRO_UVU', 'DV_PRO_VVU', 'DV_PRO_avgdurpause', 'DV_PRO_avgdurvoiced', 'DV_PRO_kurtosisdurvoiced', 'DV_PRO_kurtosislastEunvoiced', 'DV_PRO_lastF0std', 'DV_PRO_maxdurunvoiced', 'DV_PRO_maxlastEvoiced', 'DV_PRO_skwdurvoiced', 'DV_PRO_skwlastEunvoiced', 'DV_PRO_std1Evoiced', 'DV_PRO_stdEvoiced', 'DV_PRO_stdlastEvoiced', 'DV_PRO_stdmseEvoiced', 'DV_PRO_stdtiltEunvoiced', 'PP_CPP_M2', 'PP_DUR_WOP', 'PP_DUR_WP', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F3_MED', 'PP_F5_MED', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_rap', 'PP_MFC_10_sd', 'PP_MFC_3_min', 'PP_MFC_4_kurt', 'PP_MFC_5_kurt', 'PP_MFC_7_min', 'PP_MFC_8_max', 'PP_MFC_8_sd', 'PP_MFC_8_skew', 'PP_MFC_9_kurt', 'PP_MFC_9_max', 'PP_SHI_M_local', 'PP_SHI_apq11']
+LASSO & RFE     Removed 34 features: ['DV_PHO_avg DDF0', 'DV_PHO_std DDF0', 'DV_PRO_F0avg', 'DV_PRO_F0msestd', 'DV_PRO_UP', 'DV_PRO_Vrate', 'DV_PRO_avg1Eunvoiced', 'DV_PRO_avg1Evoiced', 'DV_PRO_avgEunvoiced', 'DV_PRO_avglastEunvoiced', 'DV_PRO_avglastEvoiced', 'DV_PRO_kurtosisEvoiced', 'DV_PRO_kurtosisdurpause', 'DV_PRO_kurtosismseEvoiced', 'DV_PRO_minlastEunvoiced', 'DV_PRO_skwdurpause', 'DV_PRO_skwdurunvoiced', 'DV_PRO_skwmseEvoiced', 'PP_F0_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_MFC_11_sd', 'PP_MFC_12_mean', 'PP_MFC_12_min', 'PP_MFC_1_skew', 'PP_MFC_2_skew', 'PP_MFC_3_median', 'PP_MFC_3_sd', 'PP_MFC_4_max', 'PP_MFC_5_mean', 'PP_MFC_6_sd', 'PP_MFC_7_max', 'PP_MFC_8_mean', 'PP_MFC_9_min']
+FINAL FEATURE COUNT     Selected 152 features: ['DV_PRO_VP', 'PP_CPP_SD_M', 'DV_PRO_F0kurt', 'PP_SHI_local', 'PP_MFC_10_skew', 'DV_PHO_kurtosis apq', 'PP_MFC_5_max', 'PP_MFC_1_max', 'PP_F2_SD', 'PP_MFC_4_min', 'PP_MFC_9_median', 'DV_PRO_F0tiltstd', 'DV_PRO_avgmseEvoiced', 'DV_PRO_lastF0ku', 'PP_F1_MEA', 'DV_PRO_F0mseavg', 'DV_PRO_min1Evoiced', 'DV_PRO_F0tiltmax', 'DV_PRO_stdtiltEvoiced', 'PP_MFC_6_median', 'PP_MFC_6_max', 'DV_PHO_avg ppq', 'PP_F3_SD', 'PP_MFC_12_median', 'PP_MFC_1_min', 'PP_MFC_10_mean', 'DV_PRO_mindurunvoiced', 'DV_PRO_stdmseEunvoiced', 'PP_SHI_apq5', 'PP_MFC_3_kurt', 'PP_MFC_5_sd', 'DV_PRO_lastF0skw', 'PP_MFC_3_skew', 'DV_PRO_max1Eunvoiced', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'DV_PRO_avgtiltEvoiced', 'DV_PRO_skwEunvoiced', 'PP_MFC_12_sd', 'PP_MFC_10_kurt', 'PP_MFC_4_skew', 'PP_F0', 'DV_PRO_mindurpause', 'DV_PRO_stdlastEunvoiced', 'DV_PRO_F0max', 'DV_PRO_std1Eunvoiced', 'DV_PRO_kurtosistiltEvoiced', 'DV_PRO_avgmseEunvoiced', 'PP_MFC_1_sd', 'DV_PHO_skewness DF0', 'DV_PRO_F0std', 'PP_MFC_5_min', 'PP_MFC_8_min', 'DV_PRO_stddurvoiced', 'DV_PRO_F0min', 'DV_PHO_kurtosis DF0', 'PP_MFC_11_median', 'PP_MFC_7_mean', 'PP_MFC_5_skew', 'DV_PHO_skewness Shimmer', 'PP_MFC_3_max', 'DV_PHO_avg Shimmer', 'PP_MFC_11_mean', 'PP_MFC_12_kurt', 'PP_MFC_2_kurt', 'DV_PRO_maxdurpause', 'DV_PRO_mindurvoiced', 'PP_MFC_1_kurt', 'DV_PHO_avg logE', 'DV_PRO_stdEunvoiced', 'DV_PRO_avgtiltEunvoiced', 'DV_PRO_min1Eunvoiced', 'PP_MFC_2_median', 'DV_PRO_skw1Eunvoiced', 'PP_MFC_4_sd', 'PP_MFC_9_skew', 'PP_MFC_11_skew', 'PP_MFC_10_max', 'PP_MFC_4_median', 'PP_CPP_M', 'PP_MFC_10_median', 'PP_MFC_2_min', 'DV_PRO_minlastEvoiced', 'DV_PRO_1F0std', 'DV_PRO_F0mseskw', 'DV_PRO_kurtosisEunvoiced', 'DV_PRO_max1Evoiced', 'DV_PRO_stddurunvoiced', 'PP_JIT_ppq5', 'PP_MFC_6_skew', 'PP_MFC_4_mean', 'PP_F4_SD', 'PP_MFC_11_max', 'PP_MFC_8_median', 'DV_PHO_avg apq', 'PP_JIT_M_rap', 'PP_MFC_2_mean', 'DV_PHO_std DF0', 'DV_PRO_avgEvoiced', 'DV_PRO_lastF0avg', 'PP_F2_MED', 'DV_PRO_1F0min', 'DV_PRO_stddurpause', 'PP_MFC_6_mean', 'DV_PRO_F0tiltskw', 'DV_PHO_skewness DDF0', 'PP_MFC_6_kurt', 'PP_F4_MEA', 'PP_MFC_7_sd', 'PP_MFC_5_median', 'DV_PRO_skwEvoiced', 'DV_PRO_F0mseku', 'PP_MFC_2_sd', 'DV_PRO_1F0max', 'DV_PRO_F0skew', 'PP_F0_SD_M', 'PP_MFC_10_min', 'PP_F3_MEA', 'PP_MFC_12_skew', 'DV_PRO_avgdurunvoiced', 'PP_MFC_11_kurt', 'PP_MFC_9_sd', 'PP_MFC_6_min', 'DV_PRO_skwtiltEvoiced', 'DV_PHO_std Jitter', 'PP_JIT_local', 'DV_PRO_1F0mean', 'DV_PRO_maxlastEunvoiced', 'PP_MFC_12_max', 'PP_MFC_1_median', 'PP_JIT_abs', 'PP_F4_MED', 'DV_PRO_F0tiltavg', 'DV_PRO_F0msemin', 'PP_MFC_7_skew', 'PP_MFC_7_kurt', 'DV_PRO_kurtosis1Eunvoiced', 'PP_MFC_7_median', 'PP_MFC_11_min', 'PP_MFC_9_mean', 'PP_F1_MED', 'PP_MFC_8_kurt', 'PP_MFC_1_mean', 'DV_PHO_skewness apq', 'DV_PRO_kurtosisdurunvoiced', 'DV_PRO_maxdurvoiced', 'DV_PHO_kurtosis DDF0', 'PP_SHI_apq3', 'DV_PRO_PU', 'DV_PRO_F0msemax', 'PP_MFC_2_max', 'PP_MFC_3_mean']
+Mean Squared Errors per target: [9.24040986e+01 2.21231435e+06]
+R² Scores per target: [-0.17192455 -1.00212683]
+
+Now running dataframes_features/per_exercise/VOW_2a.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 4 rows: [2, 3, 6, 7]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 28 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MED', 'PP_GF1_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 14 features: ['DV_PHO_avg Shimmer', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness apq', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'PP_GF1_MEA', 'PP_GF2_SD', 'PP_GF5_SD', 'PP_SHI_M_apq11', 'PP_SHI_apq11']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 49 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'DV_PHO_skewness Jitter', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'PP_SHI_local', 'PP_GF3_MEA', 'DV_PHO_avg Jitter', 'PP_GF2_MED', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_avg DDF0', 'DV_PHO_std Jitter', 'PP_F1_SD', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_GF3_MED', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_JIT_M_rap', 'PP_GF4_MED', 'DV_PHO_std DF0', 'PP_HNR_M', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'DV_PHO_kurtosis logE', 'DV_PHO_std ppq', 'PP_F5_MEA', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [1.82079582e+02 1.27403098e+07]
+R² Scores per target: [-0.31551678 -1.78202783]
+
+Now running dataframes_features/per_exercise/SEN_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [1]
+REMOVING NaN COLUMNS     Removed 7 features: ['DV_PRO_kurtosislastEunvoiced', 'DV_PRO_kurtosismseEunvoiced', 'DV_PRO_kurtosistiltEunvoiced', 'DV_PRO_skwlastEunvoiced', 'DV_PRO_skwmseEunvoiced', 'DV_PRO_skwtiltEunvoiced', 'PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 10 features: ['DV_PHO_std DDF0', 'DV_PRO_F0msemax', 'PP_F0_M', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_MFC_11_median', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 73 features: ['DV_PHO_avg DF0', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DF0', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std Jitter', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PRO_1F0std', 'DV_PRO_F0msemin', 'DV_PRO_F0tiltavg', 'DV_PRO_F0tiltskw', 'DV_PRO_PU', 'DV_PRO_UP', 'DV_PRO_UVU', 'DV_PRO_VVU', 'DV_PRO_Vrate', 'DV_PRO_avg1Eunvoiced', 'DV_PRO_avgEvoiced', 'DV_PRO_avgdurunvoiced', 'DV_PRO_avgmseEunvoiced', 'DV_PRO_avgmseEvoiced', 'DV_PRO_kurtosis1Eunvoiced', 'DV_PRO_kurtosis1Evoiced', 'DV_PRO_kurtosisEunvoiced', 'DV_PRO_kurtosismseEvoiced', 'DV_PRO_kurtosistiltEvoiced', 'DV_PRO_max1Evoiced', 'DV_PRO_maxdurpause', 'DV_PRO_maxdurunvoiced', 'DV_PRO_maxdurvoiced', 'DV_PRO_min1Eunvoiced', 'DV_PRO_min1Evoiced', 'DV_PRO_mindurpause', 'DV_PRO_minlastEvoiced', 'DV_PRO_skwEunvoiced', 'DV_PRO_skwmseEvoiced', 'DV_PRO_stdEunvoiced', 'DV_PRO_stdlastEunvoiced', 'DV_PRO_stdtiltEunvoiced', 'PP_CPP_M', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F5_MED', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_ppq5', 'PP_MFC_10_kurt', 'PP_MFC_11_kurt', 'PP_MFC_11_skew', 'PP_MFC_12_kurt', 'PP_MFC_12_max', 'PP_MFC_12_sd', 'PP_MFC_1_max', 'PP_MFC_1_median', 'PP_MFC_2_max', 'PP_MFC_2_min', 'PP_MFC_2_sd', 'PP_MFC_3_min', 'PP_MFC_3_skew', 'PP_MFC_5_max', 'PP_MFC_6_kurt', 'PP_MFC_6_mean', 'PP_MFC_6_min', 'PP_MFC_9_max', 'PP_MFC_9_sd', 'PP_SHI_M_apq3', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3']
+LASSO & RFE     Removed 44 features: ['DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PRO_F0max', 'DV_PRO_F0mseavg', 'DV_PRO_F0msestd', 'DV_PRO_F0tiltmin', 'DV_PRO_VP', 'DV_PRO_avg1Evoiced', 'DV_PRO_avgdurvoiced', 'DV_PRO_lastF0avg', 'DV_PRO_lastF0max', 'DV_PRO_maxlastEunvoiced', 'DV_PRO_mindurunvoiced', 'DV_PRO_skw1Eunvoiced', 'DV_PRO_skwdurvoiced', 'DV_PRO_stdlastEvoiced', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MED', 'PP_F1_SD', 'PP_F3_SD', 'PP_F4_MED', 'PP_JIT_abs', 'PP_JIT_local', 'PP_MFC_10_mean', 'PP_MFC_10_median', 'PP_MFC_10_min', 'PP_MFC_11_min', 'PP_MFC_12_min', 'PP_MFC_1_mean', 'PP_MFC_3_kurt', 'PP_MFC_4_skew', 'PP_MFC_5_mean', 'PP_MFC_5_median', 'PP_MFC_5_min', 'PP_MFC_6_sd', 'PP_MFC_7_max', 'PP_MFC_7_mean', 'PP_MFC_8_kurt', 'PP_MFC_8_max', 'PP_MFC_8_median', 'PP_SHI_M_apq5', 'PP_SHI_local']
+FINAL FEATURE COUNT     Selected 127 features: ['DV_PRO_lastF0std', 'PP_CPP_SD_M', 'DV_PRO_F0kurt', 'PP_MFC_10_skew', 'DV_PRO_avgdurpause', 'PP_MFC_4_min', 'PP_MFC_9_median', 'DV_PRO_F0tiltstd', 'DV_PRO_lastF0ku', 'PP_MFC_10_sd', 'PP_F1_MEA', 'PP_MFC_4_max', 'DV_PRO_F0avg', 'DV_PRO_stdEvoiced', 'PP_MFC_9_min', 'DV_PRO_F0tiltmax', 'DV_PRO_stdtiltEvoiced', 'PP_MFC_6_median', 'DV_PRO_minlastEunvoiced', 'PP_MFC_6_max', 'PP_MFC_1_min', 'PP_MFC_12_median', 'DV_PHO_std ppq', 'DV_PRO_stdmseEunvoiced', 'PP_SHI_apq5', 'PP_MFC_5_kurt', 'PP_MFC_5_sd', 'DV_PRO_lastF0skw', 'DV_PRO_max1Eunvoiced', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'DV_PRO_avgtiltEvoiced', 'PP_MFC_3_median', 'DV_PRO_kurtosisdurpause', 'PP_F0', 'PP_F3_MED', 'DV_PRO_lastF0min', 'DV_PRO_std1Eunvoiced', 'PP_MFC_1_sd', 'PP_MFC_7_min', 'DV_PRO_F0std', 'PP_MFC_8_min', 'DV_PRO_stddurvoiced', 'DV_PRO_F0min', 'DV_PHO_kurtosis DF0', 'PP_MFC_3_sd', 'PP_MFC_12_mean', 'PP_MFC_5_skew', 'DV_PHO_skewness Shimmer', 'PP_MFC_3_max', 'DV_PRO_skwlastEvoiced', 'PP_MFC_11_mean', 'PP_MFC_2_kurt', 'PP_MFC_8_mean', 'DV_PRO_mindurvoiced', 'PP_MFC_1_kurt', 'DV_PRO_std1Evoiced', 'PP_MFC_8_skew', 'DV_PRO_avgtiltEunvoiced', 'PP_MFC_2_median', 'DV_PRO_1F0skw', 'PP_MFC_9_kurt', 'DV_PHO_avg DDF0', 'PP_MFC_4_sd', 'PP_MFC_9_skew', 'PP_MFC_10_max', 'PP_MFC_4_median', 'DV_PRO_PVU', 'PP_MFC_8_sd', 'DV_PRO_avglastEvoiced', 'DV_PRO_F0mseskw', 'DV_PRO_stddurunvoiced', 'DV_PRO_F0tiltku', 'PP_MFC_6_skew', 'PP_MFC_4_mean', 'PP_F4_SD', 'PP_MFC_11_max', 'DV_PRO_stdmseEvoiced', 'PP_F5_SD', 'PP_MFC_11_sd', 'DV_PHO_avg apq', 'PP_CPP_M2', 'DV_PRO_avgEunvoiced', 'DV_PHO_std DF0', 'DV_PRO_kurtosislastEvoiced', 'PP_MFC_2_mean', 'PP_F5_MEA', 'PP_F2_MED', 'DV_PRO_1F0min', 'DV_PRO_stddurpause', 'DV_PHO_skewness DDF0', 'PP_F4_MEA', 'PP_JIT_rap', 'PP_MFC_7_sd', 'PP_DUR_WP', 'DV_PRO_skwEvoiced', 'DV_PRO_F0mseku', 'DV_PRO_skwdurpause', 'DV_PRO_1F0max', 'DV_PRO_F0skew', 'DV_PRO_maxlastEvoiced', 'PP_MFC_1_skew', 'PP_F3_MEA', 'DV_PRO_kurtosisEvoiced', 'PP_MFC_12_skew', 'DV_PRO_kurtosisdurvoiced', 'PP_MFC_2_skew', 'DV_PRO_avglastEunvoiced', 'DV_PRO_skwtiltEvoiced', 'PP_DUR_WOP', 'DV_PRO_1F0mean', 'DV_PRO_skwdurunvoiced', 'PP_MFC_7_skew', 'DV_PHO_kurtosis Jitter', 'PP_MFC_7_kurt', 'PP_MFC_7_median', 'PP_MFC_9_mean', 'PP_MFC_4_kurt', 'DV_PHO_skewness apq', 'DV_PRO_1F0ku', 'DV_PRO_kurtosisdurunvoiced', 'DV_PHO_kurtosis logE', 'PP_JIT_M_abs', 'DV_PHO_kurtosis Shimmer', 'PP_MFC_3_mean', 'PP_JIT_M_local', 'DV_PRO_skw1Evoiced']
+Mean Squared Errors per target: [7.38274689e+01 4.41869233e+06]
+R² Scores per target: [ 0.18832687 -0.10505564]
+
+Now running dataframes_features/per_exercise/VOW_2o.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 26 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 18 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'PP_F1_SD', 'PP_GF5_MEA', 'PP_GF5_MED', 'PP_HNR', 'PP_HNR_M', 'PP_LHR_M']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 47 features: ['PP_CPP_SD_M', 'DV_PHO_std logE', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_F0_SD_M', 'PP_SHI_local', 'PP_GF3_MEA', 'DV_PHO_avg Jitter', 'PP_GF2_MED', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_std Jitter', 'PP_JIT_local', 'PP_GF5_SD', 'DV_PHO_avg DF0', 'PP_GF1_MEA', 'PP_CPP_M', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_SHI_M_apq11', 'PP_GF3_MED', 'DV_PHO_skewness logE', 'PP_JIT_M_rap', 'PP_SHI_apq11', 'PP_GF4_MED', 'PP_GF1_MED', 'PP_F1_MED', 'DV_PHO_avg ppq', 'DV_PHO_std DF0', 'PP_GF3_SD', 'DV_PHO_kurtosis logE', 'PP_GF2_SD', 'DV_PHO_std ppq', 'DV_PHO_kurtosis DDF0', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'PP_F2_MED', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local']
+Mean Squared Errors per target: [1.30717609e+02 7.52622889e+06]
+R² Scores per target: [-0.43713407 -0.88220881]
+
+Now running dataframes_features/per_exercise/SEN_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 3 rows: [9, 10, 12]
+REMOVING NaN COLUMNS     Removed 27 features: ['DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'DV_PHO_std ppq', 'DV_PRO_kurtosis1Eunvoiced', 'DV_PRO_kurtosislastEvoiced', 'DV_PRO_kurtosismseEunvoiced', 'DV_PRO_kurtosistiltEunvoiced', 'DV_PRO_skw1Eunvoiced', 'DV_PRO_skwlastEvoiced', 'DV_PRO_skwmseEunvoiced', 'DV_PRO_skwtiltEunvoiced', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_local', 'PP_SHI_M_localdb']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 6 features: ['DV_PRO_lastF0max', 'PP_F0_M', 'PP_JIT_ddp', 'PP_MFC_10_median', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 33 features: ['DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis logE', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'DV_PRO_F0tiltavg', 'DV_PRO_F0tiltmax', 'DV_PRO_F0tiltstd', 'DV_PRO_avgEvoiced', 'DV_PRO_avgdurpause', 'DV_PRO_avglastEunvoiced', 'DV_PRO_kurtosisEvoiced', 'DV_PRO_kurtosisdurvoiced', 'DV_PRO_maxdurpause', 'DV_PRO_maxlastEunvoiced', 'DV_PRO_maxlastEvoiced', 'DV_PRO_mindurvoiced', 'DV_PRO_skwdurvoiced', 'DV_PRO_stdlastEvoiced', 'PP_MFC_10_kurt', 'PP_MFC_12_median', 'PP_MFC_12_min', 'PP_MFC_3_min', 'PP_MFC_4_skew', 'PP_MFC_7_kurt', 'PP_MFC_8_kurt', 'PP_MFC_8_max', 'PP_MFC_9_max', 'PP_MFC_9_median', 'PP_SHI_apq5']
+LASSO & RFE     Removed 38 features: ['DV_PHO_avg Jitter', 'DV_PRO_1F0max', 'DV_PRO_1F0mean', 'DV_PRO_F0avg', 'DV_PRO_F0max', 'DV_PRO_F0min', 'DV_PRO_Vrate', 'DV_PRO_avg1Evoiced', 'DV_PRO_avgdurunvoiced', 'DV_PRO_kurtosis1Evoiced', 'DV_PRO_kurtosisEunvoiced', 'DV_PRO_max1Eunvoiced', 'DV_PRO_maxdurunvoiced', 'DV_PRO_mindurpause', 'DV_PRO_mindurunvoiced', 'DV_PRO_skwtiltEvoiced', 'DV_PRO_stdEunvoiced', 'DV_PRO_stdtiltEunvoiced', 'PP_CPP_M', 'PP_CPP_M2', 'PP_DUR_WP', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F3_SD', 'PP_F5_SD', 'PP_JIT_ppq5', 'PP_MFC_11_sd', 'PP_MFC_12_skew', 'PP_MFC_1_median', 'PP_MFC_2_median', 'PP_MFC_2_skew', 'PP_MFC_3_kurt', 'PP_MFC_3_mean', 'PP_MFC_3_skew', 'PP_MFC_4_mean', 'PP_MFC_5_max', 'PP_MFC_6_skew']
+FINAL FEATURE COUNT     Selected 157 features: ['DV_PRO_lastF0std', 'DV_PRO_VP', 'PP_CPP_SD_M', 'DV_PRO_F0kurt', 'PP_SHI_local', 'PP_MFC_10_skew', 'DV_PRO_kurtosismseEvoiced', 'PP_MFC_1_max', 'PP_F2_SD', 'PP_MFC_4_min', 'DV_PRO_avgmseEvoiced', 'DV_PRO_lastF0ku', 'PP_MFC_10_sd', 'PP_F1_MEA', 'DV_PRO_F0mseavg', 'PP_MFC_4_max', 'DV_PRO_stdEvoiced', 'PP_MFC_9_min', 'DV_PRO_min1Evoiced', 'DV_PRO_stdtiltEvoiced', 'PP_MFC_6_median', 'DV_PRO_minlastEunvoiced', 'PP_MFC_6_max', 'PP_MFC_1_min', 'PP_MFC_10_mean', 'DV_PRO_stdmseEunvoiced', 'PP_MFC_5_kurt', 'PP_MFC_5_sd', 'DV_PRO_lastF0skw', 'DV_PRO_avgtiltEvoiced', 'PP_MFC_3_median', 'DV_PRO_skwEunvoiced', 'DV_PRO_F0msestd', 'PP_MFC_12_sd', 'DV_PRO_kurtosisdurpause', 'PP_F0', 'PP_F3_MED', 'PP_F1_SD', 'DV_PRO_stdlastEunvoiced', 'DV_PHO_avg DF0', 'DV_PRO_lastF0min', 'DV_PRO_kurtosistiltEvoiced', 'DV_PRO_std1Eunvoiced', 'DV_PRO_avgmseEunvoiced', 'PP_MFC_1_sd', 'DV_PHO_skewness DF0', 'PP_MFC_7_min', 'DV_PRO_F0std', 'PP_MFC_5_min', 'PP_MFC_8_min', 'DV_PRO_stddurvoiced', 'PP_MFC_11_median', 'PP_SHI_apq11', 'PP_MFC_3_sd', 'PP_MFC_12_mean', 'PP_MFC_7_mean', 'PP_MFC_5_skew', 'PP_MFC_3_max', 'DV_PHO_avg Shimmer', 'DV_PRO_avg1Eunvoiced', 'PP_MFC_11_mean', 'DV_PHO_std DDF0', 'PP_MFC_12_kurt', 'PP_MFC_2_kurt', 'PP_MFC_8_mean', 'DV_PRO_skwmseEvoiced', 'PP_MFC_1_kurt', 'DV_PRO_std1Evoiced', 'DV_PHO_avg logE', 'PP_MFC_8_skew', 'DV_PRO_kurtosislastEunvoiced', 'DV_PRO_avgtiltEunvoiced', 'DV_PRO_min1Eunvoiced', 'DV_PRO_1F0skw', 'DV_PHO_avg DDF0', 'PP_MFC_9_kurt', 'PP_MFC_4_sd', 'PP_MFC_9_skew', 'PP_MFC_11_skew', 'PP_F5_MED', 'PP_MFC_10_max', 'PP_MFC_4_median', 'DV_PRO_PVU', 'DV_PRO_minlastEvoiced', 'PP_MFC_5_mean', 'PP_MFC_8_sd', 'DV_PRO_1F0std', 'DV_PRO_F0mseskw', 'DV_PRO_stddurunvoiced', 'DV_PRO_max1Evoiced', 'DV_PRO_avglastEvoiced', 'PP_MFC_2_min', 'DV_PRO_F0tiltku', 'PP_F4_SD', 'PP_MFC_11_max', 'PP_MFC_6_sd', 'DV_PRO_stdmseEvoiced', 'PP_MFC_8_median', 'PP_MFC_7_max', 'DV_PRO_UVU', 'DV_PHO_avg apq', 'DV_PRO_avgEunvoiced', 'PP_MFC_2_mean', 'DV_PHO_std DF0', 'DV_PRO_lastF0avg', 'PP_F5_MEA', 'DV_PRO_1F0min', 'DV_PRO_stddurpause', 'DV_PHO_std apq', 'PP_MFC_6_mean', 'DV_PRO_F0tiltskw', 'PP_MFC_6_kurt', 'PP_F4_MEA', 'PP_JIT_rap', 'PP_MFC_7_sd', 'DV_PRO_skwdurpause', 'PP_MFC_5_median', 'DV_PRO_F0mseku', 'PP_MFC_2_sd', 'DV_PRO_F0tiltmin', 'DV_PRO_skwEvoiced', 'DV_PRO_F0skew', 'PP_F0_SD_M', 'PP_MFC_10_min', 'PP_MFC_1_skew', 'PP_F3_MEA', 'PP_MFC_11_kurt', 'PP_MFC_9_sd', 'PP_MFC_6_min', 'DV_PHO_std Jitter', 'PP_JIT_local', 'PP_DUR_WOP', 'PP_MFC_12_max', 'DV_PRO_skwdurunvoiced', 'PP_JIT_abs', 'DV_PRO_skwlastEunvoiced', 'PP_F4_MED', 'DV_PRO_F0msemin', 'PP_MFC_7_skew', 'DV_PHO_skewness logE', 'DV_PRO_UP', 'PP_MFC_7_median', 'PP_MFC_11_min', 'DV_PRO_VVU', 'PP_MFC_9_mean', 'PP_MFC_4_kurt', 'PP_MFC_1_mean', 'DV_PRO_1F0ku', 'DV_PRO_kurtosisdurunvoiced', 'DV_PRO_maxdurvoiced', 'DV_PRO_avgdurvoiced', 'PP_SHI_apq3', 'DV_PRO_PU', 'DV_PRO_F0msemax', 'PP_MFC_2_max', 'PP_F0_SD', 'DV_PRO_skw1Evoiced']
+Mean Squared Errors per target: [5.30315605e+01 3.20961205e+06]
+R² Scores per target: [ 0.07463639 -1.7763281 ]
+
+Now running dataframes_features/per_exercise/VOW_2i.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 9 rows: [11, 29, 30, 31, 32, 37, 38, 39, 40]
+REMOVING NaN COLUMNS     Removed 37 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI', 'PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 23 features: ['DV_PHO_std DDF0', 'DV_PHO_std Jitter', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F5_MEA', 'PP_F5_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['PP_GF1_MED']
+MUTUAL INFORMATION FILTERING     Removed 16 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'PP_F0_SD_M', 'PP_F2_MED', 'PP_F5_SD', 'PP_GF5_MEA', 'PP_LHR_M']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 50 features: ['PP_CPP_SD_M', 'DV_PHO_std logE', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_F3_MEA', 'PP_GF2_MEA', 'PP_GF2_MED', 'PP_GF1_SD', 'PP_F0', 'PP_F3_MED', 'PP_F2_SD', 'PP_F1_SD', 'PP_JIT_local', 'PP_GF5_SD', 'DV_PHO_avg DF0', 'PP_GF1_MEA', 'PP_F1_MEA', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_F4_SD', 'PP_SHI_M_local', 'PP_GF3_MED', 'PP_F4_MED', 'DV_PHO_skewness logE', 'DV_PHO_avg apq', 'PP_GF4_MED', 'DV_PHO_std DF0', 'PP_HNR_M', 'PP_F1_MED', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'PP_GF2_SD', 'PP_F3_SD', 'DV_PHO_kurtosis ppq', 'PP_JIT_M_abs', 'PP_F2_MEA', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'PP_JIT_M_local', 'PP_F4_MEA']
+Mean Squared Errors per target: [1.44013723e+02 5.21845351e+06]
+R² Scores per target: [-0.07664474 -0.27094441]
+
+Now running dataframes_features/per_exercise/VOW_3i.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 3 rows: [12, 30, 32]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 28 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 3 features: ['PP_GF1_MED', 'PP_SHI_M_local', 'PP_SHI_local']
+MUTUAL INFORMATION FILTERING     Removed 14 features: ['DV_PHO_avg DDF0', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_skewness apq', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_F0_SD_M', 'PP_F5_SD', 'PP_GF3_MED', 'PP_GF3_SD', 'PP_GF5_SD', 'PP_HNR', 'PP_HNR_M']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 46 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_GF3_MEA', 'PP_GF2_MED', 'DV_PHO_avg Jitter', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_std Jitter', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_SHI_apq11', 'PP_GF4_MED', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_GF2_SD', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_ppq5', 'PP_JIT_M_abs', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis Shimmer', 'PP_SHI_apq5', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [8.07184000e+01 1.26523018e+06]
+R² Scores per target: [-0.32024044 -0.57862997]
+
+Now running dataframes_features/per_exercise/SPN_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 11 features: ['PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_local', 'PP_SHI_M_localdb']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 10 features: ['DV_PHO_std DDF0', 'PP_F0_M', 'PP_JIT_ddp', 'PP_MFC_10_median', 'PP_MFC_12_median', 'PP_MFC_3_median', 'PP_MFC_7_median', 'PP_MFC_8_median', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['PP_MFC_3_max']
+MUTUAL INFORMATION FILTERING     Removed 33 features: ['DV_PHO_avg Jitter', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness ppq', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_F1_SD', 'PP_MFC_10_skew', 'PP_MFC_11_max', 'PP_MFC_11_min', 'PP_MFC_11_sd', 'PP_MFC_11_skew', 'PP_MFC_12_max', 'PP_MFC_12_min', 'PP_MFC_1_max', 'PP_MFC_2_max', 'PP_MFC_3_min', 'PP_MFC_4_sd', 'PP_MFC_5_kurt', 'PP_MFC_5_mean', 'PP_MFC_5_median', 'PP_MFC_6_max', 'PP_MFC_6_median', 'PP_MFC_7_skew', 'PP_MFC_8_kurt', 'PP_MFC_8_skew', 'PP_MFC_9_skew', 'PP_SHI_apq3', 'PP_SHI_local']
+LASSO & RFE     Removed 4 features: ['DV_PHO_avg ppq', 'PP_MFC_11_mean', 'PP_MFC_3_kurt', 'PP_MFC_8_mean']
+FINAL FEATURE COUNT     Selected 99 features: ['PP_CPP_SD_M', 'DV_PHO_kurtosis apq', 'PP_MFC_5_max', 'PP_F2_SD', 'PP_MFC_4_min', 'PP_MFC_9_median', 'PP_MFC_10_sd', 'PP_F1_MEA', 'PP_MFC_4_max', 'PP_MFC_9_min', 'PP_MFC_1_min', 'PP_F3_SD', 'DV_PHO_std ppq', 'DV_PHO_kurtosis ppq', 'PP_MFC_10_mean', 'PP_SHI_apq5', 'PP_MFC_5_sd', 'PP_MFC_3_skew', 'PP_MFC_12_sd', 'PP_MFC_10_kurt', 'PP_MFC_4_skew', 'PP_F0', 'PP_F3_MED', 'DV_PHO_avg DF0', 'PP_MFC_1_sd', 'PP_MFC_7_min', 'PP_MFC_5_min', 'PP_MFC_8_min', 'PP_SHI_apq11', 'PP_MFC_11_median', 'PP_MFC_3_sd', 'PP_MFC_7_mean', 'PP_MFC_12_mean', 'PP_MFC_5_skew', 'DV_PHO_skewness Shimmer', 'DV_PHO_avg Shimmer', 'PP_MFC_12_kurt', 'PP_MFC_2_kurt', 'PP_MFC_1_kurt', 'PP_MFC_2_median', 'PP_MFC_9_max', 'PP_MFC_9_kurt', 'DV_PHO_avg DDF0', 'PP_F5_MED', 'PP_MFC_10_max', 'PP_MFC_4_median', 'PP_MFC_2_min', 'PP_MFC_8_sd', 'PP_JIT_ppq5', 'PP_MFC_6_skew', 'PP_MFC_4_mean', 'PP_F4_SD', 'PP_MFC_6_sd', 'PP_MFC_7_max', 'PP_F5_SD', 'DV_PHO_avg apq', 'PP_CPP_M2', 'DV_PHO_std DF0', 'PP_MFC_2_mean', 'PP_F5_MEA', 'PP_F2_MEA', 'PP_F2_MED', 'DV_PHO_std apq', 'PP_MFC_6_mean', 'DV_PHO_skewness DDF0', 'PP_MFC_6_kurt', 'PP_F4_MEA', 'PP_JIT_rap', 'PP_DUR_WP', 'PP_MFC_7_sd', 'PP_MFC_2_sd', 'PP_F0_SD_M', 'PP_MFC_10_min', 'PP_MFC_1_skew', 'PP_F3_MEA', 'PP_MFC_12_skew', 'PP_MFC_11_kurt', 'PP_MFC_2_skew', 'PP_MFC_6_min', 'PP_MFC_9_sd', 'DV_PHO_std Jitter', 'PP_JIT_local', 'PP_DUR_WOP', 'PP_MFC_1_median', 'PP_JIT_abs', 'PP_F4_MED', 'DV_PHO_skewness logE', 'PP_MFC_7_kurt', 'PP_MFC_8_max', 'PP_MFC_9_mean', 'PP_MFC_4_kurt', 'PP_F1_MED', 'PP_MFC_1_mean', 'DV_PHO_skewness apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis Shimmer', 'PP_MFC_3_mean', 'PP_F0_SD']
+Mean Squared Errors per target: [9.32947141e+01 1.36228891e+06]
+R² Scores per target: [-0.18321988 -0.23286059]
+
+Now running dataframes_features/per_exercise/VOW_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 24 rows: [10, 22, 23, 35, 36, 50, 51, 116, 117, 126, 127, 138, 142, 143, 144, 145, 146, 147, 148, 149, 178, 179, 180, 181]
+REMOVING NaN COLUMNS     Removed 37 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI', 'PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 24 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 2 features: ['PP_F0', 'target_bnp']
+MUTUAL INFORMATION FILTERING     Removed 19 features: ['DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_F4_SD', 'PP_GF1_MEA', 'PP_GF1_MED', 'PP_GF2_MED', 'PP_GF2_SD', 'PP_GF3_MEA', 'PP_GF3_MED', 'PP_GF5_SD', 'PP_SHI_apq11']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 46 features: ['PP_CPP_SD_M', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF2_MEA', 'PP_GF1_SD', 'DV_PHO_avg DDF0', 'DV_PHO_std Jitter', 'PP_F1_SD', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'DV_PHO_skewness logE', 'PP_F5_SD', 'PP_GF5_MEA', 'DV_PHO_avg apq', 'PP_GF4_MED', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_HNR_M', 'PP_GF3_SD', 'DV_PHO_kurtosis logE', 'PP_F5_MEA', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_ppq5', 'PP_JIT_M_abs', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis Shimmer', 'PP_JIT_M_local', 'PP_GF5_MED']
+Mean Squared Errors per target: [1.72154571e+02 4.34630392e+06]
+R² Scores per target: [-0.82697814 -0.1273428 ]
+
+Now running dataframes_features/per_exercise/VOW_3o.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 27 features: ['DV_PHO_std DDF0', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['PP_SHI_apq11']
+MUTUAL INFORMATION FILTERING     Removed 7 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_skewness Jitter', 'PP_JIT_local', 'PP_JIT_rap']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 56 features: ['PP_CPP_SD_M', 'PP_GF5_MED', 'DV_PHO_std logE', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'PP_SHI_local', 'PP_GF2_MED', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_std Jitter', 'PP_GF5_SD', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_HNR', 'PP_JIT_ppq5', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_GF3_MED', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'PP_JIT_M_rap', 'DV_PHO_avg apq', 'PP_CPP_M2', 'PP_GF4_MED', 'PP_GF1_MED', 'DV_PHO_std DF0', 'PP_HNR_M', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'DV_PHO_skewness apq', 'DV_PHO_kurtosis logE', 'PP_GF2_SD', 'DV_PHO_std ppq', 'DV_PHO_kurtosis ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [1.16043634e+02 4.20753288e+06]
+R² Scores per target: [ 0.02028099 -0.02294708]
+
+Now running dataframes_features/per_exercise/VOW_1i.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 3 rows: [26, 28, 29]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 27 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 24 features: ['DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness Jitter', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std ppq', 'PP_F0_SD', 'PP_F1_MED', 'PP_F3_SD', 'PP_GF1_MEA', 'PP_GF1_MED', 'PP_GF2_SD', 'PP_GF3_MEA', 'PP_GF3_MED', 'PP_GF3_SD', 'PP_GF5_MEA', 'PP_GF5_SD', 'PP_JIT_M_abs', 'PP_SHI_local']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 40 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_F0_SD_M', 'PP_GF2_MED', 'DV_PHO_avg Jitter', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_avg DDF0', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'DV_PHO_avg apq', 'PP_SHI_apq11', 'PP_GF4_MED', 'DV_PHO_std DF0', 'PP_HNR_M', 'DV_PHO_avg ppq', 'DV_PHO_skewness apq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_skewness Shimmer', 'PP_F2_MED', 'PP_JIT_M_ppq5', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'DV_PHO_std DDF0', 'PP_JIT_M_local']
+Mean Squared Errors per target: [1.28844330e+02 5.45285724e+06]
+R² Scores per target: [-0.06052233 -0.04613255]
+
+Now running dataframes_features/per_exercise/VOW_1o.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 22 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F5_MEA', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['PP_GF1_SD']
+MUTUAL INFORMATION FILTERING     Removed 15 features: ['DV_PHO_kurtosis apq', 'DV_PHO_skewness DF0', 'DV_PHO_skewness apq', 'PP_F0_SD', 'PP_F4_SD', 'PP_GF2_MEA', 'PP_GF2_SD', 'PP_GF4_SD', 'PP_GF5_MEA', 'PP_GF5_MED', 'PP_GF5_SD', 'PP_HNR', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 53 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'DV_PHO_avg Jitter', 'PP_GF2_MED', 'PP_GF3_MEA', 'PP_F0', 'DV_PHO_avg DDF0', 'DV_PHO_std Jitter', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_LHR', 'PP_SHI_M_local', 'PP_GF3_MED', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'PP_SHI_apq11', 'DV_PHO_kurtosis DF0', 'PP_JIT_M_rap', 'PP_SHI_M_apq3', 'PP_GF4_MED', 'PP_GF1_MED', 'PP_SHI_M_apq5', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_HNR_M', 'PP_GF3_SD', 'DV_PHO_kurtosis logE', 'DV_PHO_std ppq', 'DV_PHO_kurtosis ppq', 'DV_PHO_kurtosis DDF0', 'PP_JIT_M_ppq5', 'PP_F2_MED', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_abs', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local']
+Mean Squared Errors per target: [1.64243154e+02 4.16882440e+06]
+R² Scores per target: [-0.1866494   0.08967791]
+
+Now running dataframes_features/per_exercise/VOW_3u.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [26]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 29 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['PP_GF1_MEA']
+MUTUAL INFORMATION FILTERING     Removed 13 features: ['DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis logE', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'PP_GF4_MEA', 'PP_HNR', 'PP_HNR_M', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_LHR', 'PP_SHI_M_local']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 48 features: ['PP_CPP_SD_M', 'DV_PHO_std logE', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_avg logE', 'PP_F0_SD_M', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF2_MED', 'PP_GF3_MEA', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_avg DDF0', 'DV_PHO_std Jitter', 'PP_GF5_SD', 'DV_PHO_avg DF0', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'PP_JIT_abs', 'PP_GF4_SD', 'PP_SHI_M_apq11', 'PP_GF3_MED', 'PP_F5_SD', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_SHI_apq11', 'PP_GF4_MED', 'PP_GF1_MED', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'DV_PHO_skewness apq', 'PP_GF2_SD', 'DV_PHO_std ppq', 'DV_PHO_kurtosis ppq', 'DV_PHO_kurtosis DDF0', 'PP_JIT_M_abs', 'DV_PHO_skewness Shimmer', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis apq', 'DV_PHO_std DDF0', 'DV_PHO_skewness DDF0', 'PP_GF5_MEA']
+Mean Squared Errors per target: [1.18447254e+02 1.67607755e+06]
+R² Scores per target: [-1.06430024 -0.80586394]
+
+Now running dataframes_features/per_exercise/VOW_3e.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 37 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI', 'PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 29 features: ['DV_PHO_std DDF0', 'DV_PHO_std Jitter', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['DV_PHO_kurtosis ppq']
+MUTUAL INFORMATION FILTERING     Removed 17 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std ppq', 'PP_F0_SD', 'PP_GF3_SD', 'PP_HNR_M', 'PP_LHR', 'PP_SHI_M_local']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 43 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_GF2_MED', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'PP_JIT_local', 'PP_GF5_SD', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_GF4_SD', 'PP_GF3_MED', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_avg apq', 'PP_SHI_apq11', 'PP_GF4_MED', 'PP_GF1_MED', 'PP_SHI_M_apq5', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis logE', 'PP_GF2_SD', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_SHI_apq5', 'DV_PHO_kurtosis apq', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [6.19211740e+01 1.23766904e+06]
+R² Scores per target: [ 0.04041572 -0.02066229]
+
+Now running dataframes_features/per_exercise/SPN_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 11 features: ['PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_local', 'PP_SHI_M_localdb']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 15 features: ['DV_PHO_kurtosis DF0', 'DV_PHO_std DDF0', 'PP_F0_M', 'PP_JIT_ddp', 'PP_MFC_10_median', 'PP_MFC_11_median', 'PP_MFC_12_median', 'PP_MFC_2_median', 'PP_MFC_3_median', 'PP_MFC_5_median', 'PP_MFC_6_median', 'PP_MFC_8_median', 'PP_MFC_9_median', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 27 features: ['DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness logE', 'PP_CPP_SD_M', 'PP_F1_SD', 'PP_MFC_11_kurt', 'PP_MFC_12_mean', 'PP_MFC_12_skew', 'PP_MFC_1_mean', 'PP_MFC_1_median', 'PP_MFC_1_min', 'PP_MFC_3_min', 'PP_MFC_4_mean', 'PP_MFC_4_sd', 'PP_MFC_5_sd', 'PP_MFC_6_max', 'PP_MFC_6_min', 'PP_MFC_7_mean', 'PP_MFC_7_median', 'PP_MFC_8_kurt', 'PP_MFC_9_max', 'PP_MFC_9_min', 'PP_MFC_9_sd', 'PP_SHI_apq3', 'PP_SHI_apq5']
+LASSO & RFE     Removed 5 features: ['DV_PHO_avg logE', 'PP_MFC_11_max', 'PP_MFC_2_mean', 'PP_MFC_2_min', 'PP_MFC_8_mean']
+FINAL FEATURE COUNT     Selected 100 features: ['PP_SHI_local', 'PP_MFC_10_skew', 'DV_PHO_avg Jitter', 'DV_PHO_kurtosis apq', 'PP_MFC_5_max', 'PP_MFC_1_max', 'PP_F2_SD', 'PP_MFC_4_min', 'PP_F1_MEA', 'PP_MFC_10_sd', 'PP_MFC_4_max', 'DV_PHO_avg ppq', 'PP_F3_SD', 'DV_PHO_std ppq', 'PP_MFC_10_mean', 'PP_MFC_5_kurt', 'PP_MFC_3_kurt', 'PP_MFC_3_skew', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'PP_MFC_12_sd', 'PP_MFC_10_kurt', 'PP_MFC_12_min', 'PP_MFC_4_skew', 'PP_F0', 'PP_F3_MED', 'DV_PHO_avg DF0', 'PP_MFC_1_sd', 'DV_PHO_skewness DF0', 'PP_MFC_7_min', 'DV_PHO_skewness ppq', 'PP_MFC_5_min', 'PP_MFC_8_min', 'PP_SHI_apq11', 'PP_MFC_3_sd', 'PP_MFC_5_skew', 'DV_PHO_skewness Shimmer', 'PP_MFC_3_max', 'DV_PHO_avg Shimmer', 'PP_MFC_11_mean', 'PP_MFC_12_kurt', 'PP_MFC_2_kurt', 'DV_PHO_std logE', 'PP_MFC_1_kurt', 'PP_MFC_8_skew', 'PP_MFC_9_kurt', 'DV_PHO_avg DDF0', 'PP_MFC_9_skew', 'PP_MFC_11_skew', 'PP_F5_MED', 'PP_MFC_10_max', 'PP_MFC_4_median', 'PP_CPP_M', 'PP_MFC_5_mean', 'PP_MFC_8_sd', 'PP_JIT_ppq5', 'PP_MFC_6_skew', 'PP_F4_SD', 'PP_MFC_6_sd', 'PP_MFC_7_max', 'PP_F5_SD', 'PP_MFC_11_sd', 'DV_PHO_avg apq', 'PP_CPP_M2', 'DV_PHO_std DF0', 'PP_F5_MEA', 'PP_F2_MEA', 'PP_F2_MED', 'DV_PHO_std apq', 'PP_MFC_6_mean', 'PP_MFC_6_kurt', 'PP_F4_MEA', 'PP_JIT_rap', 'PP_MFC_7_sd', 'PP_DUR_WP', 'PP_MFC_2_sd', 'PP_F0_SD_M', 'PP_MFC_1_skew', 'PP_MFC_10_min', 'PP_F3_MEA', 'PP_MFC_2_skew', 'DV_PHO_std Jitter', 'PP_JIT_local', 'PP_DUR_WOP', 'PP_MFC_12_max', 'PP_JIT_abs', 'PP_F4_MED', 'PP_MFC_7_skew', 'DV_PHO_kurtosis Jitter', 'PP_MFC_7_kurt', 'PP_MFC_11_min', 'PP_MFC_8_max', 'PP_MFC_9_mean', 'PP_F1_MED', 'PP_MFC_4_kurt', 'DV_PHO_skewness apq', 'PP_MFC_2_max', 'DV_PHO_kurtosis Shimmer', 'PP_MFC_3_mean', 'PP_F0_SD']
+Mean Squared Errors per target: [1.12729598e+02 1.43892869e+06]
+R² Scores per target: [-0.4297048  -0.30221898]
+
+Now running dataframes_features/per_exercise/VOW_2e.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 5 rows: [3, 9, 25, 26, 27]
+REMOVING NaN COLUMNS     Removed 37 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI', 'PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 31 features: ['DV_PHO_kurtosis ppq', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_GF1_MED', 'PP_GF2_MED', 'PP_GF4_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 12 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_GF2_SD', 'PP_GF3_MEA', 'PP_GF3_MED']
+LASSO & RFE     Removed 2 features: ['PP_JIT_M_ppq5', 'PP_SHI_M_local']
+FINAL FEATURE COUNT     Selected 45 features: ['PP_CPP_SD_M', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_F0_SD_M', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'PP_F2_SD', 'DV_PHO_std Jitter', 'PP_F1_SD', 'PP_JIT_local', 'PP_GF5_SD', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_HNR', 'PP_JIT_ppq5', 'PP_LHR', 'PP_F4_SD', 'PP_GF4_SD', 'DV_PHO_skewness logE', 'PP_GF5_MEA', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis DF0', 'PP_SHI_apq11', 'PP_SHI_M_apq5', 'DV_PHO_std DF0', 'PP_HNR_M', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'DV_PHO_skewness apq', 'DV_PHO_kurtosis logE', 'PP_JIT_M_abs', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis apq', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MED']
+Mean Squared Errors per target: [1.23562004e+02 1.14548790e+06]
+R² Scores per target: [-0.04085083  0.00808415]
+
+Now running dataframes_features/per_exercise/VOW_3a.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 32 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F5_MEA', 'PP_F5_MED', 'PP_GF3_MED', 'PP_GF4_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 17 features: ['DV_PHO_avg DDF0', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'DV_PHO_std logE', 'PP_GF1_MEA', 'PP_GF1_MED', 'PP_GF2_SD', 'PP_HNR', 'PP_HNR_M', 'PP_SHI_M_apq11', 'PP_SHI_M_local']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 42 features: ['PP_JIT_rap', 'PP_CPP_SD_M', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_F0_SD_M', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF2_MED', 'PP_GF3_MEA', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_std Jitter', 'PP_JIT_local', 'PP_GF5_SD', 'DV_PHO_avg DF0', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'PP_JIT_abs', 'PP_LHR', 'PP_F4_SD', 'PP_GF4_SD', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_avg apq', 'PP_SHI_apq11', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'DV_PHO_kurtosis logE', 'DV_PHO_std ppq', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_abs', 'PP_SHI_apq3', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [1.77256780e+02 3.91470816e+06]
+R² Scores per target: [-0.89528147 -0.03768321]
+
+Now running dataframes_features/per_exercise/VOW_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 6 rows: [28, 39, 128, 140, 142, 143]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 28 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 2 features: ['DV_PHO_kurtosis logE', 'target_bnp']
+MUTUAL INFORMATION FILTERING     Removed 14 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'PP_F1_SD', 'PP_F5_SD', 'PP_GF1_MEA', 'PP_GF1_MED', 'PP_GF3_MEA', 'PP_GF3_MED', 'PP_GF5_MEA', 'PP_GF5_SD', 'PP_JIT_ppq5']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 48 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF2_MED', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_avg DDF0', 'DV_PHO_std Jitter', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'PP_JIT_abs', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_SHI_apq11', 'PP_GF4_MED', 'PP_SHI_M_apq5', 'DV_PHO_std DF0', 'PP_HNR_M', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'PP_GF2_SD', 'DV_PHO_std ppq', 'DV_PHO_kurtosis DDF0', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'DV_PHO_skewness Shimmer', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis apq', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local']
+Mean Squared Errors per target: [1.02334742e+02 4.02927273e+06]
+R² Scores per target: [-0.45158708 -0.09730407]
+
+Now running dataframes_features/per_exercise/VOW_1u.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [29]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 27 features: ['PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 18 features: ['DV_PHO_avg DF0', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std logE', 'PP_F0_SD_M', 'PP_GF1_SD', 'PP_GF5_SD', 'PP_HNR', 'PP_HNR_M', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_SHI_apq11']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 46 features: ['PP_CPP_SD_M', 'DV_PHO_skewness Jitter', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_GF2_MED', 'PP_GF2_MEA', 'DV_PHO_kurtosis apq', 'PP_F0', 'DV_PHO_avg DDF0', 'PP_F2_SD', 'PP_F1_SD', 'PP_JIT_local', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_GF3_MED', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_CPP_M2', 'PP_GF4_MED', 'PP_GF1_MED', 'DV_PHO_avg ppq', 'PP_GF3_SD', 'PP_GF2_SD', 'DV_PHO_std ppq', 'DV_PHO_skewness Shimmer', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'DV_PHO_std DDF0', 'PP_F0_SD', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_skewness DDF0', 'PP_GF5_MEA']
+Mean Squared Errors per target: [1.51050168e+02 6.11907646e+06]
+R² Scores per target: [-0.63459957 -0.21483327]
+
+Now running dataframes_features/per_exercise/VOW_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 5 rows: [52, 114, 146, 150, 152]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 30 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MED', 'PP_GF2_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 4 features: ['PP_CPP_M', 'PP_GF1_MEA', 'PP_GF1_MED', 'target_bnp']
+MUTUAL INFORMATION FILTERING     Removed 8 features: ['DV_PHO_avg DDF0', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis logE', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'PP_GF2_MEA']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 50 features: ['DV_PHO_std logE', 'PP_CPP_SD_M', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'PP_F0_SD_M', 'DV_PHO_avg logE', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_std Jitter', 'PP_JIT_local', 'PP_GF5_SD', 'DV_PHO_avg DF0', 'PP_LHR_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_GF3_MED', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_SHI_apq11', 'PP_GF4_MED', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_HNR_M', 'PP_GF3_SD', 'DV_PHO_skewness apq', 'PP_GF2_SD', 'DV_PHO_std ppq', 'PP_F5_MEA', 'DV_PHO_kurtosis ppq', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'DV_PHO_avg Shimmer', 'DV_PHO_std apq', 'PP_F0_SD', 'DV_PHO_kurtosis apq', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [8.33553528e+01 3.07772673e+06]
+R² Scores per target: [-0.11474213 -0.00943972]
+
+Now running dataframes_features/per_exercise/VOW_1a.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [5]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 25 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MED', 'PP_GF3_MED', 'PP_GF5_MED', 'PP_HNR_M', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 1 features: ['PP_GF4_MEA']
+MUTUAL INFORMATION FILTERING     Removed 17 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness apq', 'DV_PHO_skewness ppq', 'DV_PHO_std apq', 'PP_CPP_SD_M', 'PP_F0_SD', 'PP_F3_SD', 'PP_GF3_SD', 'PP_GF4_SD', 'PP_GF5_MEA', 'PP_LHR']
+LASSO & RFE     Removed 0 features: []
+FINAL FEATURE COUNT     Selected 48 features: ['DV_PHO_std logE', 'DV_PHO_std Shimmer', 'DV_PHO_avg logE', 'PP_F0_SD_M', 'PP_SHI_local', 'PP_GF2_MED', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'PP_F2_SD', 'DV_PHO_std Jitter', 'PP_F1_SD', 'PP_JIT_local', 'PP_GF5_SD', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_F4_MED', 'PP_SHI_M_apq11', 'PP_SHI_M_local', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'PP_SHI_apq11', 'DV_PHO_kurtosis DF0', 'PP_GF4_MED', 'PP_GF1_MED', 'PP_SHI_M_apq5', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_GF2_SD', 'PP_F5_MEA', 'DV_PHO_std ppq', 'DV_PHO_skewness Shimmer', 'PP_JIT_M_abs', 'PP_JIT_M_ppq5', 'PP_SHI_apq3', 'DV_PHO_avg Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local']
+Mean Squared Errors per target: [1.03264908e+02 8.14736949e+05]
+R² Scores per target: [ 0.00500859 -0.10806365]
+
+Now running dataframes_features/per_exercise/SPN_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 2 rows: [39, 42]
+REMOVING NaN COLUMNS     Removed 3 features: ['PP_JIT_M_ppq5', 'PP_SHI_M_apq11', 'PP_SHI_M_apq5']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 9 features: ['DV_PHO_std DDF0', 'PP_F0_M', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_MFC_11_median', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 28 features: ['DV_PHO_avg Shimmer', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_skewness Jitter', 'DV_PHO_std Jitter', 'PP_F1_SD', 'PP_JIT_ppq5', 'PP_MFC_10_kurt', 'PP_MFC_10_max', 'PP_MFC_10_min', 'PP_MFC_11_kurt', 'PP_MFC_11_min', 'PP_MFC_12_max', 'PP_MFC_12_skew', 'PP_MFC_2_mean', 'PP_MFC_2_median', 'PP_MFC_3_max', 'PP_MFC_3_mean', 'PP_MFC_3_median', 'PP_MFC_3_min', 'PP_MFC_4_kurt', 'PP_MFC_5_median', 'PP_MFC_7_max', 'PP_MFC_8_max', 'PP_MFC_9_min', 'PP_SHI_M_apq3', 'PP_SHI_apq11', 'PP_SHI_apq5']
+LASSO & RFE     Removed 9 features: ['DV_PHO_avg DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis ppq', 'PP_F0_SD', 'PP_F3_MEA', 'PP_JIT_local', 'PP_MFC_11_mean', 'PP_MFC_9_skew', 'PP_SHI_apq3']
+FINAL FEATURE COUNT     Selected 109 features: ['PP_CPP_SD_M', 'PP_SHI_local', 'PP_MFC_10_skew', 'DV_PHO_avg Jitter', 'PP_MFC_5_max', 'PP_MFC_1_max', 'PP_F2_SD', 'PP_MFC_4_min', 'PP_MFC_9_median', 'PP_MFC_10_sd', 'PP_F1_MEA', 'PP_MFC_4_max', 'PP_SHI_M_local', 'PP_MFC_6_median', 'PP_MFC_6_max', 'DV_PHO_avg ppq', 'PP_F3_SD', 'PP_MFC_1_min', 'DV_PHO_std ppq', 'PP_MFC_12_median', 'PP_MFC_10_mean', 'PP_MFC_5_kurt', 'PP_MFC_3_kurt', 'PP_MFC_5_sd', 'PP_MFC_3_skew', 'DV_PHO_std Shimmer', 'PP_MFC_12_sd', 'PP_MFC_12_min', 'PP_MFC_4_skew', 'PP_F0', 'PP_F3_MED', 'PP_MFC_1_sd', 'DV_PHO_skewness DF0', 'PP_MFC_7_min', 'DV_PHO_skewness ppq', 'PP_MFC_5_min', 'PP_MFC_8_min', 'PP_MFC_3_sd', 'PP_MFC_12_mean', 'PP_MFC_7_mean', 'PP_MFC_5_skew', 'DV_PHO_skewness Shimmer', 'PP_MFC_12_kurt', 'PP_MFC_2_kurt', 'PP_MFC_8_mean', 'DV_PHO_std logE', 'PP_MFC_1_kurt', 'DV_PHO_avg logE', 'PP_MFC_8_skew', 'PP_MFC_9_max', 'DV_PHO_avg DDF0', 'PP_MFC_9_kurt', 'PP_MFC_4_sd', 'PP_MFC_11_skew', 'PP_F5_MED', 'PP_MFC_4_median', 'PP_CPP_M', 'PP_MFC_10_median', 'PP_MFC_2_min', 'PP_MFC_8_sd', 'PP_MFC_5_mean', 'PP_MFC_6_skew', 'PP_MFC_4_mean', 'PP_F4_SD', 'PP_MFC_11_max', 'PP_MFC_8_median', 'PP_MFC_6_sd', 'PP_F5_SD', 'PP_MFC_11_sd', 'PP_JIT_M_rap', 'DV_PHO_avg apq', 'PP_CPP_M2', 'DV_PHO_std DF0', 'PP_F5_MEA', 'PP_F2_MEA', 'PP_F2_MED', 'DV_PHO_std apq', 'PP_MFC_6_mean', 'DV_PHO_skewness DDF0', 'PP_MFC_6_kurt', 'PP_F4_MEA', 'PP_JIT_rap', 'PP_DUR_WP', 'PP_MFC_7_sd', 'PP_MFC_2_sd', 'PP_F0_SD_M', 'PP_MFC_1_skew', 'PP_MFC_2_skew', 'PP_MFC_9_sd', 'PP_MFC_6_min', 'PP_DUR_WOP', 'PP_MFC_1_median', 'PP_JIT_abs', 'PP_F4_MED', 'DV_PHO_skewness logE', 'PP_MFC_7_skew', 'PP_MFC_7_kurt', 'PP_MFC_7_median', 'PP_MFC_9_mean', 'PP_F1_MED', 'PP_MFC_8_kurt', 'PP_MFC_1_mean', 'DV_PHO_skewness apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis DDF0', 'PP_JIT_M_abs', 'PP_MFC_2_max', 'DV_PHO_kurtosis apq', 'PP_JIT_M_local']
+Mean Squared Errors per target: [1.21175277e+02 3.89677880e+06]
+R² Scores per target: [-0.74642149 -0.66171599]
+
+Now running dataframes_features/per_exercise/VOW_1e.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [8]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 27 features: ['DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_GF1_MED', 'PP_GF2_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq3', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 0 features: []
+MUTUAL INFORMATION FILTERING     Removed 17 features: ['DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_std DF0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_SD', 'PP_F3_SD', 'PP_GF1_SD', 'PP_GF3_SD', 'PP_GF5_SD']
+LASSO & RFE     Removed 1 features: ['PP_JIT_M_abs']
+FINAL FEATURE COUNT     Selected 46 features: ['PP_CPP_SD_M', 'DV_PHO_std logE', 'DV_PHO_std Shimmer', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_SHI_local', 'DV_PHO_avg Jitter', 'PP_GF3_MEA', 'PP_GF2_MEA', 'PP_F0', 'DV_PHO_avg DDF0', 'PP_F2_SD', 'DV_PHO_std Jitter', 'PP_JIT_local', 'DV_PHO_avg DF0', 'PP_GF1_MEA', 'PP_LHR_M', 'PP_F1_MEA', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_JIT_ppq5', 'PP_HNR', 'PP_GF4_SD', 'PP_LHR', 'PP_SHI_M_local', 'PP_GF3_MED', 'PP_SHI_M_apq11', 'DV_PHO_skewness logE', 'PP_GF5_MEA', 'DV_PHO_avg apq', 'PP_SHI_apq11', 'PP_GF4_MED', 'PP_SHI_M_apq5', 'DV_PHO_avg ppq', 'PP_HNR_M', 'DV_PHO_skewness apq', 'DV_PHO_kurtosis logE', 'PP_GF2_SD', 'PP_JIT_M_ppq5', 'DV_PHO_avg Shimmer', 'PP_SHI_apq5', 'DV_PHO_std apq', 'PP_JIT_M_local', 'PP_GF5_MED']
+Mean Squared Errors per target: [1.25668037e+02 7.13095036e+06]
+R² Scores per target: [-0.06665063 -0.00012637]
+
+Now running dataframes_features/per_exercise/VOW_2u.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 6 rows: [22, 23, 24, 25, 26, 27]
+REMOVING NaN COLUMNS     Removed 36 features: ['DV_GLO_global avg avg H1H2', 'DV_GLO_global avg avg HRF', 'DV_GLO_global avg avg NAQ', 'DV_GLO_global avg avg QOQ', 'DV_GLO_global avg std H1H2', 'DV_GLO_global avg std HRF', 'DV_GLO_global avg std NAQ', 'DV_GLO_global avg std QOQ', 'DV_GLO_global avg var GCI', 'DV_GLO_global kurtosis avg H1H2', 'DV_GLO_global kurtosis avg HRF', 'DV_GLO_global kurtosis avg NAQ', 'DV_GLO_global kurtosis avg QOQ', 'DV_GLO_global kurtosis std H1H2', 'DV_GLO_global kurtosis std HRF', 'DV_GLO_global kurtosis std NAQ', 'DV_GLO_global kurtosis std QOQ', 'DV_GLO_global kurtosis var GCI', 'DV_GLO_global skewness avg H1H2', 'DV_GLO_global skewness avg HRF', 'DV_GLO_global skewness avg NAQ', 'DV_GLO_global skewness avg QOQ', 'DV_GLO_global skewness std H1H2', 'DV_GLO_global skewness std HRF', 'DV_GLO_global skewness std NAQ', 'DV_GLO_global skewness std QOQ', 'DV_GLO_global skewness var GCI', 'DV_GLO_global std avg H1H2', 'DV_GLO_global std avg HRF', 'DV_GLO_global std avg NAQ', 'DV_GLO_global std avg QOQ', 'DV_GLO_global std std H1H2', 'DV_GLO_global std std HRF', 'DV_GLO_global std std NAQ', 'DV_GLO_global std std QOQ', 'DV_GLO_global std var GCI']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 27 features: ['PP_F0_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F5_MED', 'PP_GF2_MED', 'PP_GF3_MED', 'PP_GF5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 2 features: ['PP_GF1_MEA', 'PP_GF2_SD']
+MUTUAL INFORMATION FILTERING     Removed 15 features: ['DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis logE', 'DV_PHO_skewness Shimmer', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_F0_SD_M', 'PP_F3_SD', 'PP_GF3_SD', 'PP_LHR', 'PP_LHR_M', 'PP_SHI_M_apq11', 'PP_SHI_M_apq5', 'PP_SHI_M_local']
+LASSO & RFE     Removed 1 features: ['DV_PHO_std Jitter']
+FINAL FEATURE COUNT     Selected 46 features: ['PP_CPP_SD_M', 'DV_PHO_skewness Jitter', 'PP_GF4_MEA', 'DV_PHO_avg logE', 'PP_SHI_local', 'PP_GF3_MEA', 'PP_GF2_MEA', 'PP_GF1_SD', 'PP_F0', 'DV_PHO_avg DDF0', 'PP_F2_SD', 'PP_F1_SD', 'PP_JIT_local', 'PP_GF5_SD', 'DV_PHO_avg DF0', 'PP_CPP_M', 'DV_PHO_skewness DF0', 'DV_PHO_skewness ppq', 'PP_JIT_abs', 'PP_HNR', 'PP_F4_SD', 'PP_GF4_SD', 'DV_PHO_skewness logE', 'PP_F5_SD', 'DV_PHO_kurtosis Jitter', 'DV_PHO_avg apq', 'DV_PHO_kurtosis DF0', 'PP_CPP_M2', 'PP_GF4_MED', 'PP_GF1_MED', 'DV_PHO_std DF0', 'DV_PHO_avg ppq', 'PP_HNR_M', 'DV_PHO_skewness apq', 'PP_F5_MEA', 'DV_PHO_std ppq', 'DV_PHO_kurtosis ppq', 'DV_PHO_kurtosis DDF0', 'PP_JIT_M_abs', 'DV_PHO_std apq', 'DV_PHO_std DDF0', 'DV_PHO_kurtosis apq', 'PP_F0_SD', 'DV_PHO_skewness DDF0', 'PP_JIT_M_local', 'PP_GF5_MEA']
+Mean Squared Errors per target: [1.51692015e+02 6.18457760e+06]
+R² Scores per target: [-0.01228969 -0.33783846]
+
+Now running dataframes_features/per_participant/1234576_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 14 features: ['DV_PHO_std DDF0', 'DV_PHO_std apq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 59 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234567_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 6 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 28 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234573_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 17 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_F4_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 56 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234577_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 13 features: ['DV_PHO_avg apq', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 59 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234568_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 7 features: ['PP_CPP_M2', 'PP_F2_MED', 'PP_F3_MED', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 27 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234576_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 13 features: ['DV_PHO_kurtosis Shimmer', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_F3_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 59 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_M2', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234569_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 12 features: ['DV_PHO_avg ppq', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F4_MED', 'PP_F5_MED', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 50 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234567_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 10 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 62 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234572_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [1]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 17 features: ['DV_PHO_std DDF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 56 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234573_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 15 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 58 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234578_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [10]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 14 features: ['DV_PHO_std DDF0', 'DV_PHO_std Jitter', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 58 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234575_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [3]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 15 features: ['DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F3_SD', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 57 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DDF0', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234574_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 17 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'DV_PHO_std apq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 55 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234578_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 7 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 27 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234575_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [3]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 12 features: ['DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 61 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234571_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [20]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 6 features: ['PP_CPP_M2', 'PP_F2_MED', 'PP_F3_MED', 'PP_JIT_ddp', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 25 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234571_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [10]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 18 features: ['DV_PHO_avg ppq', 'DV_PHO_std DDF0', 'DV_PHO_std apq', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_F3_MED', 'PP_F4_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 55 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234576_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [0]
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_SHI_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 10 features: ['PP_CPP_M2', 'PP_F1_MED', 'PP_F2_MED', 'PP_F3_MED', 'PP_F4_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 29 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_local', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234578_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 22 features: ['DV_PHO_avg ppq', 'DV_PHO_std DDF0', 'DV_PHO_std Jitter', 'DV_PHO_std apq', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_SD', 'PP_F2_MED', 'PP_F3_MED', 'PP_F4_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 51 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234574_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [7]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 19 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'DV_PHO_std apq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F2_SD', 'PP_F5_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 53 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_local', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234569_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 8 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F4_MED', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 26 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234568_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [16]
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_F0_SD_M']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 9 features: ['PP_CPP_M2', 'PP_F2_MED', 'PP_F3_MED', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 23 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_local', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234569_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [4]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 16 features: ['DV_PHO_avg ppq', 'DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 56 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234574_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 19 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_F3_MED', 'PP_F4_MED', 'PP_F5_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 53 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234572_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 14 features: ['DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 58 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234573_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 16 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'DV_PHO_std apq', 'PP_CPP_M2', 'PP_F2_MED', 'PP_F2_SD', 'PP_F4_MED', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 57 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234577_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 16 features: ['DV_PHO_avg apq', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_local', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 57 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234570_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 2 features: ['PP_JIT_M_ppq5', 'PP_SHI_M_apq5']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 22 features: ['DV_PHO_avg Jitter', 'DV_PHO_avg apq', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std apq', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F4_MED', 'PP_F5_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 48 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234572_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 16 features: ['DV_PHO_kurtosis Shimmer', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_F4_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 56 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234567_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 9 features: ['PP_CPP_M2', 'PP_F5_MED', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 63 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DDF0', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_M', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234568_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [20]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 8 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 26 features: ['PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234575_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [1]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 12 features: ['PP_CPP_M2', 'PP_F0_M', 'PP_F1_MED', 'PP_F2_MED', 'PP_F4_MED', 'PP_JIT_M_ddp', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 60 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DDF0', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234577_1.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 17 features: ['DV_PHO_avg apq', 'DV_PHO_std DDF0', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_apq5', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 56 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234571_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [22]
+REMOVING NaN COLUMNS     Removed 1 features: ['PP_SHI_M_apq11']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 13 features: ['DV_PHO_kurtosis Jitter', 'DV_PHO_std DDF0', 'PP_CPP_M2', 'PP_F0_M', 'PP_F2_MED', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 59 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg apq', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std Shimmer', 'DV_PHO_std apq', 'DV_PHO_std logE', 'DV_PHO_std ppq', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_abs', 'PP_JIT_M_local', 'PP_JIT_M_ppq5', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234570_3.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 1 rows: [5]
+REMOVING NaN COLUMNS     Removed 0 features: []
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 19 features: ['DV_PHO_avg apq', 'DV_PHO_std DDF0', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std apq', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_M_ppq5', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 54 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PHO_avg ppq', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_MED', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_SHI_M_apq11', 'PP_SHI_M_apq3', 'PP_SHI_M_apq5', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...
+
+Now running dataframes_features/per_participant/1234570_2.csv with
+Test set size: 0.15
+Correlation threshold: 0.05
+Mutual information threshold: 0.01
+Co-correlation threshold: 0.99
+Features to select: 10
+REMOVING NaN ROWS     Removed 0 rows: []
+REMOVING NaN COLUMNS     Removed 2 features: ['PP_JIT_M_ppq5', 'PP_SHI_M_apq5']
+VARIANCE FILTERING     Removed 0 features: []
+CO-CORRELATION FILTERING     Removed 18 features: ['DV_PHO_avg apq', 'DV_PHO_avg ppq', 'DV_PHO_std DDF0', 'DV_PHO_std DF0', 'DV_PHO_std Jitter', 'DV_PHO_std apq', 'DV_PHO_std ppq', 'PP_CPP_M2', 'PP_F0_M', 'PP_F5_MED', 'PP_JIT_M_abs', 'PP_JIT_M_ddp', 'PP_JIT_abs', 'PP_JIT_ddp', 'PP_SHI_M_dda', 'PP_SHI_M_localdb', 'PP_SHI_dda', 'PP_SHI_localdb']
+CORRELATION SCORE THRESHOLDING     Removed 52 features: ['DV_PHO_avg DDF0', 'DV_PHO_avg DF0', 'DV_PHO_avg Jitter', 'DV_PHO_avg Shimmer', 'DV_PHO_avg logE', 'DV_PHO_kurtosis DDF0', 'DV_PHO_kurtosis DF0', 'DV_PHO_kurtosis Jitter', 'DV_PHO_kurtosis Shimmer', 'DV_PHO_kurtosis apq', 'DV_PHO_kurtosis logE', 'DV_PHO_kurtosis ppq', 'DV_PHO_skewness DDF0', 'DV_PHO_skewness DF0', 'DV_PHO_skewness Jitter', 'DV_PHO_skewness Shimmer', 'DV_PHO_skewness apq', 'DV_PHO_skewness logE', 'DV_PHO_skewness ppq', 'DV_PHO_std Shimmer', 'DV_PHO_std logE', 'PP_CPP_M', 'PP_CPP_SD_M', 'PP_F0', 'PP_F0_SD', 'PP_F0_SD_M', 'PP_F1_MEA', 'PP_F1_MED', 'PP_F1_SD', 'PP_F2_MEA', 'PP_F2_MED', 'PP_F2_SD', 'PP_F3_MEA', 'PP_F3_MED', 'PP_F3_SD', 'PP_F4_MEA', 'PP_F4_MED', 'PP_F4_SD', 'PP_F5_MEA', 'PP_F5_SD', 'PP_JIT_M_local', 'PP_JIT_M_rap', 'PP_JIT_local', 'PP_JIT_ppq5', 'PP_JIT_rap', 'PP_SHI_M_apq3', 'PP_SHI_M_local', 'PP_SHI_apq11', 'PP_SHI_apq3', 'PP_SHI_apq5', 'PP_SHI_local', 'target_bnp']
+All features were deminished at this step...

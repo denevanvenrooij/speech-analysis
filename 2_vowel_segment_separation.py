@@ -2,9 +2,9 @@ from paths import *
 import parselmouth
 import re
 import sys
-import datetime
+from datetime import datetime
 
-log_filename = f"2_vss_{datetime.now().strftime('%y-%m-%d_%H-%M-%S')}.log"
+log_filename = f"logs/2_vss_{datetime.now().strftime('%y%m%d_%H%M%S')}.log"
 logfile = open(log_filename, "w")
 sys.stdout = logfile
 sys.stderr = logfile
