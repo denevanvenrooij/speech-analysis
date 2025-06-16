@@ -1,8 +1,6 @@
 from paths import *
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-from itertools import combinations
 
 def drop_nan(feature_df):
     while feature_df.isna().any().any():
@@ -18,35 +16,6 @@ def drop_nan(feature_df):
 
 def zscore_normalize(df, feature_cols):
     return df.copy().assign(**{col: (df[col] - df[col].mean()) / df[col].std() for col in feature_cols})
-
-def bland_altman_stats(x, y):
-    mean = (x + y) / 2
-    diff = x - y
-    bias = np.mean(diff)
-    loa = 1.96 * np.std(diff)
-    return mean, diff, bias, bias - loa, bias + loa
-
-def bland_altman_plot(mean, diff, bias, lower, upper, label, ax):
-    ax.scatter(mean, diff, alpha=0.5)
-    ax.axhline(bias, color='red', linestyle='--', label='Bias')
-    ax.axhline(lower, color='gray', linestyle='--', label='LoA ±1.96 SD')
-    ax.axhline(upper, color='gray', linestyle='--')
-    ax.set_title(f'Bland-Altman: {label}')
-    ax.set_xlabel('Mean of Pair')
-    ax.set_ylabel('Difference of Pair')
-    ax.legend()
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from itertools import combinations
-
-def zscore_normalize(df, feature_cols):
-    # Normalize across all data for each feature
-    return df.copy().assign(**{
-        col: (df[col] - df[col].mean()) / df[col].std()
-        for col in feature_cols
-    })
 
 def bland_altman_stats(x, y):
     mean = (x + y) / 2
@@ -93,14 +62,9 @@ def compute_snr_per_feature(df, feature_cols, mic_col='mic', subject_col='subjec
         snr_dict[mic] = {}
         
         for feature in feature_cols:
-            # Group by subject
             grouped = mic_df.groupby(subject_col)[feature]
-            
-            # Mean per subject (signal)
             subject_means = grouped.mean()
             signal_var = subject_means.var()
-            
-            # Variance within subject (noise)
             within_var = grouped.apply(lambda x: x.var()).mean()
             
             snr = signal_var / within_var if within_var > 0 else float('inf')
