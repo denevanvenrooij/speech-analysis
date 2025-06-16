@@ -3,7 +3,6 @@ import json
 from pathlib import Path
 from paths import *
 
-
 patient_file = Path(__file__).parent / 'patient_ids.json'
 
 if patient_file.exists():
@@ -54,3 +53,6 @@ if __name__ == '__main__':
     predictions_dir.mkdir(exist_ok=True, parents=True)
     plots_dir.mkdir(exist_ok=True, parents=True)
     logs_dir.mkdir(exist_ok=True, parents=True)
+    
+    for subfolder in non_VOW_exercises:
+        (segments_dir / subfolder).rmdir() if (segments_dir / subfolder).exists() else None

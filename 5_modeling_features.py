@@ -2,14 +2,12 @@ from paths import *
 from pathlib import Path
 import pandas as pd
 import numpy as np
-from itertools import product
 import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Lasso, LinearRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVR
-import lightgbm as lgb
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.multioutput import MultiOutputRegressor
+from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.feature_selection import RFE, mutual_info_regression
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import VarianceThreshold
@@ -18,7 +16,13 @@ from sklearn.exceptions import ConvergenceWarning
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=RuntimeWarning)
+import sys
+import datetime
 
+log_filename = f"5_mf_{datetime.now().strftime('%y-%m-%d_%H-%M-%S')}.log"
+logfile = open(log_filename, "w")
+sys.stdout = logfile
+sys.stderr = logfile
 
 def variance_filtering(X, threshold=0.5):
     selector = VarianceThreshold(threshold=threshold) 
@@ -101,7 +105,7 @@ def lasso_rfe(X_train, y_train, n_features_to_select):
     ## LASSO per target
     for target in target_columns:
         y_target = y_train[target].values
-        lasso = Lasso(alphas=0.05, random_state=42).fit(X_train, y_target)
+        lasso = Lasso(alpha=0.05, random_state=42).fit(X_train, y_target)
         non_zero = lasso.coef_ != 0
         features = X_train.columns[non_zero]
         selected_features.update(features)
@@ -117,7 +121,7 @@ def lasso_rfe(X_train, y_train, n_features_to_select):
     return list(selected_features)
 
 
-def feature_selection(df, target, correlation_types, test_set_size, correlation_threshold, mi_threshold, cc_threshold, n_features_to_select, step):
+def feature_selection(df, correlation_types, test_set_size, correlation_threshold, mi_threshold, cc_threshold, n_features_to_select, step):
     df_path = Path(*df.parts[1:]) ## removes the first part of the path for storage
     print()
     print('Processing', df)
@@ -229,53 +233,28 @@ def feature_selection(df, target, correlation_types, test_set_size, correlation_
         return None, None, None, None, None
     
     X_train = X_train_0[selected_features]    
-    y_test = test_df[target]
+    y_test = test_df[target_columns]
     X_test = test_df[selected_features]
     
     return X_train, y_train, X_test, y_test, selected_features
 
 
-def model_training(X_train, y_train, X_test, y_test, selected_features, model_type='rf'):
-    model_name = f"{model_type}_{exercise}_{target}" ## the naming convention needs to be determined
-    
+def model_training(X_train, y_train, X_test, y_test, selected_features, model_path, model_type='rf'):
     if model_type == 'rf':
-        model = RandomForestClassifier(n_estimators=100, random_state=42)
+        base_model = RandomForestRegressor(n_estimators=100, random_state=42)
+        model = MultiOutputRegressor(base_model)
         model.fit(X_train[selected_features], y_train)
-        joblib.dump(model, f'models/{model_name}.pkl') 
+        joblib.dump(model, model_path)
 
         y_pred = model.predict(X_test[selected_features])
-    
-    elif model_type == 'svm':
-        model = SVR(kernel='rbf', random_state=42)
-        model.fit(X_train, y_train)
-        joblib.dump(model, f'models/{model_name}.pkl')
-        
-        y_pred = model.predict(X_test)
-        
-    elif model_type == 'gbm':
-        train_data = lgb.Dataset(X_train, label=y_train)
-        test_data = lgb.Dataset(X_test, label=y_test, reference=train_data)
 
-        params = {
-            'objective': 'binary',  # Change this to 'multiclass' if you have more than two classes
-            'metric': 'binary_error',  # Change this to 'multi_logloss' for multiclass
-            'boosting_type': 'gbdt',
-            'num_leaves': 31,
-            'learning_rate': 0.05,
-            'feature_fraction': 0.9,
-        }
+    mse = mean_squared_error(y_test, y_pred, multioutput='raw_values')
+    r2 = r2_score(y_test, y_pred, multioutput='raw_values')
 
-        model = lgb.train(params, train_data, valid_sets=[test_data], num_boost_round=1000, early_stopping_rounds=100)
-        joblib.dump(model, f'models/{model_name}.pkl')
+    print(f"Mean Squared Errors per output: {mse}")
+    print(f"R² Scores per output: {r2}")
 
-        y_pred = model.predict(X_test, num_iteration=model.best_iteration)
-        y_pred = (y_pred > 0.5).astype(int)    
-        
-    accuracy = accuracy_score(y_test, y_pred)
-    class_report = classification_report(y_test, y_pred)
-            
-    return accuracy, class_report
-
+    return mse, r2
 
 if __name__ == '__main__':
     pe_files = [f for f in (df_features_dir / pe).iterdir() if f.is_file()]
@@ -292,9 +271,14 @@ if __name__ == '__main__':
 
     correlation_types = list(correlation_dict.keys())
 
-    for df, target in list(product(df_list, target_columns)):
+    for df_path in df_list:
+        df = pd.read_csv(df_path)
+
+        X = df.drop(columns=target_columns)
+        y = df[target_columns]
+
         X_train, y_train, X_test, y_test, selected_features = feature_selection(
-            df, target, correlation_types,
+            df, correlation_types,
             test_set_size=0.15, 
             correlation_threshold=0.2, ## 0.2 
             mi_threshold=0.05, ## 0.05
@@ -303,8 +287,7 @@ if __name__ == '__main__':
             step=1,
         )
         
-        # accuracy, class_report = model_training(X_train, y_train, X_test, y_test, selected_features, model_type='rf')
+        for path in df_list:
+            model_path = models_dir / f"rf_{path.stem}.pkl"
         
-        
-
- 
+        mse, r2 = model_training(X_train, y_train, X_test, y_test, selected_features, model_path, model_type='rf')

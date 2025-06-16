@@ -2,7 +2,6 @@ from paths import *
 import pandas as pd
 import numpy as np
 
-
 def create_interpatient_df(mic): ## creates df with all patient data for every voice exercise separately, except VOW (pe)
     for exercise in non_VOW_exercises:
         pattern = f'*_{exercise}_{mic}.csv'

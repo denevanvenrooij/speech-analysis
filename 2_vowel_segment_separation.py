@@ -2,13 +2,12 @@ from paths import *
 import parselmouth
 import re
 import sys
-from datetime import datetime
+import datetime
 
-timestamp = datetime.now().strftime("%y%m%d_%H%M%S")
-log_file = logs_dir / f"vowel_separation_{timestamp}.html"
-sys.stdout = log_file.open("w", encoding="utf-8")
-sys.stderr = sys.stdout
-print("<html><body><pre>")
+log_filename = f"2_vss_{datetime.now().strftime('%y-%m-%d_%H-%M-%S')}.log"
+logfile = open(log_filename, "w")
+sys.stdout = logfile
+sys.stderr = logfile
 
 vowel_dict = {i+1: vowel for i, vowel in enumerate(vowels)}
 
@@ -24,7 +23,7 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
     non_silent_mask = intensity_values > silence_threshold
 
     print(" ".join(
-        f"<b>({time:.2f}s {int(intensity)}dB)</b>" if intensity >= silence_threshold
+        f"({time:.2f}s {int(intensity)}dB)" if intensity >= silence_threshold
         else f"({time:.2f}s {int(intensity)}dB)"
         for time, intensity in zip(time_stamps[:900], intensity_values[:900])))
     
@@ -65,9 +64,6 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
 
 
 if __name__=="__main__":
-    for subfolder in non_VOW_exercises:
-        (segments_dir / subfolder).rmdir()
-    
     processed_files = [file for file in processed_dir.rglob('*') if file.is_file()]
     segment_files = [file for file in segments_dir.rglob('*') if file.is_file()]
 
@@ -83,5 +79,3 @@ if __name__=="__main__":
             setting = parts[3] 
             audio_path = processed_dir / 'VOW' / patient_id / f'{patient_id}_{admission_day}_VOW_{setting}_pre.wav'
             save_vowels_separately(audio_file=str(audio_path), patient_id=patient_id, silence_threshold=50)
-    print("</pre></body></html>")
-    
