@@ -1,6 +1,8 @@
 from paths import *
 import pandas as pd
+from statsmodels.nonparametric.smoothers_lowess import lowess
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def drop_nan(feature_df):
     while feature_df.isna().any().any():
@@ -17,68 +19,52 @@ def drop_nan(feature_df):
 def zscore_normalize(df, feature_cols):
     return df.copy().assign(**{col: (df[col] - df[col].mean()) / df[col].std() for col in feature_cols})
 
-def bland_altman_stats(x, y):
-    mean = (x + y) / 2
-    diff = x - y
-    bias = diff.mean()
-    loa = 1.96 * diff.std()
-    return mean, diff, bias, bias - loa, bias + loa
-
-def bland_altman_plot(mean, diff, bias, lower, upper, label, ax):
-    ax.scatter(mean, diff, alpha=0.5, s=10)
-    ax.axhline(bias, color='red', linestyle='--', label='Bias')
-    ax.axhline(lower, color='gray', linestyle='--', label='LoA ±1.96 SD')
-    ax.axhline(upper, color='gray', linestyle='--')
-    ax.set_title(label)
-    ax.set_xlabel('Mean of Pair')
-    ax.set_ylabel('Difference')
-    ax.legend()
-
-def plot_all_pairs(df, feature_cols, exercise):
-    mic_pairs = [(1, 2), (2, 3), (1, 3)]
-    normalized_df = zscore_normalize(df, feature_cols)
-    for feature in feature_cols:
-        fig, axes = plt.subplots(1, len(mic_pairs), figsize=(6 * len(mic_pairs), 5))
-        if len(mic_pairs) == 1:
-            axes = [axes]
-        for (mic1, mic2), ax in zip(mic_pairs, axes):
-            x = normalized_df[normalized_df['mic'] == mic1][feature].values
-            y = normalized_df[normalized_df['mic'] == mic2][feature].values
-            min_len = min(len(x), len(y))
-            x = x[:min_len]
-            y = y[:min_len]
-            mean, diff, bias, lower, upper = bland_altman_stats(x, y)
-            bland_altman_plot(mean, diff, bias, lower, upper, f'{feature}: Mic {mic1} & {mic2}', ax)
-        plt.tight_layout()
-        plt.savefig(plots_dir / f'bland_altman_{exercise}_{mic1}_{mic2}.png')
-        plt.show()
+def feature_distance_plot(id_df, id, exercise, x_value, y_value, x_std):
+    plt.figure(figsize=(12, 5))
     
+    offset_map = {2: -0.25, 3: 0.25}
+    color_map = {2: 'blue', 3: 'green'}
+    exercise_mapped = exercise_map.get(exercise, exercise)
     
-def compute_snr_per_feature(df, feature_cols, mic_col='mic', subject_col='subject'):
-    snr_dict = {}
+    for mic, color in color_map.items():
+        mic_mapped = microphone_map.get(mic, mic)
+        mic_df = id_df[id_df['mic'] == mic].copy()
+        x = mic_df[x_value] + offset_map[mic]
+        y = mic_df[y_value]
+        plt.vlines(x, ymin=0, ymax=y, colors=color, alpha=0.35, linewidth=2.5)
+        plt.plot(x, y, 'o', color=color, alpha=0.8, label=mic_mapped)
+
+        if len(x) > 1:
+            smoothed = lowess(y, x, frac=0.1, return_sorted=True)
+            plt.plot(smoothed[:, 0], smoothed[:, 1], linestyle='--', color=color, linewidth=2)
     
-    for mic in df[mic_col].unique():
-        mic_df = df[df[mic_col] == mic]
-        snr_dict[mic] = {}
-        
-        for feature in feature_cols:
-            grouped = mic_df.groupby(subject_col)[feature]
-            subject_means = grouped.mean()
-            signal_var = subject_means.var()
-            within_var = grouped.apply(lambda x: x.var()).mean()
-            
-            snr = signal_var / within_var if within_var > 0 else float('inf')
-            snr_dict[mic][feature] = snr
-
-    return pd.DataFrame(snr_dict)
-
+    y_min = min(0, id_df[y_value].min())
+    y_max = max(0, id_df[y_value].max())
+    plt.ylim(y_min, y_max)
+    
+    mic1_df = id_df[id_df['mic'] == 1]
+    plt.fill_between(mic1_df[x_value], mic1_df[y_value] - mic1_df[x_std], mic1_df[y_value] + mic1_df[x_std], color='gray', alpha=0.1, label='Mic 1 Variability')
+    
+    plt.axhline(0, color='gray', linestyle='-', linewidth=1)
+    plt.title(f"Difference to the {mic_mapped[1]} (ID: {id} - Exercise: {exercise_mapped})")
+    plt.xlabel("Feature Index")
+    plt.ylabel("Difference Normalized Mean")
+    plt.xticks(rotation=0)
+    plt.xlim(left=id_df['feature_id'].min(), right=id_df['feature_id'].max())
+    plt.legend(title='Mic Comparison')
+    plt.tight_layout(pad=1)
+    plt.grid(True, axis='y', linestyle=':', alpha=0.5)
+    sns.despine()
+    plt.savefig(plots_dir / f'diff_from_mic1_{id}_{exercise}.png')
+    plt.show()
 
 
 if __name__=="__main__":
+    ## combine the dataframes
     for exercise in non_MPT_exercises:
         combined_dfs = []
         for mic_n in range(1, 4):
-            matching_files = (df_features_dir / pe).glob(f"{exercise}_{mic_n}.csv")
+            matching_files = sorted((df_features_dir / pe).glob(f"{exercise}_{mic_n}.csv"))
             for file_path in matching_files:
                 df = pd.read_csv(file_path)
                 df['mic'] = mic_n
@@ -86,18 +72,97 @@ if __name__=="__main__":
                 df = df[[df.columns[0], 'mic', 'exercise'] + [col for col in df.columns if col not in [df.columns[0], 'mic', 'exercise']]]
                 combined_dfs.append(df)
         combined_df = pd.concat(combined_dfs, ignore_index=True)
-        cleaned_df = drop_nan(combined_df)
+        combined_df['id'] = combined_df['id'].apply(lambda x: str(x)[-2:])
+        
+        ## running separately for VOW and SEN/SPN
+        if exercise == 'VOW':
+            for vowel_type, vowel_df in combined_df.groupby('vowel'):
+                ## cleaning and sorting df
+                vowel_df['exercise'] = vowel_df['exercise'] + '_' + vowel_df['vowel']
+                cleaned_df = drop_nan(vowel_df)
+                cleaned_df = cleaned_df.drop(columns=target_columns + ['vowel'])
+                df = cleaned_df.sort_values(by=['id', 'mic', 'day']).reset_index(drop=True)
+                
+                feature_cols = df.columns[4:]
+                id_cols = ['id', 'mic', 'exercise']
+                
+                ## normalize
+                norm_df = zscore_normalize(df, feature_cols)
+                
+                ## create separate tables for mean and std values
+                df_mean = norm_df.groupby(id_cols)[feature_cols].mean().reset_index()
+                df_std = norm_df.groupby(id_cols)[feature_cols].std().reset_index()
+                
+                ## melt and merge both dfs together
+                melted_df_mean = df_mean.melt(id_vars=id_cols, value_vars=feature_cols, var_name='feature', value_name='mean')
+                melted_df_std = df_std.melt(id_vars=id_cols, value_vars=feature_cols, var_name='feature', value_name='std')
+                melted_df = pd.merge(melted_df_mean, melted_df_std, on=['id', 'mic', 'exercise', 'feature'])
+                
+                ## creating tables per id/patient for plotting
+                id_group = dict(tuple(melted_df.groupby('id')))
+                for id, id_df in id_group.items():
+                    ## calculate the difference in means for mic2/3 to mic1
+                    mic1_vals = id_df[id_df['mic'] == 1][['id', 'feature', 'mean']].rename(columns={'mean': 'mic1_means'})
+                    id_df = id_df.merge(mic1_vals, on=['id', 'feature'], how='left')
+                    id_df['mean_diff_to_mic1'] = id_df['mean'] - id_df['mic1_means']
+                    id_df = id_df.drop(columns='mic1_means')  
+                    
+                    ## put in the standard deviation of mic1 and sort to that
+                    mic1_std = id_df[id_df['mic'] == 1].set_index(['id', 'exercise', 'feature'])['std']
+                    id_df['mic1_std'] = id_df.set_index(['id', 'exercise', 'feature']).index.map(mic1_std)
+                    id_df = id_df.sort_values('mic1_std', ascending=True).reset_index(drop=True)
 
-        feature_cols = cleaned_df.columns[6:]
-        averaged_df = cleaned_df.groupby(['id','mic'])[feature_cols].mean().reset_index()
+                    ## sort the df on average mean difference to mic1 per feature for plotting
+                    # avg_diff_per_feature = id_df.groupby('feature')['mean_diff_to_mic1'].mean()
+                    # id_df['avg_diff_to_mic1'] = id_df['feature'].map(avg_diff_per_feature)
+                    # id_df = id_df.sort_values('avg_diff_to_mic1', ascending=True).reset_index(drop=True)
+                    
+                    id_df['feature_id'] = pd.factorize(id_df['feature'])[0]
+                    id_df = id_df.sort_values(['feature_id','mic'], ascending=True).reset_index(drop=True)
+                    print(id_df)
+
+                    print(f"Creating a plot for {id} {exercise}")
+                    feature_distance_plot(id_df, id, exercise, x_value='feature_id', y_value='mean_diff_to_mic1', x_std='mic1_std')
+                                    
+        # cleaned_df = drop_nan(combined_df)
+        # df = cleaned_df.drop(columns=target_columns)
+        # if exercise == 'VOW':
+        #     df = df.sort_values(by=['id', 'mic', 'day', 'vowel']).reset_index(drop=True)
+        #     df['exercise'] = df['exercise'] + '_' + df['vowel']
+        #     df = df.drop(columns='vowel')
+        # else:
+        #     df = df.sort_values(by=['id', 'mic', 'day']).reset_index(drop=True)
+        # feature_cols = df.columns[4:]
         
-        feature_df = averaged_df.iloc[:, 2:]
-        feature_cols = feature_df.columns
+        # ## normalize the data before calculating means and stds
+        # norm_df = zscore_normalize(df, feature_cols)
+        # id_cols = ['id', 'mic', 'exercise']
         
-        df = zscore_normalize(feature_df, feature_cols)
-        df.insert(0, 'exercise', exercise)
-        df.insert(0, 'mic', averaged_df['mic'])
-        df.insert(0, 'id', averaged_df['id'])
-        df.reset_index(drop=True, inplace=True)
-        df.set_index(['id', 'mic', 'exercise'], inplace=True)
-        print(df)
+        # ## create separate tables for mean and std values and add exercise
+        # df_mean = norm_df.groupby(id_cols)[feature_cols].mean().reset_index()
+        # df_std = norm_df.groupby(id_cols)[feature_cols].std().reset_index()
+        
+        # ## melt and merge both dfs together
+        # melted_df_mean = df_mean.melt(id_vars=id_cols, value_vars=feature_cols, var_name='feature', value_name='mean')
+        # melted_df_std = df_std.melt(id_vars=id_cols, value_vars=feature_cols, var_name='feature', value_name='std')
+        # melted_df = pd.merge(melted_df_mean, melted_df_std, on=['id', 'mic', 'exercise', 'feature'])
+        # print(melted_df)
+        
+        # ## creating tables per id/patient for plotting
+        # id_group = dict(tuple(melted_df.groupby('id')))
+        # for id_val, id_df in id_group.items():
+        #     ## calculate the difference in means for mic2/3 to mic1
+        #     mic1_vals = id_df[id_df['mic'] == 1][['id', 'feature', 'mean']].rename(columns={'mean': 'mic1_means'})
+        #     id_df = id_df.merge(mic1_vals, on=['id', 'feature'], how='left')
+        #     id_df['mean_diff_to_mic1'] = id_df['mean'] - id_df['mic1_means']
+        #     id_df = id_df.drop(columns='mic1_means')
+        #     print(id_df)
+
+            # avg_std_per_feature = id_df.groupby('feature')['mean_diffs_to_mic1'].mean()
+            # id_df['avg_std_to_mic1'] = id_df['feature'].map(avg_std_per_feature)
+        #     id_df = id_df.sort_values('avg_std_to_mic1', ascending=True).reset_index(drop=True)
+        #     id_df['feature_id'] = pd.factorize(id_df['feature'])[0]
+        #     print(id_df)
+
+        #     print(f"Creating a plot for {id_val} {exercise}")
+        #     feature_distance_plot(id_df, id_val, exercise)

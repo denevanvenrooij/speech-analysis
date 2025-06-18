@@ -22,3 +22,12 @@ non_MPT_exercises = ['SEN','SPN','VOW']
 microphones = {'mic_1', 'mic_2', 'mic_3'}
 vowels = ['i', 'e', 'a', 'o', 'u']
 target_columns = ['target_bw', 'target_bnp']
+exercise_map = {
+    'MPT':'Max vowel sound',
+    'VOW':'Vowel sound',
+    'SEN':'Sentence',
+    'SPN':'Spontaneous speech'}
+microphone_map = {
+    1:'Studio mic',
+    2:'Clip-on mic',
+    3:'Smartphone mic'}
