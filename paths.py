@@ -12,9 +12,10 @@ logs_dir = Path('logs/')
 
 df_features_dir = Path('dataframes_features/')
 feature_selection_dir = Path('dataframes_feature_selection/')
+feature_extraction_dir = Path('dataframes_feature_extraction/')
+
 pe = Path('per_exercise')
 pp = Path('per_participant')
-
 
 exercises = {'MPT', 'SEN', 'SPN', 'VOW'}
 non_VOW_exercises = ['MPT','SEN','SPN']
@@ -25,6 +26,11 @@ target_columns = ['target_bw', 'target_bnp']
 exercise_map = {
     'MPT':'Max vowel sound',
     'VOW':'Vowel sound',
+    'VOW_a':'Vowel sound A',
+    'VOW_e':'Vowel sound E',
+    'VOW_i':'Vowel sound I',
+    'VOW_o':'Vowel sound O',
+    'VOW_u':'Vowel sound U',
     'SEN':'Sentence',
     'SPN':'Spontaneous speech'}
 microphone_map = {
