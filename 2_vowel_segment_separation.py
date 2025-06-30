@@ -1,13 +1,12 @@
 from paths import *
 import parselmouth
 import re
-import sys
+import logging
 from datetime import datetime
 
-log_filename = f"logs/2_vss_{datetime.now().strftime('%y%m%d_%H%M%S')}.log"
-logfile = open(log_filename, "w")
-sys.stdout = logfile
-sys.stderr = logfile
+time = datetime.now().strftime('%y%m%d_%H%M%S')
+log_filename = f"logs/2_vss_{time}.log"
+logging.basicConfig(filename=log_filename, level=logging.INFO, format='%(asctime)s - %(message)s')
 
 vowel_dict = {i+1: vowel for i, vowel in enumerate(vowels)}
 
@@ -22,7 +21,7 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
     intensity_values = intensity.values.T.flatten()    
     non_silent_mask = intensity_values > silence_threshold
 
-    print(" ".join(
+    logging.info(" ".join(
         f"({time:.2f}s {int(intensity)}dB)" if intensity >= silence_threshold
         else f"({time:.2f}s {int(intensity)}dB)"
         for time, intensity in zip(time_stamps[:900], intensity_values[:900])))
@@ -52,7 +51,7 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
     segments_sorted = sorted(longest_segments, key=lambda x: x[0]) ## order them again
     
     for i, (start, end) in enumerate(segments_sorted):
-        print(f"Segment {i+1}: {start:.2f} {end:.2f}")
+        logging.info(f"Segment {i+1}: {start:.2f} {end:.2f}")
 
     for i, (start, end) in enumerate(segments_sorted, start=1):
         segment_sound = sound.extract_part(from_time=start, to_time=end)
@@ -71,7 +70,7 @@ if __name__=="__main__":
     unprocessed_segments = [file for file in processed_files if file.name[:15] not in segment_prefixes]
     
     for file in unprocessed_segments:
-        print(f"Processing vowel segments of {file}")
+        logging.info(f"Processing vowel segments of {file}")
         if re.search(r'VOW_\d+_pre', file.stem):
             parts = file.stem.split('_')
             patient_id = parts[0]

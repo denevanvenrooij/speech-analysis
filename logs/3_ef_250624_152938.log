@@ -1,0 +1,47 @@
+Now processing ['1234571', '3', 'VOW', '2u'] for VOW
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/utils_gci.py:187: RuntimeWarning: invalid value encountered in divide
+  MBS=MBS/max(abs(MBS))
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/glottal.py:161: UserWarning: not enough voiced segments were found to compute GCI
+  warnings.warn("not enough voiced segments were found to compute GCI")
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:121: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:195: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/../disvoice_utils.py:21: SmallSampleWarning: All axis-slices of one or more sample arguments are too small; all elements of returned arrays will be NaN. See documentation for sample size requirements.
+  sk=st.skew(feat)
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/../disvoice_utils.py:22: SmallSampleWarning: All axis-slices of one or more sample arguments are too small; all elements of returned arrays will be NaN. See documentation for sample size requirements.
+  ku=st.kurtosis(feat)
+/tmp/ipykernel_1397181/1098954265.py:31: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  patient_dfs[df_key] = pd.concat([patient_dfs[df_key], pd.DataFrame([df_entry])], ignore_index=True)
+Now processing ['1234571', '2', 'VOW', '2u'] for VOW
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/utils_gci.py:187: RuntimeWarning: invalid value encountered in divide
+  MBS=MBS/max(abs(MBS))
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/glottal.py:161: UserWarning: not enough voiced segments were found to compute GCI
+  warnings.warn("not enough voiced segments were found to compute GCI")
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:121: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/home/dene/.local/lib/python3.10/site-packages/numpy/core/_methods.py:195: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/../disvoice_utils.py:21: SmallSampleWarning: All axis-slices of one or more sample arguments are too small; all elements of returned arrays will be NaN. See documentation for sample size requirements.
+  sk=st.skew(feat)
+/home/dene/.local/lib/python3.10/site-packages/disvoice/glottal/../disvoice_utils.py:22: SmallSampleWarning: All axis-slices of one or more sample arguments are too small; all elements of returned arrays will be NaN. See documentation for sample size requirements.
+  ku=st.kurtosis(feat)
+Now processing ['1234571', '4', 'VOW', '2u'] for VOW
+Now processing ['1234571', '1', 'VOW', '2u'] for VOW
+Now processing ['1234571', '0', 'VOW', '2u'] for VOW

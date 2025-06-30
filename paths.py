@@ -36,4 +36,4 @@ exercise_map = {
 microphone_map = {
     1:'Studio mic',
     2:'Clip-on mic',
-    3:'Smartphone mic'}
+    3:'Mobile phone mic'}

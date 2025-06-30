@@ -15,24 +15,39 @@ from sklearn.exceptions import ConvergenceWarning
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=RuntimeWarning)
-import sys
+import logging
 from datetime import datetime
 
-log_filename = f"logs/5_mf_{datetime.now().strftime('%y%m%d_%H%M%S')}.log"
-logfile = open(log_filename, "w")
-sys.stdout = logfile
-sys.stderr = logfile
+time = datetime.now().strftime('%y%m%d_%H%M%S')
+log_filename = f"logs/5_mf_{time}.log"
+logging.basicConfig(filename=log_filename, level=logging.INFO, format='%(asctime)s - %(message)s')
+
+def fill_nan(df, group_by='id'):
+    df_filled = df.copy()
+    feature_cols = df.select_dtypes(include='number').columns.difference(['id', 'mic', 'exercise', 'day', 'vowel'])
+    group_means = df.groupby(group_by)[feature_cols].transform(lambda x: x.fillna(x.mean()))
+    global_means = df[feature_cols].mean()
+    df_filled[feature_cols] = group_means.fillna(global_means)
+    
+    return df_filled
 
 def drop_nan(feature_df):
-    while feature_df.isna().any().any():
-        row_nan_ratio = feature_df.isna().sum(axis=1) / feature_df.shape[1]
-        col_nan_ratio = feature_df.isna().sum(axis=0) / feature_df.shape[0]
+    data_columns = feature_df.columns[4:]
+    data_rows = feature_df.index[1:]
+    while feature_df[:, data_columns].isna().any().any():
+        row_nan_ratio = feature_df.loc[:, data_columns].isna().sum(axis=1) / len(data_columns)
+        col_nan_ratio = feature_df.loc[data_rows, data_columns].isna().sum(axis=0) / len(data_rows)
         worst_row = row_nan_ratio.idxmax()
         worst_col = col_nan_ratio.idxmax()
-        if row_nan_ratio[worst_row] >= col_nan_ratio[worst_col]:
+        if row_nan_ratio.max() >= col_nan_ratio.max():
+            worst_row = row_nan_ratio.idxmax()
             feature_df = feature_df.drop(index=worst_row)
         else:
+            worst_col = col_nan_ratio.idxmax()
             feature_df = feature_df.drop(columns=worst_col)
+        data_columns = feature_df.columns[4:]
+        data_rows = feature_df.index[1:]
+    
     return feature_df
 
 def variance_filtering(X, threshold=0.5):
@@ -138,18 +153,21 @@ def feature_selection(df, df_path, correlation_types, test_set_size, correlation
     ## part 1 removing empty rows/column
     all_rows = set(feature_df.index)
     all_cols = set(feature_df)
-    cleaned_feature_df = drop_nan(feature_df)
+    
+    # cleaned_feature_df = drop_nan(feature_df)
+    cleaned_feature_df = fill_nan(feature_df, group_by='id')
+    
     cleaned_rows = set(cleaned_feature_df.index)
     cleaned_cols = set(cleaned_feature_df)
     removed_rows = sorted(all_rows - cleaned_rows)
     removed_cols = sorted(all_cols - cleaned_cols)
-    print(f"REMOVING NaN ROWS     Removed {len(removed_rows)} rows: {removed_rows}")
+    logging.info(f"REMOVING NaN ROWS     Removed {len(removed_rows)} rows: {removed_rows}")
     if len(cleaned_rows) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
-    print(f"REMOVING NaN COLUMNS     Removed {len(removed_cols)} features: {removed_cols}")
+    logging.info(f"REMOVING NaN COLUMNS     Removed {len(removed_cols)} features: {removed_cols}")
     if len(cleaned_cols) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
     
     X_all = cleaned_feature_df.iloc[:, 4:]
@@ -163,9 +181,9 @@ def feature_selection(df, df_path, correlation_types, test_set_size, correlation
     init_var_filter = set(X_train_raw)
     after_var_filter = set(X_train_0.columns)
     removed_by_variance = sorted(init_var_filter - after_var_filter)
-    print(f"VARIANCE FILTERING     Removed {len(removed_by_variance)} features: {removed_by_variance}")
+    logging.info(f"VARIANCE FILTERING     Removed {len(removed_by_variance)} features: {removed_by_variance}")
     if len(after_var_filter) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
     
     ## part 3 is co-correlation filter: removing all features that correlate with each other (are redundant)
@@ -173,9 +191,9 @@ def feature_selection(df, df_path, correlation_types, test_set_size, correlation
     before_cocorr_filter = after_var_filter
     after_cocorr_filter = set(X_train_0.columns)
     removed_by_corr = sorted(before_cocorr_filter - after_cocorr_filter)
-    print(f"CO-CORRELATION FILTERING     Removed {len(removed_by_corr)} features: {removed_by_corr}")
+    logging.info(f"CO-CORRELATION FILTERING     Removed {len(removed_by_corr)} features: {removed_by_corr}")
     if len(after_cocorr_filter) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
 
     ## part 4 is a 3-fold correlation filter: inspects the correlation based on the slope, relation to target and relation to target/slope
@@ -208,9 +226,9 @@ def feature_selection(df, df_path, correlation_types, test_set_size, correlation
     before_corr_score = set(after_cocorr_filter)
     after_corr_score = set(post_correlation_features)
     removed_by_corr_score = sorted(before_corr_score - after_corr_score)
-    print(f"CORRELATION SCORE THRESHOLDING     Removed {len(removed_by_corr_score)} features: {removed_by_corr_score}")
+    logging.info(f"CORRELATION SCORE THRESHOLDING     Removed {len(removed_by_corr_score)} features: {removed_by_corr_score}")
     if len(post_correlation_features) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
     
     ## part 5 is mutual information filtering
@@ -220,22 +238,22 @@ def feature_selection(df, df_path, correlation_types, test_set_size, correlation
     before_mi = set(post_correlation_features)
     after_mi = set(post_mi_features)
     removed_by_mi = sorted(before_mi - after_mi)
-    print(f"MUTUAL INFORMATION FILTERING     Removed {len(removed_by_mi)} features: {removed_by_mi}")
+    logging.info(f"MUTUAL INFORMATION FILTERING     Removed {len(removed_by_mi)} features: {removed_by_mi}")
     if len(post_mi_features) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
     if len(post_mi_features) < 10:
-        print("Less than 10 features is not enough for LASSO")
+        logging.info("Less than 10 features is not enough for LASSO")
 
     ## part 6 is LASSO and RFE feature selection 
     selected_features = lasso_rfe(X_train_2, y_train, n_features_to_select)
     before_rfe = set(post_mi_features)
     after_rfe = set(selected_features)
     removed_by_rfe = sorted(before_rfe - after_rfe)
-    print(f"LASSO & RFE     Removed {len(removed_by_rfe)} features: {removed_by_rfe}")
-    print(f"FINAL FEATURE COUNT     Selected {len(selected_features)} features: {selected_features}")
+    logging.info(f"LASSO & RFE     Removed {len(removed_by_rfe)} features: {removed_by_rfe}")
+    logging.info(f"FINAL FEATURE COUNT     Selected {len(selected_features)} features: {selected_features}")
     if len(after_rfe) < 2:
-        print("All features were deminished at this step...")
+        logging.info("All features were deminished at this step...")
         return None, None, None, None, None
     
     X_train = X_train_0[selected_features]    
@@ -246,6 +264,8 @@ def feature_selection(df, df_path, correlation_types, test_set_size, correlation
 
 
 def model_training(X_train, y_train, X_test, y_test, selected_features, model_path):
+    logging.info(f"Creating a model for {model_path}")
+
     base_model = RandomForestRegressor(n_estimators=100, random_state=42)
     model = MultiOutputRegressor(base_model)
     model.fit(X_train[selected_features], y_train)
@@ -256,8 +276,8 @@ def model_training(X_train, y_train, X_test, y_test, selected_features, model_pa
     mse = mean_squared_error(y_test, y_pred, multioutput='raw_values')
     r2 = r2_score(y_test, y_pred, multioutput='raw_values')
 
-    print(f"Mean Squared Errors per target: {mse}")
-    print(f"R² Scores per target: {r2}")
+    logging.info(f"Mean Squared Errors per target: {mse}")
+    logging.info(f"R² Scores per target: {r2}")
 
     return mse, r2
 
@@ -284,13 +304,13 @@ if __name__ == '__main__':
 
     for df_path in df_list:
         df = pd.read_csv(df_path)
-        print()
-        print("Now running", df_path, "with")
-        print("Test set size:", test_set_size)
-        print("Correlation threshold:", correlation_threshold)
-        print("Mutual information threshold:", mi_threshold)
-        print("Co-correlation threshold:", cc_threshold)
-        print("Features to select:", n_features_to_select)
+
+        logging.info("Now running", df_path, "with")
+        logging.info("Test set size:", test_set_size)
+        logging.info("Correlation threshold:", correlation_threshold)
+        logging.info("Mutual information threshold:", mi_threshold)
+        logging.info("Co-correlation threshold:", cc_threshold)
+        logging.info("Features to select:", n_features_to_select)
 
         X_train, y_train, X_test, y_test, selected_features = feature_selection(
             df, df_path, correlation_types,
