@@ -3,8 +3,8 @@ import parselmouth
 
 def pre_emphasize_audio(file):
     if file.suffix == ".wav":
-        s = parselmouth.Sound(str(file))
-        s.pre_emphasize()
+        sound = parselmouth.Sound(str(file), sampling_frequency=48000)
+        sound.pre_emphasize()
         
         original_path = file.name
         patient_id = original_path[:7]
@@ -15,7 +15,7 @@ def pre_emphasize_audio(file):
             print(f"Path {output_path} does not exist... Did you run 0_init.py?")
         
         save_path = output_path / (file.stem + "_pre.wav")
-        s.save(str(save_path), 'WAV')
+        sound.save(str(save_path), 'WAV')
        
                  
 if __name__=='__main__':
@@ -31,7 +31,7 @@ if __name__=='__main__':
     # segment_files_to_check = [file for file in segments_dir.rglob('*.wav') if file.is_file()]
 
     # for file in segment_files_to_check:
-    #     sound = parselmouth.Sound(str(file))
+    #     sound = parselmouth.Sound(str(file), sampling_frequency=48000)
     #     duration_ms = sound.get_total_duration() * 1000
 
     #     if duration_ms < 2010:

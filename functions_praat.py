@@ -11,7 +11,7 @@ from features import *
 
 
 def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based on standard for the human voice range
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     pitch = sound.to_pitch_cc( ## using to_pitch_cc() for extra sensitivity
         time_step=0.005, ## this can be adjusted to increase the window
@@ -29,7 +29,7 @@ def PP_f0_mean(audio_file, f0_min=60, f0_max=300): ## the min/max are set based 
     return mean_f0 ## named PP_F0
 
 def PP_f0_median(audio_file, f0_min=60, f0_max=300):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     pitch = sound.to_pitch_cc( 
         time_step=0.005, 
@@ -47,7 +47,7 @@ def PP_f0_median(audio_file, f0_min=60, f0_max=300):
     return median_f0 ## named PP_F02
 
 def PP_f0_sd(audio_file, f0_min, f0_max):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     pitch = sound.to_pitch_cc(
         time_step=0.005,
@@ -67,7 +67,7 @@ def PP_f0_sd(audio_file, f0_min, f0_max):
 
 
 def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     pitch = sound.to_pitch_cc( 
         time_step=0.0033, ## the timestep is now 3.3ms as described by Murton 2023/2017
@@ -88,7 +88,7 @@ def PP_f0_mean_murton(audio_file, f0_min=60, f0_max=300):
     return mean_f0_murton ## named PP_F0_M
 
 def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     pitch = sound.to_pitch_cc( 
         time_step=0.0033,
@@ -109,7 +109,7 @@ def PP_f0_median_murton(audio_file, f0_min=60, f0_max=300):
     return median_f0_murton ## named PP_F02_M
 
 def PP_f0_sd_murton(audio_file, f0_min, f0_max):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     pitch = sound.to_pitch_cc(
         time_step=0.0033,
@@ -135,7 +135,7 @@ def PP_f0_sd_murton(audio_file, f0_min, f0_max):
 
 
 def PP_jitter(audio_file, f0_min=60, f0_max=300):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
     
@@ -161,7 +161,7 @@ def PP_jitter(audio_file, f0_min=60, f0_max=300):
     return jitter_features ## named 'PP_JIT'
  
 def PP_jitter_murton(audio_file, segment_length=1.0, f0_min=60, f0_max=300):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.duration
     
     middle_time = duration / 2
@@ -195,7 +195,7 @@ def PP_jitter_murton(audio_file, segment_length=1.0, f0_min=60, f0_max=300):
     
 
 def PP_lh_ratio(audio_file):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     spectrum = sound.to_spectrum()
     
@@ -207,7 +207,7 @@ def PP_lh_ratio(audio_file):
     return lh_ratio ## named PP_LHR
 
 def PP_LH_ratio_murton(audio_file, segment_length):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.duration
     
     middle_time = duration / 2
@@ -229,7 +229,7 @@ def PP_LH_ratio_murton(audio_file, segment_length):
 
 
 def PP_CPP_mean_murton(audio_file):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.get_total_duration()
     sampling_rate = sound.sampling_frequency
 
@@ -262,7 +262,7 @@ def PP_CPP_mean_murton(audio_file):
     return mean_cpp ## named PP_CPP_M
 
 def PP_CPP_median_murton(audio_file):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.get_total_duration()
     sampling_rate = sound.sampling_frequency
 
@@ -295,7 +295,7 @@ def PP_CPP_median_murton(audio_file):
     return median_cpp ## named PP_CPP_M2
 
 def PP_CPP_sd_murton(audio_file):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.get_total_duration()
     sampling_rate = sound.sampling_frequency
 
@@ -334,7 +334,7 @@ def PP_CPP_sd_murton(audio_file):
 
 
 def PP_duration_with_pauses(audio_file, silence_threshold=50):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     intensity = sound.to_intensity()
     time_stamps = intensity.xs()
@@ -355,7 +355,7 @@ def PP_duration_with_pauses(audio_file, silence_threshold=50):
     return duration ## named 'PP_DUR_WP' 
 
 def PP_duration_without_pauses(audio_file, silence_threshold=50, min_silence_duration=0.5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     intensity = sound.to_intensity()
     time_stamps = intensity.xs()
@@ -393,7 +393,7 @@ def PP_duration_without_pauses(audio_file, silence_threshold=50, min_silence_dur
 
     
 def PP_harmonics_to_noise(audio_file):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     
     harmonicity = call(sound, "To Harmonicity (cc)", 0.01, 75, 0.1, 1.0)
     hnr = call(harmonicity, "Get mean", 0, 0)
@@ -401,7 +401,7 @@ def PP_harmonics_to_noise(audio_file):
     return hnr ## named 'PP_HNR'
 
 def PP_harmonics_to_noise_murton(audio_file, segment_length):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.duration
     
     middle_time = duration / 2
@@ -418,7 +418,7 @@ def PP_harmonics_to_noise_murton(audio_file, segment_length):
 
 
 def PP_shimmer(audio_file, f0_min, f0_max):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
 
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
     
@@ -447,7 +447,7 @@ def PP_shimmer(audio_file, f0_min, f0_max):
     return shimmer_features ## named 'PP_SHI'
     
 def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     duration = sound.duration
     
     middle_time = duration / 2
@@ -485,7 +485,7 @@ def PP_shimmer_murton(audio_file, segment_length, f0_min, f0_max):
 
 
 def PP_MFCC(audio_file):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     mfcc_obj = sound.to_mfcc(time_step=0.06)
     mfcc_matrix = mfcc_obj.to_matrix().values
     
@@ -511,7 +511,7 @@ def PP_MFCC(audio_file):
 
 
 def PP_glottal_formants_mean(audio_file, f0_min=60, f0_max=300, point_step=0.0025, max_frequency=5000, num_formants=5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
     formants = call(sound, "To Formant (burg)", point_step, num_formants, max_frequency, 0.025, 50)
     num_points = call(point_process, "Get number of points")
@@ -531,7 +531,7 @@ def PP_glottal_formants_mean(audio_file, f0_min=60, f0_max=300, point_step=0.002
     return mean_glottal_formants ## named 'PP_GF_MEA'
 
 def PP_glottal_formants_median(audio_file, f0_min=60, f0_max=300, point_step=0.0025, max_frequency=5000, num_formants=5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
     formants = call(sound, "To Formant (burg)", point_step, num_formants, max_frequency, 0.025, 50)
     num_points = call(point_process, "Get number of points")
@@ -551,7 +551,7 @@ def PP_glottal_formants_median(audio_file, f0_min=60, f0_max=300, point_step=0.0
     return median_glottal_formants ## named 'PP_GF_MEA'
 
 def PP_glottal_formants_sd(audio_file, f0_min=60, f0_max=300, point_step=0.0025, max_frequency=5000, num_formants=5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     point_process = call(sound, "To PointProcess (periodic, cc)", f0_min, f0_max)
     formants = call(sound, "To Formant (burg)", point_step, num_formants, max_frequency, 0.025, 50)
     num_points = call(point_process, "Get number of points")
@@ -571,7 +571,7 @@ def PP_glottal_formants_sd(audio_file, f0_min=60, f0_max=300, point_step=0.0025,
     return sd_glottal_formants ## named 'PP_GF_SD'
 
 def PP_formants_mean(audio_file, time_step=0.01, max_frequency=5000, num_formants=5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     formants = call(sound, "To Formant (burg)", time_step, num_formants, max_frequency, 0.025, 50)
     
     formant_values = [[] for _ in range(num_formants)]
@@ -590,7 +590,7 @@ def PP_formants_mean(audio_file, time_step=0.01, max_frequency=5000, num_formant
     return mean_formants ## named 'PP_F_MEA'
 
 def PP_formants_median(audio_file, time_step=0.01, max_frequency=5000, num_formants=5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     formants = call(sound, "To Formant (burg)", time_step, num_formants, max_frequency, 0.025, 50)
     
     formant_values = [[] for _ in range(num_formants)]
@@ -609,7 +609,7 @@ def PP_formants_median(audio_file, time_step=0.01, max_frequency=5000, num_forma
     return median_formants ## named 'PP_F_MED'
 
 def PP_formants_sd(audio_file, time_step=0.01, max_frequency=5000, num_formants=5):
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
     formants = call(sound, "To Formant (burg)", time_step, num_formants, max_frequency, 0.025, 50)
     
     formant_values = [[] for _ in range(num_formants)]

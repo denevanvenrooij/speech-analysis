@@ -14,7 +14,7 @@ def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
     audio_path = Path(audio_file)
     output_stem = audio_path.stem
     
-    sound = parselmouth.Sound(audio_file)
+    sound = parselmouth.Sound(audio_file, sampling_frequency=48000)
 
     intensity = sound.to_intensity()
     time_stamps = intensity.xs()
