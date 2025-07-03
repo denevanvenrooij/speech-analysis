@@ -1,0 +1,629 @@
+2025-07-02 16:18:18,561 - Script started.
+2025-07-02 16:18:18,562 - Processing audio_files_sync/original/1234577_1.wav
+2025-07-02 16:18:18,712 - Removing silent edges (frames) from audio_files_sync/original/1234577_1.wav
+2025-07-02 16:18:18,766 - Removed silent frames at start: 1.94s (up to 1.94s)
+2025-07-02 16:18:18,766 - Removed silent frames at end: 0.04s (starting from 81.05s)
+2025-07-02 16:18:18,830 - Segment 1: 3.20s (from 0.10s to 3.30s)
+2025-07-02 16:18:18,834 - Segment 2: 2.92s (from 4.19s to 7.11s)
+2025-07-02 16:18:18,837 - Segment 3: 3.01s (from 8.10s to 11.10s)
+2025-07-02 16:18:18,841 - Segment 4: 3.19s (from 12.22s to 15.42s)
+2025-07-02 16:18:18,845 - Segment 5: 3.68s (from 16.42s to 20.10s)
+2025-07-02 16:18:18,849 - The end time of the last VOW segment is 20.104
+2025-07-02 16:18:18,849 - The start time of MPT is 21.104
+2025-07-02 16:18:18,893 - MPT segment: 10.57s (from 25.75s to 36.32s)
+2025-07-02 16:18:18,906 - The end time of the MPT segment is 36.32
+2025-07-02 16:18:18,906 - The start time of SPN/SEN is 37.32
+2025-07-02 16:18:18,909 - Removing silent edges (frames) from audio_files_sync/original/1234577_1.wav
+2025-07-02 16:18:18,936 - Removed silent frames at start: 41.81s (up to 41.81s)
+2025-07-02 16:18:18,936 - Removed silent frames at end: 0.27s (starting from 78.84s)
+2025-07-02 16:18:18,986 - Processing audio_files_sync/original/1234569_4.wav
+2025-07-02 16:18:19,142 - Removing silent edges (frames) from audio_files_sync/original/1234569_4.wav
+2025-07-02 16:18:19,195 - Removed silent frames at start: 2.09s (up to 2.09s)
+2025-07-02 16:18:19,196 - Removed silent frames at end: 4.83s (starting from 82.06s)
+2025-07-02 16:18:19,262 - Segment 1: 3.99s (from 0.10s to 4.09s)
+2025-07-02 16:18:19,267 - Segment 2: 4.08s (from 6.04s to 10.12s)
+2025-07-02 16:18:19,273 - Segment 3: 3.80s (from 11.69s to 15.49s)
+2025-07-02 16:18:19,278 - Segment 4: 4.04s (from 16.98s to 21.02s)
+2025-07-02 16:18:19,283 - Segment 5: 3.79s (from 22.27s to 26.06s)
+2025-07-02 16:18:19,288 - The end time of the last VOW segment is 26.064000000000007
+2025-07-02 16:18:19,288 - The start time of MPT is 27.064000000000007
+2025-07-02 16:18:19,323 - MPT segment: 13.78s (from 32.29s to 46.07s)
+2025-07-02 16:18:19,340 - The end time of the MPT segment is 46.072
+2025-07-02 16:18:19,340 - The start time of SPN/SEN is 47.072
+2025-07-02 16:18:19,342 - Removing silent edges (frames) from audio_files_sync/original/1234569_4.wav
+2025-07-02 16:18:19,362 - Removed silent frames at start: 48.92s (up to 48.92s)
+2025-07-02 16:18:19,362 - Removed silent frames at end: 0.02s (starting from 79.95s)
+2025-07-02 16:18:19,404 - Processing audio_files_sync/original/1234574_2.wav
+2025-07-02 16:18:19,522 - Removing silent edges (frames) from audio_files_sync/original/1234574_2.wav
+2025-07-02 16:18:19,566 - Removed silent frames at start: 1.43s (up to 1.43s)
+2025-07-02 16:18:19,566 - Removed silent frames at end: 3.31s (starting from 62.53s)
+2025-07-02 16:18:19,614 - Segment 1: 2.57s (from 0.10s to 2.67s)
+2025-07-02 16:18:19,617 - Segment 2: 3.24s (from 3.36s to 6.60s)
+2025-07-02 16:18:19,621 - Segment 3: 2.15s (from 7.28s to 9.43s)
+2025-07-02 16:18:19,623 - Segment 4: 2.04s (from 10.22s to 12.26s)
+2025-07-02 16:18:19,626 - Segment 5: 1.67s (from 13.12s to 14.80s)
+2025-07-02 16:18:19,627 - The end time of the last VOW segment is 14.795999999999996
+2025-07-02 16:18:19,628 - The start time of MPT is 15.795999999999996
+2025-07-02 16:18:19,657 - MPT segment: 4.97s (from 20.60s to 25.56s)
+2025-07-02 16:18:19,663 - The end time of the MPT segment is 25.563999999999997
+2025-07-02 16:18:19,663 - The start time of SPN/SEN is 26.563999999999997
+2025-07-02 16:18:19,665 - Removing silent edges (frames) from audio_files_sync/original/1234574_2.wav
+2025-07-02 16:18:19,686 - Removed silent frames at start: 27.35s (up to 27.35s)
+2025-07-02 16:18:19,686 - Removed silent frames at end: 0.01s (starting from 61.08s)
+2025-07-02 16:18:19,700 - Processing audio_files_sync/original/1234574_1.wav
+2025-07-02 16:18:19,829 - Removing silent edges (frames) from audio_files_sync/original/1234574_1.wav
+2025-07-02 16:18:19,875 - Removed silent frames at start: 2.99s (up to 2.99s)
+2025-07-02 16:18:19,875 - Removed silent frames at end: 3.61s (starting from 73.59s)
+2025-07-02 16:18:19,926 - Segment 1: 3.87s (from 0.10s to 3.97s)
+2025-07-02 16:18:19,931 - Segment 2: 4.02s (from 4.58s to 8.61s)
+2025-07-02 16:18:19,936 - Segment 3: 2.96s (from 9.29s to 12.25s)
+2025-07-02 16:18:19,939 - Segment 4: 2.84s (from 13.27s to 16.11s)
+2025-07-02 16:18:19,942 - Segment 5: 2.85s (from 16.86s to 19.70s)
+2025-07-02 16:18:19,945 - The end time of the last VOW segment is 19.704000000000008
+2025-07-02 16:18:19,945 - The start time of MPT is 20.704000000000008
+2025-07-02 16:18:19,982 - MPT segment: 5.15s (from 26.17s to 31.32s)
+2025-07-02 16:18:19,988 - The end time of the MPT segment is 31.320000000000007
+2025-07-02 16:18:19,989 - The start time of SPN/SEN is 32.32000000000001
+2025-07-02 16:18:19,991 - Removing silent edges (frames) from audio_files_sync/original/1234574_1.wav
+2025-07-02 16:18:20,020 - Removed silent frames at start: 36.85s (up to 36.85s)
+2025-07-02 16:18:20,020 - Removed silent frames at end: 0.00s (starting from 70.60s)
+2025-07-02 16:18:20,025 - Processing audio_files_sync/original/1234576_3.wav
+2025-07-02 16:18:20,164 - Removing silent edges (frames) from audio_files_sync/original/1234576_3.wav
+2025-07-02 16:18:20,208 - Removed silent frames at start: 2.04s (up to 2.04s)
+2025-07-02 16:18:20,208 - Removed silent frames at end: 4.21s (starting from 63.56s)
+2025-07-02 16:18:20,254 - Segment 1: 2.95s (from 0.10s to 3.06s)
+2025-07-02 16:18:20,258 - Segment 2: 2.22s (from 4.14s to 6.36s)
+2025-07-02 16:18:20,261 - Segment 3: 2.42s (from 7.62s to 10.04s)
+2025-07-02 16:18:20,265 - Segment 4: 2.25s (from 11.03s to 13.28s)
+2025-07-02 16:18:20,268 - Segment 5: 2.53s (from 14.20s to 16.73s)
+2025-07-02 16:18:20,271 - The end time of the last VOW segment is 16.728
+2025-07-02 16:18:20,271 - The start time of MPT is 17.728
+2025-07-02 16:18:20,301 - MPT segment: 8.58s (from 22.34s to 30.92s)
+2025-07-02 16:18:20,313 - The end time of the MPT segment is 30.92
+2025-07-02 16:18:20,313 - The start time of SPN/SEN is 31.92
+2025-07-02 16:18:20,316 - Removing silent edges (frames) from audio_files_sync/original/1234576_3.wav
+2025-07-02 16:18:20,335 - Removed silent frames at start: 36.08s (up to 36.08s)
+2025-07-02 16:18:20,335 - Removed silent frames at end: 0.12s (starting from 61.40s)
+2025-07-02 16:18:20,368 - Processing audio_files_sync/original/1234567_4.wav
+2025-07-02 16:18:20,524 - Removing silent edges (frames) from audio_files_sync/original/1234567_4.wav
+2025-07-02 16:18:20,585 - Removed silent frames at start: 2.47s (up to 2.47s)
+2025-07-02 16:18:20,585 - Removed silent frames at end: 0.76s (starting from 88.77s)
+2025-07-02 16:18:20,663 - Segment 1: 5.38s (from 0.10s to 5.48s)
+2025-07-02 16:18:20,670 - Segment 2: 6.02s (from 6.20s to 12.22s)
+2025-07-02 16:18:20,678 - Segment 3: 5.93s (from 13.07s to 19.00s)
+2025-07-02 16:18:20,686 - Segment 4: 5.22s (from 20.21s to 25.42s)
+2025-07-02 16:18:20,693 - Segment 5: 6.49s (from 26.53s to 33.02s)
+2025-07-02 16:18:20,701 - The end time of the last VOW segment is 33.016
+2025-07-02 16:18:20,701 - The start time of MPT is 34.016
+2025-07-02 16:18:20,737 - MPT segment: 15.41s (from 35.88s to 51.29s)
+2025-07-02 16:18:20,755 - The end time of the MPT segment is 51.288
+2025-07-02 16:18:20,755 - The start time of SPN/SEN is 52.288
+2025-07-02 16:18:20,758 - Removing silent edges (frames) from audio_files_sync/original/1234567_4.wav
+2025-07-02 16:18:20,779 - Removed silent frames at start: 53.72s (up to 53.72s)
+2025-07-02 16:18:20,779 - Removed silent frames at end: 0.00s (starting from 86.30s)
+2025-07-02 16:18:20,822 - Processing audio_files_sync/original/1234576_1.wav
+2025-07-02 16:18:20,948 - Removing silent edges (frames) from audio_files_sync/original/1234576_1.wav
+2025-07-02 16:18:20,996 - Removed silent frames at start: 1.13s (up to 1.13s)
+2025-07-02 16:18:20,996 - Removed silent frames at end: 2.61s (starting from 69.24s)
+2025-07-02 16:18:21,045 - Segment 1: 2.09s (from 1.34s to 3.43s)
+2025-07-02 16:18:21,048 - Segment 2: 2.46s (from 5.02s to 7.47s)
+2025-07-02 16:18:21,052 - Segment 3: 2.40s (from 8.87s to 11.27s)
+2025-07-02 16:18:21,058 - Segment 4: 3.00s (from 12.25s to 15.25s)
+2025-07-02 16:18:21,062 - Segment 5: 2.62s (from 16.27s to 18.89s)
+2025-07-02 16:18:21,065 - The end time of the last VOW segment is 18.888
+2025-07-02 16:18:21,065 - The start time of MPT is 19.888
+2025-07-02 16:18:21,100 - MPT segment: 9.06s (from 24.76s to 33.82s)
+2025-07-02 16:18:21,112 - The end time of the MPT segment is 33.824
+2025-07-02 16:18:21,112 - The start time of SPN/SEN is 34.824
+2025-07-02 16:18:21,115 - Removing silent edges (frames) from audio_files_sync/original/1234576_1.wav
+2025-07-02 16:18:21,137 - Removed silent frames at start: 39.39s (up to 39.39s)
+2025-07-02 16:18:21,137 - Removed silent frames at end: 0.01s (starting from 68.10s)
+2025-07-02 16:18:21,177 - Processing audio_files_sync/original/1234568_1.wav
+2025-07-02 16:18:21,325 - Removing silent edges (frames) from audio_files_sync/original/1234568_1.wav
+2025-07-02 16:18:21,383 - Removed silent frames at start: 6.55s (up to 6.55s)
+2025-07-02 16:18:21,384 - Removed silent frames at end: 2.90s (starting from 84.29s)
+2025-07-02 16:18:21,441 - Segment 1: 5.16s (from 0.10s to 5.26s)
+2025-07-02 16:18:21,450 - Segment 2: 5.50s (from 6.73s to 12.22s)
+2025-07-02 16:18:21,459 - Segment 3: 3.91s (from 13.63s to 17.54s)
+2025-07-02 16:18:21,466 - Segment 4: 3.58s (from 18.63s to 22.22s)
+2025-07-02 16:18:21,471 - Segment 5: 3.85s (from 23.16s to 27.01s)
+2025-07-02 16:18:21,475 - The end time of the last VOW segment is 27.008
+2025-07-02 16:18:21,476 - The start time of MPT is 28.008
+2025-07-02 16:18:21,517 - MPT segment: 10.18s (from 33.67s to 43.85s)
+2025-07-02 16:18:21,531 - The end time of the MPT segment is 43.848
+2025-07-02 16:18:21,531 - The start time of SPN/SEN is 44.848
+2025-07-02 16:18:21,535 - Removing silent edges (frames) from audio_files_sync/original/1234568_1.wav
+2025-07-02 16:18:21,560 - Removed silent frames at start: 49.81s (up to 49.81s)
+2025-07-02 16:18:21,560 - Removed silent frames at end: 0.04s (starting from 77.70s)
+2025-07-02 16:18:21,603 - Processing audio_files_sync/original/1234572_1.wav
+2025-07-02 16:18:21,762 - Removing silent edges (frames) from audio_files_sync/original/1234572_1.wav
+2025-07-02 16:18:21,822 - Removed silent frames at start: 1.40s (up to 1.40s)
+2025-07-02 16:18:21,822 - Removed silent frames at end: 2.52s (starting from 83.95s)
+2025-07-02 16:18:21,892 - Segment 1: 3.23s (from 0.10s to 3.34s)
+2025-07-02 16:18:21,900 - Segment 2: 3.58s (from 4.24s to 7.82s)
+2025-07-02 16:18:21,905 - Segment 3: 3.85s (from 8.56s to 12.41s)
+2025-07-02 16:18:21,916 - Segment 4: 4.06s (from 13.14s to 17.19s)
+2025-07-02 16:18:21,923 - Segment 5: 3.59s (from 17.84s to 21.43s)
+2025-07-02 16:18:21,931 - The end time of the last VOW segment is 21.432000000000002
+2025-07-02 16:18:21,932 - The start time of MPT is 22.432000000000002
+2025-07-02 16:18:22,001 - MPT segment: 18.69s (from 28.43s to 47.12s)
+2025-07-02 16:18:22,030 - The end time of the MPT segment is 47.120000000000005
+2025-07-02 16:18:22,030 - The start time of SPN/SEN is 48.120000000000005
+2025-07-02 16:18:22,034 - Removing silent edges (frames) from audio_files_sync/original/1234572_1.wav
+2025-07-02 16:18:22,059 - Removed silent frames at start: 48.22s (up to 48.22s)
+2025-07-02 16:18:22,059 - Removed silent frames at end: 0.08s (starting from 82.47s)
+2025-07-02 16:18:22,122 - Processing audio_files_sync/original/1234568_2.wav
+2025-07-02 16:18:22,276 - Removing silent edges (frames) from audio_files_sync/original/1234568_2.wav
+2025-07-02 16:18:22,324 - Removed silent frames at start: 1.54s (up to 1.54s)
+2025-07-02 16:18:22,325 - Removed silent frames at end: 3.10s (starting from 72.27s)
+2025-07-02 16:18:22,378 - Segment 1: 4.22s (from 0.10s to 4.32s)
+2025-07-02 16:18:22,386 - Segment 2: 3.52s (from 5.31s to 8.83s)
+2025-07-02 16:18:22,391 - Segment 3: 3.05s (from 9.94s to 12.99s)
+2025-07-02 16:18:22,396 - Segment 4: 2.58s (from 13.71s to 16.29s)
+2025-07-02 16:18:22,400 - Segment 5: 2.98s (from 17.12s to 20.10s)
+2025-07-02 16:18:22,404 - The end time of the last VOW segment is 20.096
+2025-07-02 16:18:22,405 - The start time of MPT is 21.096
+2025-07-02 16:18:22,445 - MPT segment: 8.84s (from 26.66s to 35.50s)
+2025-07-02 16:18:22,459 - The end time of the MPT segment is 35.504
+2025-07-02 16:18:22,459 - The start time of SPN/SEN is 36.504
+2025-07-02 16:18:22,462 - Removing silent edges (frames) from audio_files_sync/original/1234568_2.wav
+2025-07-02 16:18:22,488 - Removed silent frames at start: 40.23s (up to 40.23s)
+2025-07-02 16:18:22,488 - Removed silent frames at end: 0.02s (starting from 70.71s)
+2025-07-02 16:18:22,540 - Processing audio_files_sync/original/1234576_2.wav
+2025-07-02 16:18:22,703 - Removing silent edges (frames) from audio_files_sync/original/1234576_2.wav
+2025-07-02 16:18:22,765 - Removed silent frames at start: 2.03s (up to 2.03s)
+2025-07-02 16:18:22,765 - Removed silent frames at end: 3.45s (starting from 71.15s)
+2025-07-02 16:18:22,834 - Segment 1: 2.67s (from 0.10s to 2.78s)
+2025-07-02 16:18:22,841 - Segment 2: 2.95s (from 4.06s to 7.02s)
+2025-07-02 16:18:22,848 - Segment 3: 2.42s (from 8.39s to 10.82s)
+2025-07-02 16:18:22,856 - Segment 4: 2.53s (from 11.94s to 14.46s)
+2025-07-02 16:18:22,863 - Segment 5: 2.70s (from 15.42s to 18.11s)
+2025-07-02 16:18:22,869 - The end time of the last VOW segment is 18.112000000000002
+2025-07-02 16:18:22,869 - The start time of MPT is 19.112000000000002
+2025-07-02 16:18:22,913 - MPT segment: 7.14s (from 24.15s to 31.30s)
+2025-07-02 16:18:22,926 - The end time of the MPT segment is 31.296000000000003
+2025-07-02 16:18:22,926 - The start time of SPN/SEN is 32.29600000000001
+2025-07-02 16:18:22,930 - Removing silent edges (frames) from audio_files_sync/original/1234576_2.wav
+2025-07-02 16:18:22,960 - Removed silent frames at start: 32.49s (up to 32.49s)
+2025-07-02 16:18:22,960 - Removed silent frames at end: 0.04s (starting from 69.08s)
+2025-07-02 16:18:22,971 - Processing audio_files_sync/original/1234572_2.wav
+2025-07-02 16:18:23,227 - Removing silent edges (frames) from audio_files_sync/original/1234572_2.wav
+2025-07-02 16:18:23,328 - Removed silent frames at start: 1.05s (up to 1.05s)
+2025-07-02 16:18:23,328 - Removed silent frames at end: 2.00s (starting from 105.16s)
+2025-07-02 16:18:23,453 - Segment 1: 3.81s (from 0.10s to 3.91s)
+2025-07-02 16:18:23,459 - Segment 2: 4.10s (from 4.46s to 8.57s)
+2025-07-02 16:18:23,467 - Segment 3: 4.09s (from 9.09s to 13.18s)
+2025-07-02 16:18:23,474 - Segment 4: 3.94s (from 13.94s to 17.87s)
+2025-07-02 16:18:23,480 - Segment 5: 3.90s (from 18.59s to 22.49s)
+2025-07-02 16:18:23,490 - The end time of the last VOW segment is 22.488000000000007
+2025-07-02 16:18:23,490 - The start time of MPT is 23.488000000000007
+2025-07-02 16:18:23,564 - MPT segment: 25.75s (from 31.98s to 57.73s)
+2025-07-02 16:18:23,602 - The end time of the MPT segment is 57.72800000000001
+2025-07-02 16:18:23,603 - The start time of SPN/SEN is 58.72800000000001
+2025-07-02 16:18:23,606 - Removing silent edges (frames) from audio_files_sync/original/1234572_2.wav
+2025-07-02 16:18:23,643 - Removed silent frames at start: 67.98s (up to 67.98s)
+2025-07-02 16:18:23,643 - Removed silent frames at end: 0.42s (starting from 103.68s)
+2025-07-02 16:18:23,701 - Processing audio_files_sync/original/1234571_1.wav
+2025-07-02 16:18:23,891 - Removing silent edges (frames) from audio_files_sync/original/1234571_1.wav
+2025-07-02 16:18:23,962 - Removed silent frames at start: 1.03s (up to 1.03s)
+2025-07-02 16:18:24,039 - Segment 1: 3.54s (from 0.10s to 3.64s)
+2025-07-02 16:18:24,047 - Segment 2: 3.34s (from 4.33s to 7.67s)
+2025-07-02 16:18:24,052 - Segment 3: 2.99s (from 8.47s to 11.46s)
+2025-07-02 16:18:24,057 - Segment 4: 3.27s (from 12.20s to 15.47s)
+2025-07-02 16:18:24,064 - Segment 5: 3.63s (from 16.04s to 19.67s)
+2025-07-02 16:18:24,070 - The end time of the last VOW segment is 19.66733333333334
+2025-07-02 16:18:24,070 - The start time of MPT is 20.66733333333334
+2025-07-02 16:18:24,124 - MPT segment: 18.96s (from 24.57s to 43.53s)
+2025-07-02 16:18:24,153 - The end time of the MPT segment is 43.531333333333336
+2025-07-02 16:18:24,153 - The start time of SPN/SEN is 44.531333333333336
+2025-07-02 16:18:24,156 - Removing silent edges (frames) from audio_files_sync/original/1234571_1.wav
+2025-07-02 16:18:24,185 - Removed silent frames at start: 48.77s (up to 48.77s)
+2025-07-02 16:18:24,238 - Processing audio_files_sync/original/1234569_2.wav
+2025-07-02 16:18:24,447 - Removing silent edges (frames) from audio_files_sync/original/1234569_2.wav
+2025-07-02 16:18:24,525 - Removed silent frames at start: 1.89s (up to 1.89s)
+2025-07-02 16:18:24,526 - Removed silent frames at end: 5.36s (starting from 84.03s)
+2025-07-02 16:18:24,613 - Segment 1: 3.17s (from 0.10s to 3.27s)
+2025-07-02 16:18:24,619 - Segment 2: 3.59s (from 4.74s to 8.34s)
+2025-07-02 16:18:24,625 - Segment 3: 4.04s (from 9.87s to 13.91s)
+2025-07-02 16:18:24,632 - Segment 4: 3.99s (from 15.53s to 19.52s)
+2025-07-02 16:18:24,639 - Segment 5: 3.82s (from 20.93s to 24.74s)
+2025-07-02 16:18:24,647 - The end time of the last VOW segment is 24.743999999999993
+2025-07-02 16:18:24,647 - The start time of MPT is 25.743999999999993
+2025-07-02 16:18:24,702 - MPT segment: 16.28s (from 30.50s to 46.78s)
+2025-07-02 16:18:24,728 - The end time of the MPT segment is 46.775999999999996
+2025-07-02 16:18:24,729 - The start time of SPN/SEN is 47.775999999999996
+2025-07-02 16:18:24,732 - Removing silent edges (frames) from audio_files_sync/original/1234569_2.wav
+2025-07-02 16:18:24,761 - Removed silent frames at start: 52.47s (up to 52.47s)
+2025-07-02 16:18:24,762 - Removed silent frames at end: 0.01s (starting from 82.13s)
+2025-07-02 16:18:24,821 - Processing audio_files_sync/original/1234574_4.wav
+2025-07-02 16:18:25,023 - Removing silent edges (frames) from audio_files_sync/original/1234574_4.wav
+2025-07-02 16:18:25,117 - Removed silent frames at start: 1.52s (up to 1.52s)
+2025-07-02 16:18:25,117 - Removed silent frames at end: 4.94s (starting from 77.00s)
+2025-07-02 16:18:25,234 - Segment 1: 2.88s (from 0.10s to 2.98s)
+2025-07-02 16:18:25,241 - Segment 2: 2.72s (from 3.65s to 6.37s)
+2025-07-02 16:18:25,247 - Segment 3: 2.30s (from 7.30s to 9.60s)
+2025-07-02 16:18:25,256 - Segment 4: 2.04s (from 10.54s to 12.58s)
+2025-07-02 16:18:25,260 - Segment 5: 1.99s (from 13.42s to 15.42s)
+2025-07-02 16:18:25,265 - The end time of the last VOW segment is 15.415999999999999
+2025-07-02 16:18:25,265 - The start time of MPT is 16.415999999999997
+2025-07-02 16:18:25,338 - MPT segment: 5.55s (from 22.66s to 28.22s)
+2025-07-02 16:18:25,352 - The end time of the MPT segment is 28.215999999999998
+2025-07-02 16:18:25,352 - The start time of SPN/SEN is 29.215999999999998
+2025-07-02 16:18:25,357 - Removing silent edges (frames) from audio_files_sync/original/1234574_4.wav
+2025-07-02 16:18:25,412 - Removed silent frames at start: 32.78s (up to 32.78s)
+2025-07-02 16:18:25,412 - Removed silent frames at end: 0.08s (starting from 75.40s)
+2025-07-02 16:18:25,449 - Processing audio_files_sync/original/1234568_3.wav
+2025-07-02 16:18:25,710 - Removing silent edges (frames) from audio_files_sync/original/1234568_3.wav
+2025-07-02 16:18:25,842 - Removed silent frames at start: 1.88s (up to 1.88s)
+2025-07-02 16:18:25,843 - Removed silent frames at end: 3.61s (starting from 76.89s)
+2025-07-02 16:18:25,953 - Segment 1: 3.34s (from 0.10s to 3.44s)
+2025-07-02 16:18:25,963 - Segment 2: 3.19s (from 4.59s to 7.78s)
+2025-07-02 16:18:25,972 - Segment 3: 2.47s (from 8.91s to 11.38s)
+2025-07-02 16:18:25,980 - Segment 4: 2.48s (from 12.38s to 14.86s)
+2025-07-02 16:18:25,987 - Segment 5: 2.59s (from 15.94s to 18.54s)
+2025-07-02 16:18:25,994 - The end time of the last VOW segment is 18.536
+2025-07-02 16:18:25,994 - The start time of MPT is 19.536
+2025-07-02 16:18:26,069 - MPT segment: 9.91s (from 25.86s to 35.78s)
+2025-07-02 16:18:26,095 - The end time of the MPT segment is 35.776
+2025-07-02 16:18:26,095 - The start time of SPN/SEN is 36.776
+2025-07-02 16:18:26,099 - Removing silent edges (frames) from audio_files_sync/original/1234568_3.wav
+2025-07-02 16:18:26,143 - Removed silent frames at start: 41.23s (up to 41.23s)
+2025-07-02 16:18:26,143 - Removed silent frames at end: 0.04s (starting from 74.96s)
+2025-07-02 16:18:26,218 - Processing audio_files_sync/original/1234577_2.wav
+2025-07-02 16:18:26,283 - Removing silent edges (frames) from audio_files_sync/original/1234577_2.wav
+2025-07-02 16:18:26,307 - Removed silent frames at start: 0.08s (up to 0.08s)
+2025-07-02 16:18:26,307 - Removed silent frames at end: 4.12s (starting from 20.00s)
+2025-07-02 16:18:26,329 - Segment 1: 4.31s (from 1.40s to 5.72s)
+2025-07-02 16:18:26,338 - Segment 2: 1.20s (from 6.83s to 8.03s)
+2025-07-02 16:18:26,340 - Segment 3: 1.21s (from 8.57s to 9.78s)
+2025-07-02 16:18:26,343 - Segment 4: 2.26s (from 10.25s to 12.52s)
+2025-07-02 16:18:26,348 - Segment 5: 2.58s (from 12.91s to 15.49s)
+2025-07-02 16:18:26,354 - The end time of the last VOW segment is 15.491999999999997
+2025-07-02 16:18:26,354 - The start time of MPT is 16.491999999999997
+2025-07-02 16:18:26,358 - MPT segment: 2.06s (from 16.49s to 18.56s)
+2025-07-02 16:18:26,363 - The end time of the MPT segment is 18.555999999999997
+2025-07-02 16:18:26,363 - The start time of SPN/SEN is 19.555999999999997
+2025-07-02 16:18:26,363 - Removing silent edges (frames) from audio_files_sync/original/1234577_2.wav
+2025-07-02 16:18:26,364 - Removed silent frames at start: 19.49s (up to 19.49s)
+2025-07-02 16:18:26,364 - Removed silent frames at end: 0.01s (starting from 19.91s)
+2025-07-02 16:18:26,365 - Processing audio_files_sync/original/1234573_1.wav
+2025-07-02 16:18:26,646 - Removing silent edges (frames) from audio_files_sync/original/1234573_1.wav
+2025-07-02 16:18:26,750 - Removed silent frames at start: 6.40s (up to 6.40s)
+2025-07-02 16:18:26,751 - Removed silent frames at end: 3.95s (starting from 99.99s)
+2025-07-02 16:18:26,870 - Segment 1: 4.70s (from 0.10s to 4.80s)
+2025-07-02 16:18:26,878 - Segment 2: 4.36s (from 5.98s to 10.34s)
+2025-07-02 16:18:26,887 - Segment 3: 4.02s (from 11.65s to 15.66s)
+2025-07-02 16:18:26,894 - Segment 4: 4.04s (from 17.14s to 21.18s)
+2025-07-02 16:18:26,901 - Segment 5: 4.79s (from 22.49s to 27.28s)
+2025-07-02 16:18:26,910 - The end time of the last VOW segment is 27.28
+2025-07-02 16:18:26,910 - The start time of MPT is 28.28
+2025-07-02 16:18:26,976 - MPT segment: 10.60s (from 35.81s to 46.41s)
+2025-07-02 16:18:26,994 - The end time of the MPT segment is 46.408
+2025-07-02 16:18:26,994 - The start time of SPN/SEN is 47.408
+2025-07-02 16:18:26,998 - Removing silent edges (frames) from audio_files_sync/original/1234573_1.wav
+2025-07-02 16:18:27,040 - Removed silent frames at start: 52.96s (up to 52.96s)
+2025-07-02 16:18:27,040 - Removed silent frames at end: 0.12s (starting from 93.48s)
+2025-07-02 16:18:27,121 - Processing audio_files_sync/original/1234571_4.wav
+2025-07-02 16:18:27,312 - Removing silent edges (frames) from audio_files_sync/original/1234571_4.wav
+2025-07-02 16:18:27,384 - Removed silent frames at start: 2.28s (up to 2.28s)
+2025-07-02 16:18:27,385 - Removed silent frames at end: 2.85s (starting from 79.77s)
+2025-07-02 16:18:27,459 - Segment 1: 3.95s (from 0.10s to 4.06s)
+2025-07-02 16:18:27,466 - Segment 2: 3.74s (from 5.04s to 8.78s)
+2025-07-02 16:18:27,472 - Segment 3: 4.06s (from 9.75s to 13.82s)
+2025-07-02 16:18:27,480 - Segment 4: 3.92s (from 14.40s to 18.32s)
+2025-07-02 16:18:27,487 - Segment 5: 3.85s (from 18.88s to 22.73s)
+2025-07-02 16:18:27,494 - The end time of the last VOW segment is 22.728
+2025-07-02 16:18:27,494 - The start time of MPT is 23.728
+2025-07-02 16:18:27,544 - MPT segment: 12.73s (from 25.55s to 38.28s)
+2025-07-02 16:18:27,567 - The end time of the MPT segment is 38.28
+2025-07-02 16:18:27,567 - The start time of SPN/SEN is 39.28
+2025-07-02 16:18:27,570 - Removing silent edges (frames) from audio_files_sync/original/1234571_4.wav
+2025-07-02 16:18:27,603 - Removed silent frames at start: 41.17s (up to 41.17s)
+2025-07-02 16:18:27,603 - Removed silent frames at end: 0.00s (starting from 77.48s)
+2025-07-02 16:18:27,668 - Processing audio_files_sync/original/1234571_3.wav
+2025-07-02 16:18:27,863 - Removing silent edges (frames) from audio_files_sync/original/1234571_3.wav
+2025-07-02 16:18:27,941 - Removed silent frames at start: 1.18s (up to 1.18s)
+2025-07-02 16:18:27,941 - Removed silent frames at end: 0.64s (starting from 83.29s)
+2025-07-02 16:18:28,024 - Segment 1: 3.19s (from 0.10s to 3.29s)
+2025-07-02 16:18:28,035 - Segment 2: 4.03s (from 4.20s to 8.23s)
+2025-07-02 16:18:28,044 - Segment 3: 3.72s (from 9.54s to 13.26s)
+2025-07-02 16:18:28,051 - Segment 4: 2.94s (from 14.31s to 17.26s)
+2025-07-02 16:18:28,056 - Segment 5: 3.53s (from 18.25s to 21.78s)
+2025-07-02 16:18:28,063 - The end time of the last VOW segment is 21.776000000000007
+2025-07-02 16:18:28,063 - The start time of MPT is 22.776000000000007
+2025-07-02 16:18:28,121 - MPT segment: 14.39s (from 26.07s to 40.46s)
+2025-07-02 16:18:28,145 - The end time of the MPT segment is 40.464000000000006
+2025-07-02 16:18:28,145 - The start time of SPN/SEN is 41.464000000000006
+2025-07-02 16:18:28,149 - Removing silent edges (frames) from audio_files_sync/original/1234571_3.wav
+2025-07-02 16:18:28,185 - Removed silent frames at start: 45.08s (up to 45.08s)
+2025-07-02 16:18:28,185 - Removed silent frames at end: 1.58s (starting from 80.52s)
+2025-07-02 16:18:28,248 - Processing audio_files_sync/original/1234567_3.wav
+2025-07-02 16:18:28,472 - Removing silent edges (frames) from audio_files_sync/original/1234567_3.wav
+2025-07-02 16:18:28,567 - Removed silent frames at start: 1.55s (up to 1.55s)
+2025-07-02 16:18:28,567 - Removed silent frames at end: 6.90s (starting from 89.87s)
+2025-07-02 16:18:28,687 - Segment 1: 4.69s (from 0.10s to 4.78s)
+2025-07-02 16:18:28,696 - Segment 2: 5.51s (from 5.57s to 11.08s)
+2025-07-02 16:18:28,711 - Segment 3: 5.50s (from 11.95s to 17.45s)
+2025-07-02 16:18:28,723 - Segment 4: 5.45s (from 18.21s to 23.66s)
+2025-07-02 16:18:28,738 - Segment 5: 5.63s (from 24.53s to 30.16s)
+2025-07-02 16:18:28,748 - The end time of the last VOW segment is 30.16
+2025-07-02 16:18:28,749 - The start time of MPT is 31.16
+2025-07-02 16:18:28,809 - MPT segment: 11.78s (from 37.69s to 49.46s)
+2025-07-02 16:18:28,829 - The end time of the MPT segment is 49.464
+2025-07-02 16:18:28,829 - The start time of SPN/SEN is 50.464
+2025-07-02 16:18:28,833 - Removing silent edges (frames) from audio_files_sync/original/1234567_3.wav
+2025-07-02 16:18:28,866 - Removed silent frames at start: 53.96s (up to 53.96s)
+2025-07-02 16:18:28,866 - Removed silent frames at end: 0.02s (starting from 88.30s)
+2025-07-02 16:18:28,928 - Processing audio_files_sync/original/1234577_3.wav
+2025-07-02 16:18:29,116 - Removing silent edges (frames) from audio_files_sync/original/1234577_3.wav
+2025-07-02 16:18:29,197 - Removed silent frames at start: 0.10s (up to 0.10s)
+2025-07-02 16:18:29,198 - Removed silent frames at end: 3.79s (starting from 80.20s)
+2025-07-02 16:18:29,290 - Segment 1: 3.99s (from 1.55s to 5.54s)
+2025-07-02 16:18:29,301 - Segment 2: 3.30s (from 6.96s to 10.26s)
+2025-07-02 16:18:29,309 - Segment 3: 3.06s (from 11.50s to 14.56s)
+2025-07-02 16:18:29,318 - Segment 4: 2.70s (from 15.73s to 18.43s)
+2025-07-02 16:18:29,324 - Segment 5: 2.96s (from 19.49s to 22.45s)
+2025-07-02 16:18:29,331 - The end time of the last VOW segment is 22.448
+2025-07-02 16:18:29,332 - The start time of MPT is 23.448
+2025-07-02 16:18:29,394 - MPT segment: 19.63s (from 26.85s to 46.48s)
+2025-07-02 16:18:29,434 - The end time of the MPT segment is 46.480000000000004
+2025-07-02 16:18:29,434 - The start time of SPN/SEN is 47.480000000000004
+2025-07-02 16:18:29,438 - Removing silent edges (frames) from audio_files_sync/original/1234577_3.wav
+2025-07-02 16:18:29,471 - Removed silent frames at start: 51.14s (up to 51.14s)
+2025-07-02 16:18:29,471 - Removed silent frames at end: 0.01s (starting from 80.08s)
+2025-07-02 16:18:29,530 - Processing audio_files_sync/original/1234573_3.wav
+2025-07-02 16:18:29,773 - Removing silent edges (frames) from audio_files_sync/original/1234573_3.wav
+2025-07-02 16:18:29,861 - Removed silent frames at start: 2.02s (up to 2.02s)
+2025-07-02 16:18:29,861 - Removed silent frames at end: 5.29s (starting from 85.10s)
+2025-07-02 16:18:29,957 - Segment 1: 4.22s (from 0.10s to 4.33s)
+2025-07-02 16:18:29,966 - Segment 2: 4.34s (from 5.94s to 10.28s)
+2025-07-02 16:18:29,975 - Segment 3: 3.68s (from 11.71s to 15.39s)
+2025-07-02 16:18:29,982 - Segment 4: 3.81s (from 17.14s to 20.95s)
+2025-07-02 16:18:29,990 - Segment 5: 4.26s (from 22.26s to 26.53s)
+2025-07-02 16:18:29,998 - The end time of the last VOW segment is 26.52800000000001
+2025-07-02 16:18:29,998 - The start time of MPT is 27.52800000000001
+2025-07-02 16:18:30,054 - MPT segment: 8.71s (from 33.79s to 42.50s)
+2025-07-02 16:18:30,070 - The end time of the MPT segment is 42.50400000000001
+2025-07-02 16:18:30,070 - The start time of SPN/SEN is 43.50400000000001
+2025-07-02 16:18:30,073 - Removing silent edges (frames) from audio_files_sync/original/1234573_3.wav
+2025-07-02 16:18:30,108 - Removed silent frames at start: 49.07s (up to 49.07s)
+2025-07-02 16:18:30,108 - Removed silent frames at end: 0.01s (starting from 83.07s)
+2025-07-02 16:18:30,176 - Processing audio_files_sync/original/1234578_2.wav
+2025-07-02 16:18:30,453 - Removing silent edges (frames) from audio_files_sync/original/1234578_2.wav
+2025-07-02 16:18:30,550 - Removed silent frames at start: 1.13s (up to 1.13s)
+2025-07-02 16:18:30,550 - Removed silent frames at end: 3.54s (starting from 89.30s)
+2025-07-02 16:18:30,658 - Segment 1: 4.19s (from 0.10s to 4.30s)
+2025-07-02 16:18:30,666 - Segment 2: 4.44s (from 5.14s to 9.58s)
+2025-07-02 16:18:30,675 - Segment 3: 3.10s (from 10.10s to 13.20s)
+2025-07-02 16:18:30,681 - Segment 4: 3.42s (from 14.11s to 17.54s)
+2025-07-02 16:18:30,690 - Segment 5: 4.39s (from 18.31s to 22.70s)
+2025-07-02 16:18:30,698 - The end time of the last VOW segment is 22.704000000000008
+2025-07-02 16:18:30,698 - The start time of MPT is 23.704000000000008
+2025-07-02 16:18:30,772 - MPT segment: 17.76s (from 26.63s to 44.39s)
+2025-07-02 16:18:30,804 - The end time of the MPT segment is 44.39200000000001
+2025-07-02 16:18:30,804 - The start time of SPN/SEN is 45.39200000000001
+2025-07-02 16:18:30,812 - Removing silent edges (frames) from audio_files_sync/original/1234578_2.wav
+2025-07-02 16:18:30,859 - Removed silent frames at start: 49.42s (up to 49.42s)
+2025-07-02 16:18:30,859 - Removed silent frames at end: 0.02s (starting from 88.15s)
+2025-07-02 16:18:30,941 - Processing audio_files_sync/original/1234573_2.wav
+2025-07-02 16:18:31,181 - Removing silent edges (frames) from audio_files_sync/original/1234573_2.wav
+2025-07-02 16:18:31,272 - Removed silent frames at start: 2.74s (up to 2.74s)
+2025-07-02 16:18:31,272 - Removed silent frames at end: 1.84s (starting from 89.81s)
+2025-07-02 16:18:31,375 - Segment 1: 4.30s (from 0.10s to 4.41s)
+2025-07-02 16:18:31,386 - Segment 2: 4.07s (from 5.78s to 9.86s)
+2025-07-02 16:18:31,393 - Segment 3: 3.79s (from 11.26s to 15.06s)
+2025-07-02 16:18:31,400 - Segment 4: 4.76s (from 16.84s to 21.60s)
+2025-07-02 16:18:31,408 - Segment 5: 5.58s (from 23.75s to 29.34s)
+2025-07-02 16:18:31,418 - The end time of the last VOW segment is 29.336000000000002
+2025-07-02 16:18:31,418 - The start time of MPT is 30.336000000000002
+2025-07-02 16:18:31,474 - MPT segment: 10.02s (from 34.39s to 44.42s)
+2025-07-02 16:18:31,491 - The end time of the MPT segment is 44.416000000000004
+2025-07-02 16:18:31,491 - The start time of SPN/SEN is 45.416000000000004
+2025-07-02 16:18:31,495 - Removing silent edges (frames) from audio_files_sync/original/1234573_2.wav
+2025-07-02 16:18:31,531 - Removed silent frames at start: 50.73s (up to 50.73s)
+2025-07-02 16:18:31,531 - Removed silent frames at end: 0.02s (starting from 87.05s)
+2025-07-02 16:18:31,598 - Processing audio_files_sync/original/1234567_5.wav
+2025-07-02 16:18:31,835 - Removing silent edges (frames) from audio_files_sync/original/1234567_5.wav
+2025-07-02 16:18:31,985 - Removed silent frames at start: 1.22s (up to 1.22s)
+2025-07-02 16:18:31,985 - Removed silent frames at end: 0.88s (starting from 85.64s)
+2025-07-02 16:18:32,125 - Segment 1: 4.26s (from 0.10s to 4.36s)
+2025-07-02 16:18:32,138 - Segment 2: 5.62s (from 4.91s to 10.53s)
+2025-07-02 16:18:32,157 - Segment 3: 4.81s (from 11.14s to 15.95s)
+2025-07-02 16:18:32,170 - Segment 4: 5.23s (from 16.82s to 22.05s)
+2025-07-02 16:18:32,183 - Segment 5: 5.28s (from 22.78s to 28.06s)
+2025-07-02 16:18:32,196 - The end time of the last VOW segment is 28.056000000000008
+2025-07-02 16:18:32,196 - The start time of MPT is 29.056000000000008
+2025-07-02 16:18:32,266 - MPT segment: 16.43s (from 31.33s to 47.76s)
+2025-07-02 16:18:32,302 - The end time of the MPT segment is 47.760000000000005
+2025-07-02 16:18:32,303 - The start time of SPN/SEN is 48.760000000000005
+2025-07-02 16:18:32,306 - Removing silent edges (frames) from audio_files_sync/original/1234567_5.wav
+2025-07-02 16:18:32,343 - Removed silent frames at start: 49.73s (up to 49.73s)
+2025-07-02 16:18:32,343 - Removed silent frames at end: 0.03s (starting from 84.40s)
+2025-07-02 16:18:32,421 - Processing audio_files_sync/original/1234578_1.wav
+2025-07-02 16:18:32,683 - Removing silent edges (frames) from audio_files_sync/original/1234578_1.wav
+2025-07-02 16:18:32,778 - Removed silent frames at start: 1.88s (up to 1.88s)
+2025-07-02 16:18:32,778 - Removed silent frames at end: 2.80s (starting from 89.47s)
+2025-07-02 16:18:32,885 - Segment 1: 2.29s (from 0.10s to 2.39s)
+2025-07-02 16:18:32,889 - Segment 2: 2.25s (from 3.74s to 5.98s)
+2025-07-02 16:18:32,893 - Segment 3: 1.67s (from 6.95s to 8.62s)
+2025-07-02 16:18:32,896 - Segment 4: 2.29s (from 9.75s to 12.04s)
+2025-07-02 16:18:32,900 - Segment 5: 2.41s (from 13.36s to 15.77s)
+2025-07-02 16:18:32,904 - The end time of the last VOW segment is 15.767999999999999
+2025-07-02 16:18:32,904 - The start time of MPT is 16.768
+2025-07-02 16:18:32,970 - MPT segment: 14.99s (from 20.98s to 35.98s)
+2025-07-02 16:18:32,993 - The end time of the MPT segment is 35.976
+2025-07-02 16:18:32,993 - The start time of SPN/SEN is 36.976
+2025-07-02 16:18:32,998 - Removing silent edges (frames) from audio_files_sync/original/1234578_1.wav
+2025-07-02 16:18:33,038 - Removed silent frames at start: 41.73s (up to 41.73s)
+2025-07-02 16:18:33,038 - Removed silent frames at end: 0.00s (starting from 87.59s)
+2025-07-02 16:18:33,055 - Processing audio_files_sync/original/1234567_2.wav
+2025-07-02 16:18:33,240 - Removing silent edges (frames) from audio_files_sync/original/1234567_2.wav
+2025-07-02 16:18:33,309 - Removed silent frames at start: 8.02s (up to 8.02s)
+2025-07-02 16:18:33,309 - Removed silent frames at end: 0.84s (starting from 86.22s)
+2025-07-02 16:18:33,379 - Segment 1: 4.77s (from 0.10s to 4.87s)
+2025-07-02 16:18:33,387 - Segment 2: 5.70s (from 5.48s to 11.18s)
+2025-07-02 16:18:33,397 - Segment 3: 4.90s (from 11.85s to 16.74s)
+2025-07-02 16:18:33,408 - Segment 4: 4.99s (from 17.37s to 22.36s)
+2025-07-02 16:18:33,416 - Segment 5: 5.84s (from 23.20s to 29.04s)
+2025-07-02 16:18:33,425 - The end time of the last VOW segment is 29.04
+2025-07-02 16:18:33,425 - The start time of MPT is 30.04
+2025-07-02 16:18:33,469 - MPT segment: 13.13s (from 31.01s to 44.14s)
+2025-07-02 16:18:33,489 - The end time of the MPT segment is 44.135999999999996
+2025-07-02 16:18:33,489 - The start time of SPN/SEN is 45.135999999999996
+2025-07-02 16:18:33,492 - Removing silent edges (frames) from audio_files_sync/original/1234567_2.wav
+2025-07-02 16:18:33,518 - Removed silent frames at start: 46.88s (up to 46.88s)
+2025-07-02 16:18:33,519 - Removed silent frames at end: 0.01s (starting from 78.19s)
+2025-07-02 16:18:33,573 - Processing audio_files_sync/original/1234572_3.wav
+2025-07-02 16:18:33,834 - Removing silent edges (frames) from audio_files_sync/original/1234572_3.wav
+2025-07-02 16:18:33,926 - Removed silent frames at start: 1.37s (up to 1.37s)
+2025-07-02 16:18:33,926 - Removed silent frames at end: 3.87s (starting from 106.25s)
+2025-07-02 16:18:34,042 - Segment 1: 3.70s (from 0.10s to 3.80s)
+2025-07-02 16:18:34,048 - Segment 2: 3.96s (from 4.43s to 8.39s)
+2025-07-02 16:18:34,059 - Segment 3: 4.02s (from 9.15s to 13.18s)
+2025-07-02 16:18:34,066 - Segment 4: 4.33s (from 13.92s to 18.25s)
+2025-07-02 16:18:34,073 - Segment 5: 4.39s (from 18.86s to 23.26s)
+2025-07-02 16:18:34,080 - The end time of the last VOW segment is 23.256000000000007
+2025-07-02 16:18:34,080 - The start time of MPT is 24.256000000000007
+2025-07-02 16:18:34,152 - MPT segment: 28.84s (from 32.14s to 60.98s)
+2025-07-02 16:18:34,194 - The end time of the MPT segment is 60.976000000000006
+2025-07-02 16:18:34,194 - The start time of SPN/SEN is 61.976000000000006
+2025-07-02 16:18:34,198 - Removing silent edges (frames) from audio_files_sync/original/1234572_3.wav
+2025-07-02 16:18:34,233 - Removed silent frames at start: 69.63s (up to 69.63s)
+2025-07-02 16:18:34,233 - Removed silent frames at end: 0.01s (starting from 104.87s)
+2025-07-02 16:18:34,290 - Processing audio_files_sync/original/1234567_1.wav
+2025-07-02 16:18:34,500 - Removing silent edges (frames) from audio_files_sync/original/1234567_1.wav
+2025-07-02 16:18:34,579 - Removed silent frames at start: 2.23s (up to 2.23s)
+2025-07-02 16:18:34,580 - Removed silent frames at end: 0.81s (starting from 92.31s)
+2025-07-02 16:18:34,671 - Segment 1: 4.66s (from 0.10s to 4.76s)
+2025-07-02 16:18:34,678 - Segment 2: 5.77s (from 5.83s to 11.60s)
+2025-07-02 16:18:34,688 - Segment 3: 5.88s (from 12.85s to 18.73s)
+2025-07-02 16:18:34,697 - Segment 4: 5.55s (from 19.96s to 25.51s)
+2025-07-02 16:18:34,706 - Segment 5: 6.37s (from 26.95s to 33.32s)
+2025-07-02 16:18:34,720 - The end time of the last VOW segment is 33.32000000000001
+2025-07-02 16:18:34,720 - The start time of MPT is 34.32000000000001
+2025-07-02 16:18:34,773 - MPT segment: 17.18s (from 37.14s to 54.33s)
+2025-07-02 16:18:34,799 - The end time of the MPT segment is 54.328
+2025-07-02 16:18:34,799 - The start time of SPN/SEN is 55.328
+2025-07-02 16:18:34,802 - Removing silent edges (frames) from audio_files_sync/original/1234567_1.wav
+2025-07-02 16:18:34,830 - Removed silent frames at start: 57.24s (up to 57.24s)
+2025-07-02 16:18:34,831 - Removed silent frames at end: 0.01s (starting from 90.07s)
+2025-07-02 16:18:34,883 - Processing audio_files_sync/original/1234571_2.wav
+2025-07-02 16:18:35,052 - Removing silent edges (frames) from audio_files_sync/original/1234571_2.wav
+2025-07-02 16:18:35,113 - Removed silent frames at start: 1.25s (up to 1.25s)
+2025-07-02 16:18:35,113 - Removed silent frames at end: 1.57s (starting from 72.08s)
+2025-07-02 16:18:35,177 - Segment 1: 4.10s (from 0.10s to 4.21s)
+2025-07-02 16:18:35,185 - Segment 2: 3.87s (from 5.04s to 8.91s)
+2025-07-02 16:18:35,191 - Segment 3: 3.54s (from 9.72s to 13.26s)
+2025-07-02 16:18:35,197 - Segment 4: 3.84s (from 14.08s to 17.92s)
+2025-07-02 16:18:35,204 - Segment 5: 4.36s (from 18.76s to 23.12s)
+2025-07-02 16:18:35,211 - The end time of the last VOW segment is 23.12
+2025-07-02 16:18:35,211 - The start time of MPT is 24.12
+2025-07-02 16:18:35,255 - MPT segment: 13.93s (from 25.06s to 38.99s)
+2025-07-02 16:18:35,277 - The end time of the MPT segment is 38.992000000000004
+2025-07-02 16:18:35,278 - The start time of SPN/SEN is 39.992000000000004
+2025-07-02 16:18:35,280 - Removing silent edges (frames) from audio_files_sync/original/1234571_2.wav
+2025-07-02 16:18:35,306 - Removed silent frames at start: 40.83s (up to 40.83s)
+2025-07-02 16:18:35,306 - Removed silent frames at end: 0.01s (starting from 70.81s)
+2025-07-02 16:18:35,353 - Processing audio_files_sync/original/1234568_4.wav
+2025-07-02 16:18:35,513 - Removing silent edges (frames) from audio_files_sync/original/1234568_4.wav
+2025-07-02 16:18:35,573 - Removed silent frames at start: 0.97s (up to 0.97s)
+2025-07-02 16:18:35,573 - Removed silent frames at end: 4.16s (starting from 70.51s)
+2025-07-02 16:18:35,631 - Segment 1: 2.56s (from 0.10s to 2.66s)
+2025-07-02 16:18:35,635 - Segment 2: 2.54s (from 3.62s to 6.17s)
+2025-07-02 16:18:35,639 - Segment 3: 2.20s (from 7.22s to 9.42s)
+2025-07-02 16:18:35,642 - Segment 4: 2.17s (from 10.30s to 12.47s)
+2025-07-02 16:18:35,646 - Segment 5: 2.38s (from 13.55s to 15.94s)
+2025-07-02 16:18:35,649 - The end time of the last VOW segment is 15.936000000000005
+2025-07-02 16:18:35,649 - The start time of MPT is 16.936000000000007
+2025-07-02 16:18:35,691 - MPT segment: 9.74s (from 23.79s to 33.54s)
+2025-07-02 16:18:35,705 - The end time of the MPT segment is 33.53600000000001
+2025-07-02 16:18:35,706 - The start time of SPN/SEN is 34.53600000000001
+2025-07-02 16:18:35,708 - Removing silent edges (frames) from audio_files_sync/original/1234568_4.wav
+2025-07-02 16:18:35,734 - Removed silent frames at start: 36.90s (up to 36.90s)
+2025-07-02 16:18:35,734 - Removed silent frames at end: 0.01s (starting from 69.52s)
+2025-07-02 16:18:35,786 - Processing audio_files_sync/original/1234578_3.wav
+2025-07-02 16:18:35,972 - Removing silent edges (frames) from audio_files_sync/original/1234578_3.wav
+2025-07-02 16:18:36,042 - Removed silent frames at start: 1.24s (up to 1.24s)
+2025-07-02 16:18:36,042 - Removed silent frames at end: 3.26s (starting from 82.95s)
+2025-07-02 16:18:36,114 - Segment 1: 4.32s (from 0.10s to 4.42s)
+2025-07-02 16:18:36,121 - Segment 2: 4.06s (from 5.04s to 9.10s)
+2025-07-02 16:18:36,127 - Segment 3: 3.96s (from 9.94s to 13.90s)
+2025-07-02 16:18:36,133 - Segment 4: 3.47s (from 14.79s to 18.26s)
+2025-07-02 16:18:36,139 - Segment 5: 4.52s (from 19.38s to 23.90s)
+2025-07-02 16:18:36,147 - The end time of the last VOW segment is 23.896
+2025-07-02 16:18:36,147 - The start time of MPT is 24.896
+2025-07-02 16:18:36,195 - MPT segment: 11.26s (from 29.61s to 40.86s)
+2025-07-02 16:18:36,213 - The end time of the MPT segment is 40.864000000000004
+2025-07-02 16:18:36,213 - The start time of SPN/SEN is 41.864000000000004
+2025-07-02 16:18:36,216 - Removing silent edges (frames) from audio_files_sync/original/1234578_3.wav
+2025-07-02 16:18:36,247 - Removed silent frames at start: 45.44s (up to 45.44s)
+2025-07-02 16:18:36,247 - Removed silent frames at end: 0.01s (starting from 81.70s)
+2025-07-02 16:18:36,309 - Processing audio_files_sync/original/1234569_1.wav
+2025-07-02 16:18:36,502 - Removing silent edges (frames) from audio_files_sync/original/1234569_1.wav
+2025-07-02 16:18:36,575 - Removed silent frames at start: 1.83s (up to 1.83s)
+2025-07-02 16:18:36,575 - Removed silent frames at end: 5.53s (starting from 86.29s)
+2025-07-02 16:18:36,651 - Segment 1: 3.30s (from 0.10s to 3.40s)
+2025-07-02 16:18:36,657 - Segment 2: 3.02s (from 4.86s to 7.88s)
+2025-07-02 16:18:36,661 - Segment 3: 2.95s (from 9.55s to 12.50s)
+2025-07-02 16:18:36,666 - Segment 4: 3.00s (from 14.01s to 17.01s)
+2025-07-02 16:18:36,672 - Segment 5: 3.39s (from 18.37s to 21.76s)
+2025-07-02 16:18:36,677 - The end time of the last VOW segment is 21.76000000000001
+2025-07-02 16:18:36,677 - The start time of MPT is 22.76000000000001
+2025-07-02 16:18:36,732 - MPT segment: 15.25s (from 31.99s to 47.24s)
+2025-07-02 16:18:36,756 - The end time of the MPT segment is 47.24000000000001
+2025-07-02 16:18:36,756 - The start time of SPN/SEN is 48.24000000000001
+2025-07-02 16:18:36,759 - Removing silent edges (frames) from audio_files_sync/original/1234569_1.wav
+2025-07-02 16:18:36,787 - Removed silent frames at start: 50.08s (up to 50.08s)
+2025-07-02 16:18:36,787 - Removed silent frames at end: 0.08s (starting from 84.37s)
+2025-07-02 16:18:36,846 - Processing audio_files_sync/original/1234569_3.wav
+2025-07-02 16:18:37,048 - Removing silent edges (frames) from audio_files_sync/original/1234569_3.wav
+2025-07-02 16:18:37,120 - Removed silent frames at start: 1.79s (up to 1.79s)
+2025-07-02 16:18:37,120 - Removed silent frames at end: 3.97s (starting from 88.53s)
+2025-07-02 16:18:37,204 - Segment 1: 3.61s (from 0.10s to 3.71s)
+2025-07-02 16:18:37,211 - Segment 2: 4.05s (from 5.44s to 9.49s)
+2025-07-02 16:18:37,218 - Segment 3: 3.74s (from 10.71s to 14.45s)
+2025-07-02 16:18:37,224 - Segment 4: 3.58s (from 15.71s to 19.30s)
+2025-07-02 16:18:37,229 - Segment 5: 3.78s (from 20.77s to 24.54s)
+2025-07-02 16:18:37,235 - The end time of the last VOW segment is 24.544
+2025-07-02 16:18:37,235 - The start time of MPT is 25.544
+2025-07-02 16:18:37,296 - MPT segment: 14.61s (from 30.68s to 45.29s)
+2025-07-02 16:18:37,319 - The end time of the MPT segment is 45.288
+2025-07-02 16:18:37,319 - The start time of SPN/SEN is 46.288
+2025-07-02 16:18:37,323 - Removing silent edges (frames) from audio_files_sync/original/1234569_3.wav
+2025-07-02 16:18:37,355 - Removed silent frames at start: 50.89s (up to 50.89s)
+2025-07-02 16:18:37,355 - Removed silent frames at end: 0.02s (starting from 86.73s)
+2025-07-02 16:18:37,412 - Processing audio_files_sync/original/1234574_3.wav
+2025-07-02 16:18:37,574 - Removing silent edges (frames) from audio_files_sync/original/1234574_3.wav
+2025-07-02 16:18:37,634 - Removed silent frames at start: 1.75s (up to 1.75s)
+2025-07-02 16:18:37,634 - Removed silent frames at end: 3.92s (starting from 71.15s)
+2025-07-02 16:18:37,695 - Segment 1: 2.94s (from 0.10s to 3.05s)
+2025-07-02 16:18:37,700 - Segment 2: 2.81s (from 4.06s to 6.87s)
+2025-07-02 16:18:37,705 - Segment 3: 2.62s (from 7.83s to 10.45s)
+2025-07-02 16:18:37,709 - Segment 4: 2.52s (from 11.43s to 13.95s)
+2025-07-02 16:18:37,716 - Segment 5: 2.45s (from 14.70s to 17.15s)
+2025-07-02 16:18:37,720 - The end time of the last VOW segment is 17.151999999999994
+2025-07-02 16:18:37,720 - The start time of MPT is 18.151999999999994
+2025-07-02 16:18:37,767 - MPT segment: 5.34s (from 21.77s to 27.11s)
+2025-07-02 16:18:37,776 - The end time of the MPT segment is 27.111999999999995
+2025-07-02 16:18:37,777 - The start time of SPN/SEN is 28.111999999999995
+2025-07-02 16:18:37,780 - Removing silent edges (frames) from audio_files_sync/original/1234574_3.wav
+2025-07-02 16:18:37,814 - Removed silent frames at start: 31.69s (up to 31.69s)
+2025-07-02 16:18:37,814 - Removed silent frames at end: 0.01s (starting from 69.39s)
+2025-07-02 16:18:37,834 - Processing audio_files_sync/original/1234571_5.wav
+2025-07-02 16:18:38,003 - Removing silent edges (frames) from audio_files_sync/original/1234571_5.wav
+2025-07-02 16:18:38,068 - Removed silent frames at start: 0.56s (up to 0.56s)
+2025-07-02 16:18:38,068 - Removed silent frames at end: 0.41s (starting from 77.92s)
+2025-07-02 16:18:38,138 - Segment 1: 4.26s (from 0.10s to 4.36s)
+2025-07-02 16:18:38,145 - Segment 2: 3.85s (from 5.20s to 9.05s)
+2025-07-02 16:18:38,151 - Segment 3: 3.29s (from 9.97s to 13.26s)
+2025-07-02 16:18:38,157 - Segment 4: 3.18s (from 14.04s to 17.22s)
+2025-07-02 16:18:38,162 - Segment 5: 3.60s (from 17.85s to 21.45s)
+2025-07-02 16:18:38,167 - The end time of the last VOW segment is 21.448
+2025-07-02 16:18:38,168 - The start time of MPT is 22.448
+2025-07-02 16:18:38,215 - MPT segment: 13.38s (from 24.18s to 37.57s)
+2025-07-02 16:18:38,237 - The end time of the MPT segment is 37.568
+2025-07-02 16:18:38,237 - The start time of SPN/SEN is 38.568
+2025-07-02 16:18:38,240 - Removing silent edges (frames) from audio_files_sync/original/1234571_5.wav
+2025-07-02 16:18:38,272 - Removed silent frames at start: 40.90s (up to 40.90s)
+2025-07-02 16:18:38,272 - Removed silent frames at end: 0.06s (starting from 77.31s)
+2025-07-02 16:18:38,337 - Finished processing.

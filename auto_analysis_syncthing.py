@@ -83,13 +83,38 @@ def pre_emphasize_audio(audio_file):
         sound.save(str(save_path), 'WAV')   
 
 
+# def remove_silence_ends(audio_file, sound, silence_threshold, padding):
+#     logging.info(f"Removing silent edges (frames) from {audio_file}")
+    
+#     intensity = sound.to_intensity()
+#     time_stamps = intensity.xs()
+#     intensity_values = intensity.values.T.flatten()
+
+#     non_silent_mask = intensity_values > silence_threshold
+
+#     try:
+#         first_non_silent_idx = next(i for i, val in enumerate(non_silent_mask) if val)
+#         last_non_silent_idx = len(non_silent_mask) - next(
+#             i for i, val in enumerate(reversed(non_silent_mask)) if val
+#         ) - 1
+#     except StopIteration:
+#         logging.info("Removing silent edges (frames), but all audio is silent...")
+#         return None ## when audio is silent
+
+#     start_time = max(0.0, time_stamps[first_non_silent_idx] - padding)
+#     end_time = min(sound.xmax, time_stamps[last_non_silent_idx] + padding)
+
+#     sound = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=False)
+    
+#     return sound
+
+
 def remove_silence_ends(audio_file, sound, silence_threshold, padding):
     logging.info(f"Removing silent edges (frames) from {audio_file}")
     
     intensity = sound.to_intensity()
     time_stamps = intensity.xs()
     intensity_values = intensity.values.T.flatten()
-
     non_silent_mask = intensity_values > silence_threshold
 
     try:
@@ -99,15 +124,26 @@ def remove_silence_ends(audio_file, sound, silence_threshold, padding):
         ) - 1
     except StopIteration:
         logging.info("Removing silent edges (frames), but all audio is silent...")
-        return None ## when audio is silent
+        return None  ## when audio is silent
 
-    start_time = max(0.0, time_stamps[first_non_silent_idx] - padding)
-    end_time = min(sound.xmax, time_stamps[last_non_silent_idx] + padding)
+    original_start_time = 0.0
+    original_end_time = sound.xmax
+    
+    start_time = max(original_start_time, time_stamps[first_non_silent_idx] - padding)
+    end_time = min(original_end_time, time_stamps[last_non_silent_idx] + padding)
+    removed_start_duration = start_time - original_start_time
+    removed_end_duration = original_end_time - end_time
+
+    if removed_start_duration > 0:
+        logging.info(f"Removed silent frames at start: {removed_start_duration:.2f}s (up to {start_time:.2f}s)")
+    if removed_end_duration > 0:
+        logging.info(f"Removed silent frames at end: {removed_end_duration:.2f}s (starting from {end_time:.2f}s)")
 
     sound = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=False)
     
     return sound
-   
+
+
     
 def split_voice_exercises(audio_file, min_frames, silence_threshold, padding): 
     patient_id_take = audio_file.stem[:9]
@@ -153,11 +189,12 @@ def split_voice_exercises(audio_file, min_frames, silence_threshold, padding):
         segment_path = syncthing_dir / 'processed' / 'VOW' / f"{patient_id_take}_VOW_4{label}_pre.wav"
         segment_sound.save(str(segment_path), "WAV")
 
-        new_start_time = end_time + 1.0 ## adding 1 second 
-        logging.info(end_time)
+    new_start_time = end_time + 1.0 ## adding 1 second 
+    logging.info(f"The end time of the last VOW segment is {end_time}")
+    logging.info(f"The start time of MPT is {new_start_time}")
         
     ## extracting the MPT segment
-    sound = sound.extract_part(from_time=new_start_time, to_time=sound.xmax, preserve_times=False)    
+    sound = sound.extract_part(from_time=new_start_time, to_time=sound.xmax, preserve_times=True)    
     
     intensity = sound.to_intensity()
     time_stamps = intensity.xs()
@@ -183,46 +220,52 @@ def split_voice_exercises(audio_file, min_frames, silence_threshold, padding):
                     start = None
                     silent_count = 0
         
-        if mpt_segments:
-            start_idx, end_idx = mpt_segments[0]
-            frame_duration = intensity.dx
-            start_time = intensity.xmin + start_idx * frame_duration
-            end_time = intensity.xmin + (end_idx + 1) * frame_duration
-            
-            mpt_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=False)
-            segment_path = syncthing_dir / 'processed' / 'MPT' / f'{patient_id_take}_MPT_4_pre.wav'
-            mpt_segment.save(str(segment_path), "WAV")
-            
-            new_start_time = end_time + 1.0
+    if mpt_segments:
+        start_idx, end_idx = mpt_segments[0]
+        frame_duration = intensity.dx
+        start_time = intensity.xmin + start_idx * frame_duration
+        end_time = intensity.xmin + (end_idx + 1) * frame_duration
+        duration = end_time - start_time
+        logging.info(f"MPT segment: {duration:.2f}s (from {start_time:.2f}s to {end_time:.2f}s)")
+        
+        mpt_segment = sound.extract_part(from_time=start_time, to_time=end_time, preserve_times=True)
+        segment_path = syncthing_dir / 'processed' / 'MPT' / f'{patient_id_take}_MPT_4_pre.wav'
+        mpt_segment.save(str(segment_path), "WAV")
+        
+        new_start_time = end_time + 1.0
+        logging.info(F"The end time of the MPT segment is {end_time}")
+        logging.info(f"The start time of SPN/SEN is {new_start_time}")
     
-    ## extracting SPN (and before also SEN)
-    sound = sound.extract_part(from_time=new_start_time, to_time=sound.xmax, preserve_times=False)
+    ## extracting SPN(/SEN)
+    sound = sound.extract_part(from_time=new_start_time, to_time=sound.xmax, preserve_times=True)
 
-    sound = remove_silence_ends(str(audio_file), sound, silence_threshold=60, padding=0.1)
+    sound = remove_silence_ends(str(audio_file), sound, silence_threshold=55, padding=0.1)
     
-    voiced = sound.extract_part(from_time=end_time, to_time=sound.xmax, preserve_times=False)
+    voiced = sound.extract_part(from_time=new_start_time, to_time=sound.xmax, preserve_times=True)
     spn_path = syncthing_dir / 'processed' / 'SPN' / f'{patient_id_take}_SPN_4_pre.wav'
     voiced.save(str(spn_path), "WAV")
     
 if __name__ == "__main__":
     logging.info("Script started.")
 
-    # for file_path in folder.rglob("*.m4a"):
-    #     logging.info(file_path)
-    #     rename_new_files(file_path)
-    # for file_path in (syncthing_dir / 'm4a').glob("*.m4a"):
-    #     convert_m4a_to_wav(file_path)
-
-    # renamed_df.to_csv(processed_log, index=False)
+    ## renaming the files that are in the m4a folder
+    for file_path in folder.rglob("*.m4a"):
+        logging.info(file_path)
+        rename_new_files(file_path)
+    renamed_df.to_csv(processed_log, index=False)
     
+    ## converting the m4a files to wav files
+    processed_files = [file for file in (syncthing_dir / 'original').glob('*.wav') if file.is_file()]
+    unprocessed_files = [file for file in (syncthing_dir / 'm4a').glob('*.m4a') if file not in processed_files]
+    for file_path in (syncthing_dir / 'm4a').glob("*.m4a"):
+        convert_m4a_to_wav(file_path)
+        
+    ## perform pre-emphasis and split the voice exercises
     processed_files = [file for file in (syncthing_dir / 'pre').glob('*_pre.wav') if file.is_file()]
     unprocessed_files = [file for file in (syncthing_dir / 'original').glob('*.wav') if file not in processed_files]
-    
     for audio_file in unprocessed_files:
         logging.info(f'Processing {audio_file}')
-    
         pre_emphasize_audio(audio_file)
-
-        segments = split_voice_exercises(audio_file, min_frames=100, silence_threshold=50, padding=0.1)
+        split_voice_exercises(audio_file, min_frames=100, silence_threshold=50, padding=0.1)
     
     logging.info("Finished processing.")

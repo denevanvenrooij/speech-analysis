@@ -8,8 +8,6 @@ time = datetime.now().strftime('%y%m%d_%H%M%S')
 log_filename = f"logs/2_vss_{time}.log"
 logging.basicConfig(filename=log_filename, level=logging.INFO, format='%(asctime)s - %(message)s')
 
-vowel_dict = {i+1: vowel for i, vowel in enumerate(vowels)}
-
 def save_vowels_separately(audio_file, patient_id, silence_threshold=50):
     audio_path = Path(audio_file)
     output_stem = audio_path.stem
