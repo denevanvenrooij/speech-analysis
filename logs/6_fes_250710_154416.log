@@ -1,0 +1,511 @@
+2025-07-10 15:44:17,531 - dataframes_feature_extraction/SEN_df.csv
+2025-07-10 15:44:17,815 - Patient 67
+2025-07-10 15:44:17,840 - Creating a plot for 67 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:17,848 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.287325                0.712675
+1      1-3              0.961362                0.038638
+2      2-3              0.979181                0.020819
+2025-07-10 15:44:17,853 - Patient 68
+2025-07-10 15:44:17,879 - Creating a plot for 68 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:17,891 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.330515                0.669485
+1      1-3              1.145191               -0.145191
+2      2-3              1.070972               -0.070972
+2025-07-10 15:44:17,898 - Patient 69
+2025-07-10 15:44:17,928 - Creating a plot for 69 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:17,936 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.461436                0.538564
+1      1-3              0.479592                0.520408
+2      2-3              0.475200                0.524800
+2025-07-10 15:44:17,940 - Patient 70
+2025-07-10 15:44:17,967 - Creating a plot for 70 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:17,975 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.428888                0.571112
+1      1-3              0.624914                0.375086
+2      2-3              0.499100                0.500900
+2025-07-10 15:44:17,980 - Patient 71
+2025-07-10 15:44:18,006 - Creating a plot for 71 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,013 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.814691                0.185309
+1      1-3              0.927353                0.072647
+2      2-3              0.848497                0.151503
+2025-07-10 15:44:18,017 - Patient 72
+2025-07-10 15:44:18,041 - Creating a plot for 72 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,049 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.579761                0.420239
+1      1-3              0.466783                0.533217
+2      2-3              0.606852                0.393148
+2025-07-10 15:44:18,053 - Patient 73
+2025-07-10 15:44:18,078 - Creating a plot for 73 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,085 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.069458                0.930542
+1      1-3              0.667588                0.332412
+2      2-3              0.628851                0.371149
+2025-07-10 15:44:18,089 - Patient 74
+2025-07-10 15:44:18,115 - Creating a plot for 74 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,122 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.908876                0.091124
+1      1-3              0.781564                0.218436
+2      2-3              0.845124                0.154876
+2025-07-10 15:44:18,126 - Patient 75
+2025-07-10 15:44:18,154 - Creating a plot for 75 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,165 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.553569                0.446431
+1      1-3              0.824632                0.175368
+2      2-3              0.742437                0.257563
+2025-07-10 15:44:18,169 - Patient 76
+2025-07-10 15:44:18,196 - Creating a plot for 76 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,203 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.750961                0.249039
+1      1-3              0.826398                0.173602
+2      2-3              1.049339               -0.049339
+2025-07-10 15:44:18,207 - Patient 77
+2025-07-10 15:44:18,231 - Creating a plot for 77 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,238 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.410656                0.589344
+1      1-3              0.653484                0.346516
+2      2-3              0.593090                0.406910
+2025-07-10 15:44:18,242 - Patient 78
+2025-07-10 15:44:18,266 - Creating a plot for 78 SEN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,273 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.479482                0.520518
+1      1-3              0.797805                0.202195
+2      2-3              0.598326                0.401674
+2025-07-10 15:44:18,277 - dataframes_feature_extraction/SPN_df.csv
+2025-07-10 15:44:18,428 - Patient 67
+2025-07-10 15:44:18,444 - Creating a plot for 67 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,451 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.379814                0.620186
+1      1-3              0.777377                0.222623
+2      2-3              1.001817               -0.001817
+2025-07-10 15:44:18,454 - Patient 68
+2025-07-10 15:44:18,471 - Creating a plot for 68 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,477 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.609439                0.390561
+1      1-3              0.904366                0.095634
+2      2-3              1.063418               -0.063418
+2025-07-10 15:44:18,480 - Patient 69
+2025-07-10 15:44:18,497 - Creating a plot for 69 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,503 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.417326                0.582674
+1      1-3              0.639097                0.360903
+2      2-3              0.590458                0.409542
+2025-07-10 15:44:18,507 - Patient 70
+2025-07-10 15:44:18,524 - Creating a plot for 70 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,530 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.220493                0.779507
+1      1-3              0.547956                0.452044
+2      2-3              0.574126                0.425874
+2025-07-10 15:44:18,534 - Patient 71
+2025-07-10 15:44:18,550 - Creating a plot for 71 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,556 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.535292                0.464708
+1      1-3              0.750069                0.249931
+2      2-3              0.773130                0.226870
+2025-07-10 15:44:18,560 - Patient 72
+2025-07-10 15:44:18,575 - Creating a plot for 72 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,581 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.348316                0.651684
+1      1-3              0.453676                0.546324
+2      2-3              0.543204                0.456796
+2025-07-10 15:44:18,585 - Patient 73
+2025-07-10 15:44:18,600 - Creating a plot for 73 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,606 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.040956                0.959044
+1      1-3              0.660320                0.339680
+2      2-3              0.628603                0.371397
+2025-07-10 15:44:18,610 - Patient 74
+2025-07-10 15:44:18,625 - Creating a plot for 74 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,631 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.929801                0.070199
+1      1-3              0.729456                0.270544
+2      2-3              0.812714                0.187286
+2025-07-10 15:44:18,634 - Patient 75
+2025-07-10 15:44:18,649 - Creating a plot for 75 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,655 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.426939                0.573061
+1      1-3              0.641369                0.358631
+2      2-3              0.743169                0.256831
+2025-07-10 15:44:18,658 - Patient 76
+2025-07-10 15:44:18,673 - Creating a plot for 76 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,679 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.473628                0.526372
+1      1-3              0.949239                0.050761
+2      2-3              1.000271               -0.000271
+2025-07-10 15:44:18,683 - Patient 77
+2025-07-10 15:44:18,697 - Creating a plot for 77 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,703 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.519758                0.480242
+1      1-3              0.441300                0.558700
+2      2-3              0.688936                0.311064
+2025-07-10 15:44:18,707 - Patient 78
+2025-07-10 15:44:18,721 - Creating a plot for 78 SPN if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,727 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.338265                0.661735
+1      1-3              0.635373                0.364627
+2      2-3              0.593308                0.406692
+2025-07-10 15:44:18,730 - dataframes_feature_extraction/VOWa_df.csv
+2025-07-10 15:44:18,835 - Patient 67
+2025-07-10 15:44:18,852 - Creating a plot for 67 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,858 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.236449                0.763551
+1      1-3              0.145964                0.854036
+2      2-3              0.220817                0.779183
+2025-07-10 15:44:18,861 - Patient 68
+2025-07-10 15:44:18,877 - Creating a plot for 68 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,883 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.590030                0.409970
+1      1-3              0.343961                0.656039
+2      2-3              0.918787                0.081213
+2025-07-10 15:44:18,886 - Patient 69
+2025-07-10 15:44:18,903 - Creating a plot for 69 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,909 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.585929                0.414071
+1      1-3              0.179748                0.820252
+2      2-3              0.495559                0.504441
+2025-07-10 15:44:18,912 - Patient 70
+2025-07-10 15:44:18,929 - Creating a plot for 70 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,935 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.197386                0.802614
+1      1-3              0.156319                0.843681
+2      2-3              0.211350                0.788650
+2025-07-10 15:44:18,939 - Patient 71
+2025-07-10 15:44:18,956 - Creating a plot for 71 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,961 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.467062                0.532938
+1      1-3              0.142157                0.857843
+2      2-3              0.443738                0.556262
+2025-07-10 15:44:18,965 - Patient 72
+2025-07-10 15:44:18,981 - Creating a plot for 72 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:18,987 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.524579                0.475421
+1      1-3              0.225462                0.774538
+2      2-3              0.536461                0.463539
+2025-07-10 15:44:18,991 - Patient 73
+2025-07-10 15:44:19,007 - Creating a plot for 73 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,013 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.534019                0.465981
+1      1-3              0.313847                0.686153
+2      2-3              0.470585                0.529415
+2025-07-10 15:44:19,016 - Patient 74
+2025-07-10 15:44:19,032 - Creating a plot for 74 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,038 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.724083                0.275917
+1      1-3              0.185970                0.814030
+2      2-3              0.436930                0.563070
+2025-07-10 15:44:19,041 - Patient 75
+2025-07-10 15:44:19,057 - Creating a plot for 75 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,063 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.236189                0.763811
+1      1-3              0.418457                0.581543
+2      2-3              0.425619                0.574381
+2025-07-10 15:44:19,066 - Patient 76
+2025-07-10 15:44:19,079 - Creating a plot for 76 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,085 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.636861                0.363139
+1      1-3              0.749549                0.250451
+2      2-3              0.836651                0.163349
+2025-07-10 15:44:19,088 - Patient 77
+2025-07-10 15:44:19,104 - Creating a plot for 77 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,109 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.491619                0.508381
+1      1-3              0.435505                0.564495
+2      2-3              0.717235                0.282765
+2025-07-10 15:44:19,113 - Patient 78
+2025-07-10 15:44:19,129 - Creating a plot for 78 VOW_a if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,135 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.201273                0.798727
+1      1-3              0.296269                0.703731
+2      2-3              0.414930                0.585070
+2025-07-10 15:44:19,139 - dataframes_feature_extraction/VOWe_df.csv
+2025-07-10 15:44:19,263 - Patient 67
+2025-07-10 15:44:19,280 - Creating a plot for 67 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,286 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.104191                0.895809
+1      1-3              0.075724                0.924276
+2      2-3              0.168123                0.831877
+2025-07-10 15:44:19,290 - Patient 68
+2025-07-10 15:44:19,306 - Creating a plot for 68 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,312 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.621144                0.378856
+1      1-3              0.935859                0.064141
+2      2-3              1.371018               -0.371018
+2025-07-10 15:44:19,316 - Patient 69
+2025-07-10 15:44:19,333 - Creating a plot for 69 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,338 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.244324                0.755676
+1      1-3              0.177202                0.822798
+2      2-3              0.286270                0.713730
+2025-07-10 15:44:19,342 - Patient 70
+2025-07-10 15:44:19,358 - Creating a plot for 70 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,363 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.165206                0.834794
+1      1-3              0.130842                0.869158
+2      2-3              0.248906                0.751094
+2025-07-10 15:44:19,367 - Patient 71
+2025-07-10 15:44:19,385 - Creating a plot for 71 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,390 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.433511                0.566489
+1      1-3              0.283931                0.716069
+2      2-3              0.549793                0.450207
+2025-07-10 15:44:19,394 - Patient 72
+2025-07-10 15:44:19,410 - Creating a plot for 72 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,415 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.376159                0.623841
+1      1-3              0.249101                0.750899
+2      2-3              0.346090                0.653910
+2025-07-10 15:44:19,419 - Patient 73
+2025-07-10 15:44:19,435 - Creating a plot for 73 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,441 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.579444                0.420556
+1      1-3              0.140174                0.859826
+2      2-3              0.566259                0.433741
+2025-07-10 15:44:19,444 - Patient 74
+2025-07-10 15:44:19,460 - Creating a plot for 74 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,466 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.455160                0.544840
+1      1-3              0.103868                0.896132
+2      2-3              0.386047                0.613953
+2025-07-10 15:44:19,469 - Patient 75
+2025-07-10 15:44:19,485 - Creating a plot for 75 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,491 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.263731                0.736269
+1      1-3              0.934756                0.065244
+2      2-3              1.175053               -0.175053
+2025-07-10 15:44:19,495 - Patient 76
+2025-07-10 15:44:19,509 - Creating a plot for 76 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,515 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.371060                0.628940
+1      1-3              0.651249                0.348751
+2      2-3              0.568798                0.431202
+2025-07-10 15:44:19,519 - Patient 77
+2025-07-10 15:44:19,535 - Creating a plot for 77 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,541 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.077215                0.922785
+1      1-3              0.172048                0.827952
+2      2-3              0.266861                0.733139
+2025-07-10 15:44:19,544 - Patient 78
+2025-07-10 15:44:19,560 - Creating a plot for 78 VOW_e if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,566 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.064995                0.935005
+1      1-3              0.423590                0.576410
+2      2-3              0.423747                0.576253
+2025-07-10 15:44:19,570 - dataframes_feature_extraction/VOWi_df.csv
+2025-07-10 15:44:19,680 - Patient 67
+2025-07-10 15:44:19,695 - Creating a plot for 67 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,701 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.236713                0.763287
+1      1-3              0.065578                0.934422
+2      2-3              0.176891                0.823109
+2025-07-10 15:44:19,704 - Patient 68
+2025-07-10 15:44:19,719 - Creating a plot for 68 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,724 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.532756                0.467244
+1      1-3              0.687133                0.312867
+2      2-3              1.028471               -0.028471
+2025-07-10 15:44:19,728 - Patient 69
+2025-07-10 15:44:19,743 - Creating a plot for 69 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,748 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.235612                0.764388
+1      1-3              0.301417                0.698583
+2      2-3              0.127977                0.872023
+2025-07-10 15:44:19,751 - Patient 70
+2025-07-10 15:44:19,766 - Creating a plot for 70 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,771 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.100725                0.899275
+1      1-3              0.165038                0.834962
+2      2-3              0.191672                0.808328
+2025-07-10 15:44:19,774 - Patient 71
+2025-07-10 15:44:19,790 - Creating a plot for 71 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,795 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.776639                0.223361
+1      1-3              0.219208                0.780792
+2      2-3              1.050242               -0.050242
+2025-07-10 15:44:19,799 - Patient 72
+2025-07-10 15:44:19,814 - Creating a plot for 72 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,820 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.237989                0.762011
+1      1-3              0.158196                0.841804
+2      2-3              0.179393                0.820607
+2025-07-10 15:44:19,823 - Patient 73
+2025-07-10 15:44:19,838 - Creating a plot for 73 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,843 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.607747                0.392253
+1      1-3              0.470461                0.529539
+2      2-3              0.520984                0.479016
+2025-07-10 15:44:19,846 - Patient 74
+2025-07-10 15:44:19,861 - Creating a plot for 74 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,866 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.400289                0.599711
+1      1-3              0.140960                0.859040
+2      2-3              0.356846                0.643154
+2025-07-10 15:44:19,870 - Patient 75
+2025-07-10 15:44:19,886 - Creating a plot for 75 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,894 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.509865                0.490135
+1      1-3              0.363401                0.636599
+2      2-3              0.463276                0.536724
+2025-07-10 15:44:19,898 - Patient 76
+2025-07-10 15:44:19,913 - Creating a plot for 76 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,920 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.586725                0.413275
+1      1-3              0.839488                0.160512
+2      2-3              0.985546                0.014454
+2025-07-10 15:44:19,924 - Patient 77
+2025-07-10 15:44:19,943 - Creating a plot for 77 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,949 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.228619                0.771381
+1      1-3              0.353738                0.646262
+2      2-3              0.564439                0.435561
+2025-07-10 15:44:19,954 - Patient 78
+2025-07-10 15:44:19,971 - Creating a plot for 78 VOW_i if feature_distance_plot() is unmuted
+2025-07-10 15:44:19,977 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.081749                0.918251
+1      1-3              0.153134                0.846866
+2      2-3              0.220801                0.779199
+2025-07-10 15:44:19,981 - dataframes_feature_extraction/VOWo_df.csv
+2025-07-10 15:44:20,100 - Patient 67
+2025-07-10 15:44:20,116 - Creating a plot for 67 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,122 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.219864                0.780136
+1      1-3              0.121274                0.878726
+2      2-3              0.421556                0.578444
+2025-07-10 15:44:20,126 - Patient 68
+2025-07-10 15:44:20,143 - Creating a plot for 68 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,149 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.210027                0.789973
+1      1-3              0.879430                0.120570
+2      2-3              1.145909               -0.145909
+2025-07-10 15:44:20,152 - Patient 69
+2025-07-10 15:44:20,168 - Creating a plot for 69 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,173 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.269038                0.730962
+1      1-3              0.110896                0.889104
+2      2-3              0.278564                0.721436
+2025-07-10 15:44:20,177 - Patient 70
+2025-07-10 15:44:20,193 - Creating a plot for 70 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,198 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.096829                0.903171
+1      1-3              0.452071                0.547929
+2      2-3              0.487255                0.512745
+2025-07-10 15:44:20,202 - Patient 71
+2025-07-10 15:44:20,218 - Creating a plot for 71 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,223 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.525441                0.474559
+1      1-3              0.050029                0.949971
+2      2-3              0.491316                0.508684
+2025-07-10 15:44:20,226 - Patient 72
+2025-07-10 15:44:20,241 - Creating a plot for 72 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,247 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.973497                0.026503
+1      1-3              0.201779                0.798221
+2      2-3              0.875933                0.124067
+2025-07-10 15:44:20,251 - Patient 73
+2025-07-10 15:44:20,267 - Creating a plot for 73 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,273 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.387377                0.612623
+1      1-3              0.113355                0.886645
+2      2-3              0.244442                0.755558
+2025-07-10 15:44:20,276 - Patient 74
+2025-07-10 15:44:20,292 - Creating a plot for 74 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,297 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.193044                0.806956
+1      1-3              0.205592                0.794408
+2      2-3              0.352731                0.647269
+2025-07-10 15:44:20,300 - Patient 75
+2025-07-10 15:44:20,316 - Creating a plot for 75 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,321 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.255163                0.744837
+1      1-3              0.397554                0.602446
+2      2-3              0.551511                0.448489
+2025-07-10 15:44:20,325 - Patient 76
+2025-07-10 15:44:20,338 - Creating a plot for 76 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,344 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.537008                0.462992
+1      1-3              0.764757                0.235243
+2      2-3              0.774155                0.225845
+2025-07-10 15:44:20,347 - Patient 77
+2025-07-10 15:44:20,363 - Creating a plot for 77 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,368 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.294904                0.705096
+1      1-3              0.327870                0.672130
+2      2-3              0.660167                0.339833
+2025-07-10 15:44:20,371 - Patient 78
+2025-07-10 15:44:20,385 - Creating a plot for 78 VOW_o if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,390 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.260925                0.739075
+1      1-3              1.004064               -0.004064
+2      2-3              1.242451               -0.242451
+2025-07-10 15:44:20,394 - dataframes_feature_extraction/VOWu_df.csv
+2025-07-10 15:44:20,531 - Patient 67
+2025-07-10 15:44:20,546 - Creating a plot for 67 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,551 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.187780                0.812220
+1      1-3              0.088742                0.911258
+2      2-3              0.300205                0.699795
+2025-07-10 15:44:20,554 - Patient 68
+2025-07-10 15:44:20,568 - Creating a plot for 68 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,573 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.574094                0.425906
+1      1-3              0.481001                0.518999
+2      2-3              0.609575                0.390425
+2025-07-10 15:44:20,576 - Patient 69
+2025-07-10 15:44:20,591 - Creating a plot for 69 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,596 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.588763                0.411237
+1      1-3              0.206931                0.793069
+2      2-3              0.509217                0.490783
+2025-07-10 15:44:20,600 - Patient 70
+2025-07-10 15:44:20,614 - Creating a plot for 70 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,619 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.615536                0.384464
+1      1-3              0.431166                0.568834
+2      2-3              0.544649                0.455351
+2025-07-10 15:44:20,621 - Patient 71
+2025-07-10 15:44:20,636 - Creating a plot for 71 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,641 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.666420                0.333580
+1      1-3              0.169850                0.830150
+2      2-3              0.847014                0.152986
+2025-07-10 15:44:20,644 - Patient 72
+2025-07-10 15:44:20,659 - Creating a plot for 72 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,664 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.232894                0.767106
+1      1-3              0.467347                0.532653
+2      2-3              0.501824                0.498176
+2025-07-10 15:44:20,667 - Patient 73
+2025-07-10 15:44:20,680 - Creating a plot for 73 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,685 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.442645                0.557355
+1      1-3              0.182587                0.817413
+2      2-3              0.262106                0.737894
+2025-07-10 15:44:20,688 - Patient 74
+2025-07-10 15:44:20,702 - Creating a plot for 74 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,707 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.126251                0.873749
+1      1-3              0.593144                0.406856
+2      2-3              0.760622                0.239378
+2025-07-10 15:44:20,709 - Patient 75
+2025-07-10 15:44:20,727 - Creating a plot for 75 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,732 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.255175                0.744825
+1      1-3              0.367504                0.632496
+2      2-3              0.683823                0.316177
+2025-07-10 15:44:20,735 - Patient 76
+2025-07-10 15:44:20,748 - Creating a plot for 76 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,753 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.555358                0.444642
+1      1-3              0.779085                0.220915
+2      2-3              0.589742                0.410258
+2025-07-10 15:44:20,757 - Patient 77
+2025-07-10 15:44:20,772 - Creating a plot for 77 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,778 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.109673                0.890327
+1      1-3              0.541745                0.458255
+2      2-3              0.540683                0.459317
+2025-07-10 15:44:20,781 - Patient 78
+2025-07-10 15:44:20,796 - Creating a plot for 78 VOW_u if feature_distance_plot() is unmuted
+2025-07-10 15:44:20,801 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.545362                0.454638
+1      1-3              0.746165                0.253835
+2      2-3              0.198803                0.801197

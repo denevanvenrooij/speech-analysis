@@ -1,17 +1,21 @@
+#!/bin/bash
 from paths import *
 from pathlib import Path
 import parselmouth
 import pandas as pd
-import numpy as np
-import logging
 from datetime import datetime
 import re
 import shutil
 import subprocess
+import logging
 
-time = datetime.now().strftime('%y%m%d_%H%M%S')
-log_filename = f"logs/0_aas_{time}.log"
-logging.basicConfig(filename=log_filename, level=logging.INFO, format='%(asctime)s - %(message)s')
+time_str = datetime.now().strftime('%y%m%d_%H%M%S')
+log_dir = Path('/home/dene/rp2/logs')
+log_dir.mkdir(parents=True, exist_ok=True)
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s', handlers=[
+        logging.FileHandler('/home/dene/rp2/cron.log'),
+        logging.FileHandler(log_dir / f'0_aas_{time_str}.log')], force=True)
 
 folder = Path("/mnt/c/Users/denev/Sync/Syncthing")
 processed_log = logs_dir / "already_processed.csv"
@@ -248,11 +252,11 @@ def split_voice_exercises(audio_file, min_frames, silence_threshold, padding):
 if __name__ == "__main__":
     logging.info("Script started.")
 
-    ## renaming the files that are in the m4a folder
+    ## transporting and renaming the files that are in the m4a folder (C:\)
     for file_path in folder.rglob("*.m4a"):
         logging.info(file_path)
         rename_new_files(file_path)
-    renamed_df.to_csv(processed_log, index=False)
+    # renamed_df.to_csv(processed_log, index=False)
     
     ## converting the m4a files to wav files
     processed_files = [file for file in (syncthing_dir / 'original').glob('*.wav') if file.is_file()]
