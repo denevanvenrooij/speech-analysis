@@ -1,0 +1,4 @@
+2025-07-10 19:56:01,456 - Now running dataframes_features/per_exercise/SEN_1.csv with
+2025-07-10 19:56:01,456 - Mutual information threshold: 0.01
+2025-07-10 19:56:01,456 - Co-correlation threshold: 0.99
+2025-07-10 19:56:01,456 - Features to select: 10

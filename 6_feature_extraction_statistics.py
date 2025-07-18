@@ -133,56 +133,65 @@ def average_heatmap_dfs(dfs):
     result['avg'] = result.mean(axis=1)
     return result
 
+def similarity_heatmap(df, exercise):
+    measure_labels = {f'VOW_{v}': f'VOW {v}' for v in vowels}
+    measure_labels.update({'SEN':'SEN','SPN':'SPN'})
 
-def similarity_heat_map(df, exercise):
     df_pe = df[df['exercise'] == exercise]
 
-    heatmap_df = df_pe.pivot(index='mic_pair', columns='id', values='mean_cosine_distance')
-    heatmap_df = heatmap_df.sort_index(axis=1)
-
+    heatmap_df = df_pe.pivot_table(index='mic_pair', columns='id', values='mean_cosine_distance')
+    plot_df = heatmap_df.sort_index(axis=1)
+    plot_df['avg'] = plot_df.mean(axis=1)
+    plot_df.loc['avg'] = plot_df.mean()
+    
     plt.figure(figsize=(10,3))
 
     ax = sns.heatmap(
-        heatmap_df,
+        plot_df,
         annot=True,
         fmt=".2f", 
         vmin=0, vmax=2,
         cbar='viridis',
         cbar_kws={
-            "label": "Mean Cosine Distance", 
+            "label": "mean cosine distance", 
             "ticks": [0.0,0.5,1.0,1.5,2.0],
             "aspect": 20,
             "pad": 0.01,})
     
+    n_rows, n_cols = plot_df.shape
+    ax.axhline(n_rows - 1, color='white', linewidth=1)
+    ax.axvline(n_cols - 1, color='white', linewidth=1) 
+    
     colorbar = ax.collections[0].colorbar
-    colorbar.set_label('Mean Cosine Distance', fontsize=9)
+    colorbar.set_label('mean cosine distance', fontsize=9)
     colorbar.ax.tick_params(labelsize=7)
     
     plt.xticks(fontsize=7)
-    plt.title(f'Mean Cosine Distance Heatmap {exercise}', fontsize=10)
+    plt.title(f'Mean cosine distance of {measure_labels[exercise]}', fontsize=10)
     plt.xlabel('ID', fontsize=9)
     plt.ylabel('Mic Pair', fontsize=9)
     plt.tight_layout()
-    plt.savefig(plots_dir / f'cosine_similarity_heatmap_{exercise}.png')
+    plt.savefig(plots_dir / f'mean_cosine_distance_heatmap_std_{exercise}.png')
     
-    
-def avg_similarity_heat_map(df):
+def avg_distance_heatmap(df, processing_vow=False):
     measure = 'mean_cosine_distance'
-    measure_labels = {measure: measure.replace('_', ' ').capitalize()}
-    
+    measure_labels = {measure: measure.replace('_', ' ')}
+
     dfs = []
     for exercise in df['exercise'].unique():
         df_pe = df[df['exercise'] == exercise]
-        heatmap_df = df_pe.pivot(index='mic_pair', columns='id', values='mean_cosine_distance')
+        heatmap_df = df_pe.pivot(index='id', columns='mic_pair', values=measure)
         heatmap_df = heatmap_df.sort_index(axis=1)
         dfs.append(heatmap_df)
 
-    averaged_df = average_heatmap_dfs(dfs)    
+    averaged_df = average_heatmap_dfs(dfs)
+    plot_df = averaged_df.T
+    plot_df['avg'] = plot_df.mean(axis=1)
     
     plt.figure(figsize=(10,3))
 
     ax = sns.heatmap(
-        averaged_df,
+        plot_df,
         annot=True,
         fmt=".2f", 
         vmin=0, vmax=2,
@@ -191,18 +200,70 @@ def avg_similarity_heat_map(df):
                     "ticks": [0.0,0.5,1.0,1.5,2.0],
                     "aspect": 20,
                     "pad": 0.01})
+
+    n_rows, n_cols = plot_df.shape
+    ax.axhline(n_rows - 1, color='white', linewidth=1)
+    ax.axvline(n_cols - 1, color='white', linewidth=1) 
     
     colorbar = ax.collections[0].colorbar
     colorbar.set_label(f"{measure_labels[measure]}", fontsize=9)
     colorbar.ax.tick_params(labelsize=7)
 
     plt.xticks(fontsize=7)
-    plt.title(f'Average {measure_labels[measure]} of all exercises', fontsize=10)
+    if processing_vow:
+        plt.title(f'Average {measure_labels[measure]} between feature sets of all VOW exercises', fontsize=10)
+    else:
+        plt.title(f'Average {measure_labels[measure]} between feature sets of all voice exercises', fontsize=10)
     plt.xlabel('ID', fontsize=9)
     plt.ylabel('Mic Pair', fontsize=9)
     plt.tight_layout()
-    plt.savefig(plots_dir / f'{measure}_heatmap.png')
+    if processing_vow:
+        plt.savefig(plots_dir / f'{measure}_heatmap_VOW.png')
+    else:
+        plt.savefig(plots_dir / f'{measure}_heatmap.png') 
+
+def std_distance_heatmap(df, processing_vow=False):
+    measure = 'mean_cosine_distance'
+    measure_labels = {measure: measure.replace('_', ' ')}    
     
+    plot_df = (df.groupby(['id', 'mic_pair'])['mean_cosine_distance'].std().reset_index(name='std').pivot(index='mic_pair', columns='id', values='std'))
+    plot_df['avg'] = plot_df.mean(axis=1)
+    plot_df.loc['avg'] = plot_df.mean()
+    
+    plt.figure(figsize=(10,3))
+
+    ax = sns.heatmap(
+        plot_df,
+        annot=True,
+        fmt=".2f", 
+        vmin=0, vmax=1,
+        cmap='YlOrRd',
+        cbar_kws={"label": f"{measure_labels[measure]}", 
+                    "ticks": [0.0,0.5,1.0],
+                    "aspect": 20,
+                    "pad": 0.01})
+    
+    n_rows, n_cols = plot_df.shape
+    ax.axhline(n_rows - 1, color='grey', linewidth=1)
+    ax.axvline(n_cols - 1, color='grey', linewidth=1) 
+    
+    colorbar = ax.collections[0].colorbar
+    colorbar.set_label(f"{measure_labels[measure]}", fontsize=9)
+    colorbar.ax.tick_params(labelsize=7)
+
+    plt.xticks(fontsize=7)
+    if processing_vow:
+        plt.title(f'Std {measure_labels[measure]} between feature sets of all VOW exercises', fontsize=10)
+    else:
+        plt.title(f'Std {measure_labels[measure]} between feature sets of all voice exercises', fontsize=10)
+    plt.xlabel('ID', fontsize=9)
+    plt.ylabel('Mic Pair', fontsize=9)
+    plt.tight_layout()
+    if processing_vow:
+        plt.savefig(plots_dir / f'{measure}_heatmap_std_VOW.png')
+    else:
+        plt.savefig(plots_dir / f'{measure}_heatmap_std.png')
+
     
 if __name__=="__main__":
     for exercise in non_MPT_exercises:
@@ -214,6 +275,9 @@ if __name__=="__main__":
     if removing_file in dfs:
         idx = dfs.index(removing_file)
         dfs.pop(idx)
+
+    similarity_df = pd.DataFrame()
+    vow_df = pd.DataFrame()
 
     for file in dfs:
         logging.info(file)
@@ -252,18 +316,18 @@ if __name__=="__main__":
             id_df = id_df[id_df['feature'].isin(features_to_keep)]
             cosine_df = id_df.iloc[:, :-1].copy()  
         
-            mic1_mean = id_df[id_df['mic'] == 1][['id','feature','mean']].rename(columns={'mean':'mic1_mean'})
-            id_df = id_df.merge(mic1_mean, on=['id', 'feature'], how='left')
-            id_df['mean_diff_to_mic1'] = id_df['mean'] - id_df['mic1_mean']
-            id_df = id_df.drop(columns='mic1_mean')
+            # mic1_mean = id_df[id_df['mic'] == 1][['id','feature','mean']].rename(columns={'mean':'mic1_mean'})
+            # id_df = id_df.merge(mic1_mean, on=['id', 'feature'], how='left')
+            # id_df['mean_diff_to_mic1'] = id_df['mean'] - id_df['mic1_mean']
+            # id_df = id_df.drop(columns='mic1_mean')
 
-            avg_std_per_feature = id_df.groupby('feature')['mean_diff_to_mic1'].mean()
-            id_df['avg_std_to_mic1'] = id_df['feature'].map(avg_std_per_feature)
-            id_df = id_df.sort_values('avg_std_to_mic1', ascending=True).reset_index(drop=True)
-            id_df['feature_id'] = pd.factorize(id_df['feature'])[0]
-            exercise = id_df['exercise'].iloc[0]
+            # avg_std_per_feature = id_df.groupby('feature')['mean_diff_to_mic1'].mean()
+            # id_df['avg_std_to_mic1'] = id_df['feature'].map(avg_std_per_feature)
+            # id_df = id_df.sort_values('avg_std_to_mic1', ascending=True).reset_index(drop=True)
+            # id_df['feature_id'] = pd.factorize(id_df['feature'])[0]
+            # exercise = id_df['exercise'].iloc[0]
 
-            logging.info(f"Creating a plot for {id} {exercise} if feature_distance_plot() is unmuted")
+            # logging.info(f"Creating a plot for {id} {exercise} if feature_distance_plot() is unmuted")
             
             ## unmute this part for new plots
             # feature_distance_plot(id_df, id, x_value='feature_id', y_value='mean_diff_to_mic1')
@@ -271,13 +335,26 @@ if __name__=="__main__":
             similarity_results = mic_similarity(cosine_df)
             logging.info(similarity_results)
             
-            similarity_results = similarity_results.assign(id=id, exercise=exercise)
+            exercise = cosine_df['exercise'].unique()
+            exercise = exercise[0]
+            similarity_results['id'] = id
+            similarity_results['exercise'] = exercise
             similarity_df = pd.concat([similarity_df, similarity_results], ignore_index=True)
+        
+            if exercise.startswith('VOW'):
+                vow_df = pd.concat([vow_df, similarity_results], ignore_index=True)
+            
+        # avg_distance_heatmap(similarity_df)
+        # std_distance_heatmap(similarity_df)
     
-    similarity_df.to_csv(plots_dir / 'cosine_similarity_data.csv')
-
-    avg_similarity_heat_map(similarity_df)
+        for exercise in similarity_df['exercise'].unique():
+            similarity_heatmap(similarity_df, exercise)
     
-    for exercise in similarity_df['exercise'].unique():
-        similarity_heat_map(similarity_df, exercise)
+    # avg_distance_heatmap(vow_df, processing_vow=True)
+    # std_distance_heatmap(vow_df, processing_vow=True)
+    # vow_df.to_csv(plots_dir / 'cosine_data_vowels.csv')
+    
+    
+    
+    
     

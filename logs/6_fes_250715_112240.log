@@ -1,0 +1,112 @@
+2025-07-15 11:22:41,994 - dataframes_feature_extraction/SEN_df.csv
+2025-07-15 11:22:42,290 - Patient 67
+2025-07-15 11:22:42,319 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.300672                0.699328
+1      1-3              0.988921                0.011079
+2      2-3              1.011214               -0.011214
+2025-07-15 11:22:42,324 - Patient 68
+2025-07-15 11:22:42,352 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.333768                0.666232
+1      1-3              1.128070               -0.128070
+2      2-3              1.064156               -0.064156
+2025-07-15 11:22:42,357 - Patient 69
+2025-07-15 11:22:42,385 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.453358                0.546642
+1      1-3              0.476014                0.523986
+2      2-3              0.472069                0.527931
+2025-07-15 11:22:42,389 - Patient 70
+2025-07-15 11:22:42,416 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.433097                0.566903
+1      1-3              0.635878                0.364122
+2      2-3              0.512284                0.487716
+2025-07-15 11:22:42,420 - Patient 71
+2025-07-15 11:22:42,447 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.832616                0.167384
+1      1-3              0.902350                0.097650
+2      2-3              0.867102                0.132898
+2025-07-15 11:22:42,451 - Patient 72
+2025-07-15 11:22:42,478 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.596940                0.403060
+1      1-3              0.476014                0.523986
+2      2-3              0.624468                0.375532
+2025-07-15 11:22:42,482 - Patient 73
+2025-07-15 11:22:42,510 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.478180                0.521820
+1      1-3              0.794774                0.205226
+2      2-3              0.597162                0.402838
+2025-07-15 11:22:42,514 - Patient 74
+2025-07-15 11:22:42,543 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.903866                0.096134
+1      1-3              0.764761                0.235239
+2      2-3              0.840310                0.159690
+2025-07-15 11:22:42,547 - Patient 75
+2025-07-15 11:22:42,572 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.563698                0.436302
+1      1-3              0.828388                0.171612
+2      2-3              0.756163                0.243837
+2025-07-15 11:22:42,576 - Patient 76
+2025-07-15 11:22:42,602 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.741928                0.258072
+1      1-3              0.803912                0.196088
+2      2-3              1.046406               -0.046406
+2025-07-15 11:22:42,606 - Patient 77
+2025-07-15 11:22:42,633 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.418423                0.581577
+1      1-3              0.662417                0.337583
+2      2-3              0.593526                0.406474
+2025-07-15 11:22:43,172 - dataframes_feature_extraction/SPN_df.csv
+2025-07-15 11:22:43,352 - Patient 67
+2025-07-15 11:22:43,374 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.388426                0.611574
+1      1-3              0.788043                0.211957
+2      2-3              1.017081               -0.017081
+2025-07-15 11:22:43,379 - Patient 68
+2025-07-15 11:22:43,401 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.629674                0.370326
+1      1-3              0.896554                0.103446
+2      2-3              1.056637               -0.056637
+2025-07-15 11:22:43,405 - Patient 69
+2025-07-15 11:22:43,427 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.419441                0.580559
+1      1-3              0.630032                0.369968
+2      2-3              0.582625                0.417375
+2025-07-15 11:22:43,432 - Patient 70
+2025-07-15 11:22:43,454 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.232478                0.767522
+1      1-3              0.576062                0.423938
+2      2-3              0.603897                0.396103
+2025-07-15 11:22:43,459 - Patient 71
+2025-07-15 11:22:43,480 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.549936                0.450064
+1      1-3              0.723926                0.276074
+2      2-3              0.780280                0.219720
+2025-07-15 11:22:43,485 - Patient 72
+2025-07-15 11:22:43,508 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.358641                0.641359
+1      1-3              0.470050                0.529950
+2      2-3              0.558523                0.441477
+2025-07-15 11:22:43,514 - Patient 73
+2025-07-15 11:22:43,540 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.339056                0.660944
+1      1-3              0.639495                0.360505
+2      2-3              0.587214                0.412786
+2025-07-15 11:22:43,545 - Patient 74
+2025-07-15 11:22:43,570 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.936872                0.063128
+1      1-3              0.714868                0.285132
+2      2-3              0.821113                0.178887
+2025-07-15 11:22:43,577 - Patient 75
+2025-07-15 11:22:43,602 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.437382                0.562618
+1      1-3              0.671016                0.328984
+2      2-3              0.760305                0.239695
+2025-07-15 11:22:43,609 - Patient 76
+2025-07-15 11:22:43,632 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.486697                0.513303
+1      1-3              0.951479                0.048521
+2      2-3              1.010442               -0.010442
+2025-07-15 11:22:43,637 - Patient 77
+2025-07-15 11:22:43,661 -   mic_pair  mean_cosine_distance  mean_cosine_similarity
+0      1-2              0.531724                0.468276
+1      1-3              0.446016                0.553984
+2      2-3              0.698494                0.301506
